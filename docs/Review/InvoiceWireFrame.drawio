@@ -1,0 +1,433 @@
+<mxfile host="Electron" modified="2024-10-09T18:09:36.268Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.1.2 Chrome/106.0.5249.199 Electron/21.4.3 Safari/537.36" etag="74JR6eUDCWt8q9-zaOg-" version="21.1.2" type="device">
+  <diagram name="Page-1" id="M1P97FPRygLZrFnJdLOy">
+    <mxGraphModel dx="1251" dy="642" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="uuyQbHuaZODxHnIS92V9-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="40" width="690" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#212121;" vertex="1" parent="1">
+          <mxGeometry x="120" y="40" width="690" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-13" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="120" y="120" width="690" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-14" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;InvoiceNr.&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-13">
+          <mxGeometry width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-15" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Customer Name&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-13">
+          <mxGeometry x="60" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-16" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Due Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-13">
+          <mxGeometry x="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-17" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Invoice Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-13">
+          <mxGeometry x="150" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-18" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Total Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-13">
+          <mxGeometry x="280" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-19" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Paid Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-13">
+          <mxGeometry x="360" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-20" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Outstanding Balance&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-13">
+          <mxGeometry x="440" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-21" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Status&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-13">
+          <mxGeometry x="550" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-22" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Description&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-13">
+          <mxGeometry x="590" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-168" value="&lt;font style=&quot;font-size: 24px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Invoices&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-13">
+          <mxGeometry y="-30" width="690" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-162" value="&lt;font style=&quot;font-size: 14px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;search hits here....&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-13">
+          <mxGeometry x="5" y="-25" width="145" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-173" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-13">
+          <mxGeometry x="150" y="-25" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-172" value="" style="sketch=0;aspect=fixed;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;fillColor=#FFD700;shape=mxgraph.mscae.enterprise.filter" vertex="1" parent="uuyQbHuaZODxHnIS92V9-13">
+          <mxGeometry x="190" y="-24.370000000000005" width="20.84" height="18.75" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-23" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="120" y="150" width="660" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-24" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;InvoiceNr.&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-23">
+          <mxGeometry width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-25" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Customer Name&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-23">
+          <mxGeometry x="60" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-26" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Due Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-23">
+          <mxGeometry x="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-27" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Invoice Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-23">
+          <mxGeometry x="150" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-28" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Total Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-23">
+          <mxGeometry x="280" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-29" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Paid Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-23">
+          <mxGeometry x="360" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-30" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Outstanding Balance&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-23">
+          <mxGeometry x="440" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-31" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Status&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-23">
+          <mxGeometry x="550" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-32" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Description&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-23">
+          <mxGeometry x="590" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-33" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="120" y="180" width="660" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-34" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;InvoiceNr.&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-33">
+          <mxGeometry width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-35" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Customer Name&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-33">
+          <mxGeometry x="60" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-36" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Due Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-33">
+          <mxGeometry x="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-37" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Invoice Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-33">
+          <mxGeometry x="150" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-38" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Total Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-33">
+          <mxGeometry x="280" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-39" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Paid Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-33">
+          <mxGeometry x="360" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-40" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Outstanding Balance&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-33">
+          <mxGeometry x="440" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-41" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Status&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-33">
+          <mxGeometry x="550" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-42" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Description&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-33">
+          <mxGeometry x="590" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-45" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="120" y="210" width="660" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-46" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;InvoiceNr.&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-45">
+          <mxGeometry width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-47" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Customer Name&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-45">
+          <mxGeometry x="60" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-48" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Due Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-45">
+          <mxGeometry x="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-49" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Invoice Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-45">
+          <mxGeometry x="150" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-50" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Total Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-45">
+          <mxGeometry x="280" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-51" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Paid Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-45">
+          <mxGeometry x="360" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-52" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Outstanding Balance&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-45">
+          <mxGeometry x="440" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-53" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Status&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-45">
+          <mxGeometry x="550" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-54" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Description&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-45">
+          <mxGeometry x="590" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-55" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="120" y="240" width="660" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-56" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;InvoiceNr.&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-55">
+          <mxGeometry width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-57" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Customer Name&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-55">
+          <mxGeometry x="60" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-58" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Due Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-55">
+          <mxGeometry x="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-59" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Invoice Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-55">
+          <mxGeometry x="150" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-60" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Total Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-55">
+          <mxGeometry x="280" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-61" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Paid Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-55">
+          <mxGeometry x="360" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-62" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Outstanding Balance&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-55">
+          <mxGeometry x="440" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-63" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Status&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-55">
+          <mxGeometry x="550" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-64" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Description&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-55">
+          <mxGeometry x="590" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-65" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="120" y="270" width="660" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-66" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;InvoiceNr.&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-65">
+          <mxGeometry width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-67" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Customer Name&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-65">
+          <mxGeometry x="60" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-68" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Due Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-65">
+          <mxGeometry x="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-69" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Invoice Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-65">
+          <mxGeometry x="150" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-70" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Total Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-65">
+          <mxGeometry x="280" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-71" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Paid Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-65">
+          <mxGeometry x="360" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-72" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Outstanding Balance&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-65">
+          <mxGeometry x="440" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-73" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Status&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-65">
+          <mxGeometry x="550" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-74" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Description&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-65">
+          <mxGeometry x="590" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-75" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="120" y="300" width="660" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-76" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;InvoiceNr.&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-75">
+          <mxGeometry width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-77" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Customer Name&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-75">
+          <mxGeometry x="60" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-78" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Due Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-75">
+          <mxGeometry x="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-79" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Invoice Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-75">
+          <mxGeometry x="150" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-80" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Total Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-75">
+          <mxGeometry x="280" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-81" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Paid Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-75">
+          <mxGeometry x="360" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-82" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Outstanding Balance&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-75">
+          <mxGeometry x="440" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-83" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Status&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-75">
+          <mxGeometry x="550" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-84" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Description&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-75">
+          <mxGeometry x="590" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-85" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="120" y="330" width="660" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-86" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;InvoiceNr.&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-85">
+          <mxGeometry width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-87" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Customer Name&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-85">
+          <mxGeometry x="60" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-88" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Due Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-85">
+          <mxGeometry x="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-89" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Invoice Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-85">
+          <mxGeometry x="150" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-90" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Total Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-85">
+          <mxGeometry x="280" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-91" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Paid Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-85">
+          <mxGeometry x="360" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-92" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Outstanding Balance&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-85">
+          <mxGeometry x="440" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-93" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Status&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-85">
+          <mxGeometry x="550" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-94" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Description&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-85">
+          <mxGeometry x="590" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-95" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="120" y="360" width="660" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-96" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;InvoiceNr.&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-95">
+          <mxGeometry width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-97" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Customer Name&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-95">
+          <mxGeometry x="60" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-98" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Due Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-95">
+          <mxGeometry x="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-99" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Invoice Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-95">
+          <mxGeometry x="150" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-100" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Total Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-95">
+          <mxGeometry x="280" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-101" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Paid Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-95">
+          <mxGeometry x="360" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-102" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Outstanding Balance&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-95">
+          <mxGeometry x="440" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-103" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Status&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-95">
+          <mxGeometry x="550" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-104" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Description&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-95">
+          <mxGeometry x="590" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-105" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="120" y="390" width="660" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-106" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;InvoiceNr.&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-105">
+          <mxGeometry width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-107" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Customer Name&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-105">
+          <mxGeometry x="60" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-108" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Due Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-105">
+          <mxGeometry x="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-109" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Invoice Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-105">
+          <mxGeometry x="150" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-110" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Total Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-105">
+          <mxGeometry x="280" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-111" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Paid Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-105">
+          <mxGeometry x="360" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-112" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Outstanding Balance&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-105">
+          <mxGeometry x="440" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-113" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Status&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-105">
+          <mxGeometry x="550" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-114" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Description&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-105">
+          <mxGeometry x="590" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-115" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="120" y="420" width="660" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-116" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;InvoiceNr.&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-115">
+          <mxGeometry width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-117" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Customer Name&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-115">
+          <mxGeometry x="60" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-118" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Due Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-115">
+          <mxGeometry x="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-119" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Invoice Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-115">
+          <mxGeometry x="150" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-120" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Total Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-115">
+          <mxGeometry x="280" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-121" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Paid Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-115">
+          <mxGeometry x="360" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-122" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Outstanding Balance&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-115">
+          <mxGeometry x="440" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-123" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Status&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-115">
+          <mxGeometry x="550" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-124" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Description&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-115">
+          <mxGeometry x="590" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-125" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="120" y="450" width="660" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-126" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;InvoiceNr.&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-125">
+          <mxGeometry width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-127" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Customer Name&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-125">
+          <mxGeometry x="60" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-128" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Due Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-125">
+          <mxGeometry x="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-129" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Invoice Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-125">
+          <mxGeometry x="150" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-130" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Total Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-125">
+          <mxGeometry x="280" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-131" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Paid Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-125">
+          <mxGeometry x="360" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-132" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Outstanding Balance&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-125">
+          <mxGeometry x="440" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-133" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Status&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-125">
+          <mxGeometry x="550" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-134" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Description&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-125">
+          <mxGeometry x="590" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-136" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="120" y="480" width="660" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-137" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;InvoiceNr.&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-136">
+          <mxGeometry width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-138" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Customer Name&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-136">
+          <mxGeometry x="60" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-139" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Due Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-136">
+          <mxGeometry x="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-140" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Invoice Date&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-136">
+          <mxGeometry x="150" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-141" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Total Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-136">
+          <mxGeometry x="280" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-142" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Paid Amount&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-136">
+          <mxGeometry x="360" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-143" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Outstanding Balance&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-136">
+          <mxGeometry x="440" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-144" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Status&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-136">
+          <mxGeometry x="550" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-145" value="&lt;font style=&quot;font-size: 18px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Big+Shoulders+Display&quot; face=&quot;Big Shoulders Display&quot;&gt;Description&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-136">
+          <mxGeometry x="590" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-147" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.android.quickscroll3;dy=0.5;fillColor=#FFD700;strokeColor=#212121;" vertex="1" parent="1">
+          <mxGeometry x="790" y="130" width="6" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-165" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="420" y="40.25" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-166" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-165">
+          <mxGeometry width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-167" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=data:image/png,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;" vertex="1" parent="uuyQbHuaZODxHnIS92V9-165">
+          <mxGeometry y="6.490909090909091" width="77.69090909090909" height="37.018181818181816" as="geometry" />
+        </mxCell>
+        <mxCell id="uuyQbHuaZODxHnIS92V9-174" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.looking_glass;" vertex="1" parent="1">
+          <mxGeometry x="275" y="100" width="10" height="10" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
