@@ -19,19 +19,13 @@ using Windows.Foundation.Collections;
 namespace E3_BarrocIntens
 {
     /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
+    /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainWindow : Window
+    public sealed partial class WelcomeDashboard : Page
     {
-        public MainWindow()
+        public WelcomeDashboard()
         {
             this.InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            window.Navigate(typeof(WelcomeDashboard));
-            navigateButton.Visibility = Visibility.Collapsed;   
         }
     }
 }
