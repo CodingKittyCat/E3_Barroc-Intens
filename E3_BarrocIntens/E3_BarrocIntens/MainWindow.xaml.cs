@@ -1,3 +1,4 @@
+using E3_BarrocIntens.Data;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -26,11 +27,16 @@ namespace E3_BarrocIntens
         public MainWindow()
         {
             this.InitializeComponent();
+            using (BarrocIntensDataContext db = new BarrocIntensDataContext())
+            {
+                db.Database.EnsureCreated();
+            }
         }
 
-        private void myButton_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            myButton.Content = "Clicked";
+            window.Navigate(typeof(RegisterPage));
+            navigateButton.Visibility = Visibility.Collapsed;
         }
     }
 }
