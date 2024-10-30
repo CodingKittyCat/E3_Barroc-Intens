@@ -28,9 +28,10 @@ namespace E3_BarrocIntens
             this.InitializeComponent();
         }
 
-        private void myButton_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            myButton.Content = "Clicked";
+            window.Navigate(typeof(CreateLease));
+            navigateButton.Visibility = Visibility.Collapsed;
         }
     }
 }
