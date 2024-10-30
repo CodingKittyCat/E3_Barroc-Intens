@@ -27,20 +27,22 @@ namespace E3_BarrocIntens
         {
             this.InitializeComponent();
         }
-
-
         private void invoiceTypeCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // check if the combobox and the stackpanel are not null
             if (invoiceTypeCb != null && selectLengthSp != null)
             {
+                // get the selected item from the combobox and cast it to a ComboBoxItem
                 ComboBoxItem comboBoxItem = (ComboBoxItem)invoiceTypeCb.SelectedItem;
-
+                // check if the content of the combobox item is not null or empty and if the content is equal to "Periodic"
                 if (!string.IsNullOrEmpty(comboBoxItem.Content.ToString()) && comboBoxItem.Content.ToString() == "Periodic")
                 {
+                    // set the visibility of the stackpanel to visible
                     selectLengthSp.Visibility = Visibility.Visible;
                 }
                 else
                 {
+                    // set the visibility of the stackpanel to collapsed
                     selectLengthSp.Visibility = Visibility.Collapsed;
                 }
             }
