@@ -27,6 +27,7 @@ namespace E3_BarrocIntens
         public MainWindow()
         {
             this.InitializeComponent();
+            // Create the database if it doesn't exist
             using (BarrocIntensDataContext db = new BarrocIntensDataContext())
             {
                 db.Database.EnsureCreated();

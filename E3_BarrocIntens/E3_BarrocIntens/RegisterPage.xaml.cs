@@ -31,9 +31,11 @@ namespace E3_BarrocIntens
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
+            // Clear the alert text and make errors list
             alertText.Text = "";
             List<string> errors = new List<string>();
 
+            // Check if the username and password are not empty
             if (string.IsNullOrEmpty(usernameTb.Text))
             {
                 errors.Add("Invalid username. Make sure it's not empty.");
@@ -42,26 +44,29 @@ namespace E3_BarrocIntens
             {
                 errors.Add("Invalid password. Make sure it's not empty.");
             }
+            // Check if the password and repeat password are the same
             if (passwordTb.Text != repeatPasswordTb.Text)
             {
                 errors.Add("Passwords do not match. (It's case sensitive!)");
             }
-
+            // Check if there are any errors
             if (errors.Count > 0)
             {
+                // for each error in the errors list, add it to the alert text
                 foreach (string error in errors)
                 {
                     alertText.Text = alertText.Text + $"{error}\n";
                 }
+                // return to stop the function
                 return;
             }
-
+            // Create a new user object
             User newUser = new User
             {
                 Username = usernameTb.Text,
                 Password = Helper.HashPassword(passwordTb.Text)
             };
-
+            // Add the user to the database
             using (BarrocIntensDataContext db = new BarrocIntensDataContext())
             {
                 db.Add(newUser);
