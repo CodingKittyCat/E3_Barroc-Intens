@@ -52,7 +52,7 @@
 
             <!-- Logo in the center of the navigation bar -->
             <Image Margin="0,7,0,7" HorizontalAlignment="Center" 
-                   Source="C:\Users\miche\Downloads\png2jpg\Logo1_klein.jpg" Grid.Column="1"/>
+                   Source="Assets\Logo1_klein.jpg" Grid.Column="1"/>
 
             <!-- Search bar and button on the right side -->
             <StackPanel HorizontalAlignment="Right" Margin="0,0,20,0" Orientation="Horizontal" Grid.Column="2">
@@ -62,7 +62,7 @@
                 <Button x:Name="searchButton" Click="searchButton_Click" Height="35" Width="40" 
                         Background="White" Margin="0" 
                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-                    <Image Source="C:\Users\miche\OneDrive - Curio\Blok E\E1\Algemeen\barroc Intens\img\1485477207-magnifier_78608.ico"/>
+                    <Image Source="Assets\1485477207-magnifier_78608.jpg"/>
                 </Button>
             </StackPanel>
         </Grid>
@@ -131,7 +131,6 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <!-- Yearly balance column -->
-                            <ColumnDefinition Width="*"/>
                             <!-- Balance column -->
                             <ColumnDefinition Width="*"/>
                             <!-- Monthly balance column -->
@@ -151,9 +150,9 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Margin="5,0,0,0" Grid.Column="0" Foreground="White" HorizontalAlignment="Left">YEARLY</TextBlock>
+                            <TextBlock Margin="5,0,0,0" Grid.Column="0" Grid.ColumnSpan="3" Foreground="White">YEARLY</TextBlock>
                             <TextBlock Grid.Column="1" Foreground="White" HorizontalAlignment="Center">BALANCE</TextBlock>
-                            <TextBlock Margin="0,0,5,0" Grid.Column="2" Foreground="White" HorizontalAlignment="Right">MONTHLY</TextBlock>
+                            <TextBlock Margin="0,0,5,0" Grid.Column="2" Grid.ColumnSpan="1" Foreground="White">MONTHLY</TextBlock>
                         </Grid>
 
                         <!-- Borders for financial summary areas -->
