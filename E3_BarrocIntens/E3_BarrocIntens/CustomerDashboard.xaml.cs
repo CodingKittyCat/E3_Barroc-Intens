@@ -13,6 +13,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Diagnostics;
+using E3_BarrocIntens.Data;
 
 namespace E3_BarrocIntens
 {
@@ -21,6 +22,20 @@ namespace E3_BarrocIntens
         public CustomerDashboard()
         {
             this.InitializeComponent(); // Initialize the components on the page.
+            ShowOrders();
+        }
+
+        public void ShowOrders()
+        {
+            using (var db = new AppDbContext())
+            {
+                // Query to filter orders by the specified status
+                var filteredOrders = db.Orders
+                                       .Where(o => o.IsDelivered == false)
+                                       .ToList();
+
+                OrderListview.ItemsSource = filteredOrders;
+            }
         }
 
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
