@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Window    x:Class="E3_BarrocIntens.MainWindow"    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    xmlns:local="using:E3_BarrocIntens"    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    mc:Ignorable="d">
+<Window
+    x:Class="E3_BarrocIntens.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:E3_BarrocIntens"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+
     <Grid>
         <Frame x:Name="window"></Frame>
-        <Button x:Name="navigateButton" Click="Button_Click">CLICK</Button>
+
+        <ComboBox x:Name="optionsMenu" SelectionChanged="optionsMenu_SelectionChanged" DropDownClosed="optionsMenu_DropDownClosed">
+            <ComboBoxItem>Cancel</ComboBoxItem>
+            <ComboBoxItem>Welcome</ComboBoxItem>
+            <ComboBoxItem>Finance</ComboBoxItem>
+            <ComboBoxItem>Sales</ComboBoxItem>
+            <ComboBoxItem>Customer</ComboBoxItem>
+            <ComboBoxItem>Purchasing</ComboBoxItem>
+            <ComboBoxItem>Maintenance</ComboBoxItem>
+        </ComboBox>
     </Grid>
-</Window> 
+</Window>

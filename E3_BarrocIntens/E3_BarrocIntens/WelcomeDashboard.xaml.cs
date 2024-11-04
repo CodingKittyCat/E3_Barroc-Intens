@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -15,11 +16,19 @@ using Windows.Foundation.Collections;
 
 namespace E3_BarrocIntens
 {
-    public sealed partial class MainWindow : Window
+    public sealed partial class WelcomeDashboard : Page
     {
-        public MainWindow()
+        private string previousSelection; // Store the previous selection.
+
+        public WelcomeDashboard()
         {
-            this.InitializeComponent(); // Initialize the window components.
+            this.InitializeComponent(); // Initialize the page components.
+        }
+
+        private void searchButton_Click(object sender, RoutedEventArgs e)
+        {
+            string searchResult = searchBar.Text; // Get text from the search bar.
+            Debug.WriteLine(searchResult); // Log the search result.
         }
 
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -33,39 +42,33 @@ namespace E3_BarrocIntens
             HandleSelection(); // Handle selection when dropdown closes.
         }
 
-        internal void HandleSelection()
+        private void HandleSelection()
         {
             // Check if the selected item is a ComboBoxItem.
             if (optionsMenu.SelectedItem is ComboBoxItem selectedItem)
             {
-                switch (selectedItem.Content.ToString())
+                string selectedContent = selectedItem.Content.ToString();
+                optionsMenu.Text = selectedContent; // Update the ComboBox text.
+
+                switch (selectedContent)
                 {
                     case "Cancel":
                         optionsMenu.SelectedItem = null; // Clear selection.
                         break;
-                    case "Welcome":
-                        window.Navigate(typeof(WelcomeDashboard)); // Navigate to WelcomeDashboard.
-                        optionsMenu.Visibility = Visibility.Collapsed; // Hide the options menu.
-                        break;
                     case "Finance":
-                        window.Navigate(typeof(FinanceDashboard)); // Navigate to FinanceDashboard.
-                        optionsMenu.Visibility = Visibility.Collapsed; // Hide the options menu.
+                        this.Frame.Navigate(typeof(FinanceDashboard)); // Navigate to FinanceDashboard.
                         break;
                     case "Sales":
-                        window.Navigate(typeof(SalesDashboard)); // Navigate to SalesDashboard.
-                        optionsMenu.Visibility = Visibility.Collapsed; // Hide the options menu.
+                        this.Frame.Navigate(typeof(SalesDashboard)); // Navigate to SalesDashboard.
                         break;
                     case "Customer":
-                        window.Navigate(typeof(CustomerDashboard)); // Navigate to CustomerDashboard.
-                        optionsMenu.Visibility = Visibility.Collapsed; // Hide the options menu.
+                        this.Frame.Navigate(typeof(CustomerDashboard)); // Navigate to CustomerDashboard.
                         break;
                     case "Purchasing":
-                        window.Navigate(typeof(PurchasingDashboard)); // Navigate to PurchasingDashboard.
-                        optionsMenu.Visibility = Visibility.Collapsed; // Hide the options menu.
+                        this.Frame.Navigate(typeof(PurchasingDashboard)); // Navigate to PurchasingDashboard.
                         break;
                     case "Maintenance":
-                        window.Navigate(typeof(MaintenanceDashboard)); // Navigate to MaintenanceDashboard.
-                        optionsMenu.Visibility = Visibility.Collapsed; // Hide the options menu.
+                        this.Frame.Navigate(typeof(MaintenanceDashboard)); // Navigate to MaintenanceDashboard.
                         break;
                 }
             }
