@@ -74,6 +74,9 @@ namespace E3_BarrocIntens
                     case "Customer":
                         this.Frame.Navigate(typeof(CustomerDashboard)); // Navigate to CustomerDashboard.
                         break;
+                    case "Purchasing":
+                        this.Frame.Navigate(typeof(PurchasingDashboard)); // Navigate to CustomerDashboard.
+                        break;
                 }
             }
         }
