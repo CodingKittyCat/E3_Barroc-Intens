@@ -1,0 +1,166 @@
+<Page
+    x:Class="E3_BarrocIntens.FinanceDashboard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:E3_BarrocIntens"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <!-- Main container for the Finance Dashboard -->
+    <Grid Background="White">
+        <!-- Define the layout rows -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.12*" MinHeight="50"/>
+            <!-- Top navigation row -->
+            <RowDefinition Height="0.4*"/>
+            <!-- Invoices and Contracts section -->
+            <RowDefinition Height="*"/>
+            <!-- Additional content area -->
+        </Grid.RowDefinitions>
+
+        <!-- Define a single column for the main layout structure -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Top navigation bar -->
+        <Grid Background="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <!-- ComboBox section -->
+                <ColumnDefinition Width="*"/>
+                <!-- Logo section -->
+                <ColumnDefinition Width="*"/>
+                <!-- Search section -->
+            </Grid.ColumnDefinitions>
+
+            <!-- ComboBox for navigation options -->
+            <ComboBox x:Name="optionsMenu" SelectionChanged="optionsMenu_SelectionChanged" 
+                      DropDownClosed="optionsMenu_DropDownClosed" Margin="20,0,0,0" 
+                      VerticalAlignment="Center" Background="White" Foreground="Black" 
+                      PlaceholderForeground="Black" PlaceholderText="Open this select menu" 
+                      Grid.Column="0">
+                <ComboBoxItem>Cancel</ComboBoxItem>
+                <ComboBoxItem>Welcome</ComboBoxItem>
+                <ComboBoxItem>Sales</ComboBoxItem>
+                <ComboBoxItem>Purchasing</ComboBoxItem>
+                <ComboBoxItem>Customer</ComboBoxItem>
+                <ComboBoxItem>Maintenance</ComboBoxItem>
+            </ComboBox>
+
+            <!-- Logo in the center of the navigation bar -->
+            <Image Margin="0,7,0,7" HorizontalAlignment="Center" 
+                   Source="Assets\Logo1_klein.jpg" Grid.Column="1"/>
+
+            <!-- Search bar and button on the right side -->
+            <StackPanel HorizontalAlignment="Right" Margin="0,0,20,0" Orientation="Horizontal" Grid.Column="2">
+                <TextBox x:Name="searchBar" Width="200" Height="30" Margin="0" 
+                         PlaceholderText="SEARCH" Background="White" 
+                         PlaceholderForeground="Black" Foreground="Black"/>
+                <Button x:Name="searchButton" Click="searchButton_Click" Height="35" Width="40" 
+                        Background="White" Margin="0" 
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <Image Source="Assets\1485477207-magnifier_78608.jpg"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!-- Invoices and Contracts section -->
+        <Border Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="2" Background="White">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <!-- Invoices section -->
+                    <ColumnDefinition Width="*"/>
+                    <!-- Contracts section -->
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <!-- Title row -->
+                    <RowDefinition Height="*"/>
+                    <!-- Content area row -->
+                </Grid.RowDefinitions>
+
+                <!-- Inner grid for Invoices and Contracts titles and buttons -->
+                <Grid Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <!-- Invoices column -->
+                        <ColumnDefinition Width="*"/>
+                        <!-- Contracts column -->
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <!-- Titles row -->
+                        <RowDefinition Height="*"/>
+                        <!-- Placeholder content row -->
+                    </Grid.RowDefinitions>
+
+                    <!-- Invoices title and button -->
+                    <Grid Background="Black" Margin="5,5,5,0">
+                        <TextBlock HorizontalAlignment="Center" Foreground="White">INVOICES</TextBlock>
+                        <Button Content="ADD INVOICE" Background="White" BorderBrush="Black" 
+                                BorderThickness="2" Width="200" HorizontalAlignment="Right" 
+                                Padding="5" HorizontalContentAlignment="Center" 
+                                VerticalContentAlignment="Center"/>
+                    </Grid>
+
+                    <!-- Placeholder for Invoices content -->
+                    <Border BorderBrush="Black" BorderThickness="2" Grid.Row="2" Margin="5,0,5,0"/>
+
+                    <!-- Contracts title and button -->
+                    <Grid Background="Black" Grid.Column="1" Margin="5,5,5,0">
+                        <TextBlock HorizontalAlignment="Center" Foreground="White">CONTRACTS</TextBlock>
+                        <Button Content="ADD CONTRACT" Background="White" BorderBrush="Black" 
+                                BorderThickness="2" Width="200" HorizontalAlignment="Right" 
+                                Padding="5" HorizontalContentAlignment="Center" 
+                                VerticalContentAlignment="Center"/>
+                    </Grid>
+
+                    <!-- Placeholder for Contracts content -->
+                    <Border BorderBrush="Black" BorderThickness="2" Grid.Row="2" Grid.Column="2" Margin="5,0,5,0"/>
+                </Grid>
+
+                <!-- Additional section for financial summary -->
+                <Border Grid.ColumnSpan="2" Grid.Row="2" Margin="20,20,20,20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <!-- Yearly balance column -->
+                            <!-- Balance column -->
+                            <ColumnDefinition Width="*"/>
+                            <!-- Monthly balance column -->
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.1*"/>
+                            <!-- Title row -->
+                            <RowDefinition Height="*"/>
+                            <!-- Content area row -->
+                        </Grid.RowDefinitions>
+
+                        <!-- Financial summary titles -->
+                        <Grid HorizontalAlignment="Stretch" Background="Black" Grid.ColumnSpan="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Margin="5,0,0,0" Grid.Column="0" Grid.ColumnSpan="3" Foreground="White">YEARLY</TextBlock>
+                            <TextBlock Grid.Column="1" Foreground="White" HorizontalAlignment="Center">BALANCE</TextBlock>
+                            <TextBlock Margin="0,0,5,0" Grid.Column="2" Grid.ColumnSpan="1" Foreground="White">MONTHLY</TextBlock>
+                        </Grid>
+
+                        <!-- Borders for financial summary areas -->
+                        <Border Margin="0,0,3,3" Grid.Row="2" Background="White" BorderBrush="Black" BorderThickness="2"/>
+                        <Border Margin="0,0,0,3" Grid.Row="2" Grid.Column="2" Background="White" BorderBrush="Black" BorderThickness="2"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

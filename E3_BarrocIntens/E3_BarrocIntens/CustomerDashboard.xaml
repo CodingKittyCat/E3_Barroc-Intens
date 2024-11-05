@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="E3_BarrocIntens.CustomerDashboard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:E3_BarrocIntens"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <!-- Main container for page content -->
+    <Grid Background="White">
+        <!-- Define row structure -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.12*" MinHeight="50"/>
+            <!-- Top navigation bar -->
+            <RowDefinition Height="0.4*"/>
+            <!-- Orders and Contracts section -->
+            <RowDefinition Height="*"/>
+            <!-- Additional content (currently unused) -->
+        </Grid.RowDefinitions>
+
+        <!-- Define a single column for the main layout structure -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Top navigation bar -->
+        <Grid Background="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <!-- ComboBox section -->
+                <ColumnDefinition Width="*"/>
+                <!-- Logo section -->
+                <ColumnDefinition Width="*"/>
+                <!-- Profile icon section -->
+            </Grid.ColumnDefinitions>
+
+            <!-- ComboBox for navigation options -->
+            <ComboBox x:Name="optionsMenu" SelectionChanged="optionsMenu_SelectionChanged" 
+                      DropDownClosed="optionsMenu_DropDownClosed" Margin="20,0,0,0" 
+                      VerticalAlignment="Center" Background="White" Foreground="Black" 
+                      PlaceholderForeground="Black" PlaceholderText="Open this select menu" 
+                      Grid.Column="0">
+                <ComboBoxItem>Cancel</ComboBoxItem>
+                <ComboBoxItem>Welcome</ComboBoxItem>
+                <ComboBoxItem>Sales</ComboBoxItem>
+                <ComboBoxItem>Finance</ComboBoxItem>
+                <ComboBoxItem>Purchasing</ComboBoxItem>
+                <ComboBoxItem>Maintenance</ComboBoxItem>
+            </ComboBox>
+
+            <!-- Logo in the center of the navigation bar -->
+            <Image Margin="0,7,0,7" HorizontalAlignment="Center" 
+                   Source="Assets\Logo1_klein.jpg" Grid.Column="1"/>
+
+            <!-- Profile icon button on the right side -->
+            <StackPanel HorizontalAlignment="Right" Margin="0,0,20,0" Orientation="Horizontal" Grid.Column="2">
+                <Button Background="Transparent">
+                    <Image Source="Assets\1487716857-user_81635-3428194618.png"></Image>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!-- Orders and Contracts section -->
+        <Border Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="2" Background="White">
+            <Grid Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <!-- Orders section -->
+                    <ColumnDefinition Width="*"/>
+                    <!-- Contracts section -->
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <!-- Title row -->
+                    <RowDefinition Height="*"/>
+                    <!-- Content area row -->
+                </Grid.RowDefinitions>
+
+                <!-- Inner grid for Orders and Contracts titles and content placeholders -->
+                <Grid Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <!-- Orders column -->
+                        <ColumnDefinition Width="*"/>
+                        <!-- Contracts column -->
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <!-- Titles row -->
+                        <RowDefinition Height="*"/>
+                        <!-- Placeholder content row -->
+                    </Grid.RowDefinitions>
+
+                    <!-- Orders title bar -->
+                    <Grid Background="Black" Margin="5,5,5,0">
+                        <TextBlock HorizontalAlignment="Center" Foreground="White">ORDERS</TextBlock>
+                    </Grid>
+
+                    <!-- Placeholder for Orders content -->
+                    <Border BorderBrush="Black" BorderThickness="2" Grid.Row="2" Margin="5,0,5,0">
+                        <!-- Orders list or content can be added here -->
+                    </Border>
+
+                    <!-- Contracts title bar -->
+                    <Grid Background="Black" Grid.Column="1" Margin="5,5,5,0">
+                        <TextBlock HorizontalAlignment="Center" Foreground="White">CONTRACTS</TextBlock>
+                    </Grid>
+
+                    <!-- Placeholder for Contracts content -->
+                    <Border BorderBrush="Black" BorderThickness="2" Grid.Row="2" Grid.Column="2" Margin="5,0,5,0">
+                        <!-- Contracts list or content can be added here -->
+                    </Border>
+
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
