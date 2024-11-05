@@ -18,25 +18,7 @@ namespace E3_BarrocIntens.Modules
         static string CompanyEmail = "ebarrocintens@gmail.com"; // gmail
         static string CompanyEmailPassword = "texp ezca hrbg sgyk"; // app password (BarrocIntens)
 
-        public PdfDocument GenerateInvoice()
-        {
-            // document
-            PdfDocument document = new();
-            PdfPage page = document.Pages.Add();
-            PdfGraphics graphics = page.Graphics;
-            
-            // pdf fonts
-            PdfFont headerFont = new PdfStandardFont(PdfFontFamily.Helvetica, 20, PdfFontStyle.Bold);
-            PdfFont standardFont = new PdfStandardFont(PdfFontFamily.Helvetica, 16);
-
-            // draw graphics
-            graphics.DrawString("Dit is een test PDF file ... Ik weet waar je woont... 😈", headerFont, PdfBrushes.Black, new PointF(0, 0));
-
-            // return document
-            return document;
-        }
-
-        public void EmailInvoice(string recipientAddress, string subject, string body)
+        public void SendEmail(string recipientAddress, string subject, string body)
         {
             // Create message
             MimeMessage message = new MimeMessage();
