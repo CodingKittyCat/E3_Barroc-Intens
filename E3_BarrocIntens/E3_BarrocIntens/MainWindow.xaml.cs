@@ -25,7 +25,12 @@ namespace E3_BarrocIntens
     {
         public MainWindow()
         {
+<<<<<<< Updated upstream
             this.InitializeComponent();
+=======
+            this.InitializeComponent(); // Initialize the window components.
+            window.Navigate(typeof(LoginPage));
+>>>>>>> Stashed changes
         }
 
         private void myButton_Click(object sender, RoutedEventArgs e)

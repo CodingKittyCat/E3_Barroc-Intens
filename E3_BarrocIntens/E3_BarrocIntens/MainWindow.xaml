@@ -8,7 +8,24 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+<<<<<<< Updated upstream
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
         <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
     </StackPanel>
+=======
+
+    <Grid>
+        <Frame x:Name="window"/>
+
+        <ComboBox x:Name="optionsMenu" SelectionChanged="optionsMenu_SelectionChanged" DropDownClosed="optionsMenu_DropDownClosed">
+            <ComboBoxItem>Cancel</ComboBoxItem>
+            <ComboBoxItem>Welcome</ComboBoxItem>
+            <ComboBoxItem>Finance</ComboBoxItem>
+            <ComboBoxItem>Sales</ComboBoxItem>
+            <ComboBoxItem>Customer</ComboBoxItem>
+            <ComboBoxItem>Purchasing</ComboBoxItem>
+            <ComboBoxItem>Maintenance</ComboBoxItem>
+        </ComboBox>
+    </Grid>
+>>>>>>> Stashed changes
 </Window>
