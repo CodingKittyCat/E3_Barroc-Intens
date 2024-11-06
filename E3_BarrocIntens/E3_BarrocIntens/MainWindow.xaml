@@ -19,6 +19,7 @@
             <ComboBoxItem>Customer</ComboBoxItem>
             <ComboBoxItem>Purchasing</ComboBoxItem>
             <ComboBoxItem>Maintenance</ComboBoxItem>
+            <ComboBoxItem>Register</ComboBoxItem>
         </ComboBox>
     </Grid>
 
