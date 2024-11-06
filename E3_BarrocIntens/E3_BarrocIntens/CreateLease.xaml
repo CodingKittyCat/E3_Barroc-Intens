@@ -22,21 +22,25 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBox PlaceholderText="Name Customer" FontSize="35" Width="500" Header="Name" Grid.Row="0" Margin="10, 30"/>
+            <ComboBox Name="companyCb" FontSize="35" Width="350" HorizontalAlignment="Center" Grid.Row="0" Margin="10, 30" Header="Company" SelectedIndex="0">
+                <ComboBoxItem Tag="0" Content="Placeholder"/>
+            </ComboBox>
             <ComboBox Name="invoiceTypeCb" FontSize="35" Width="350" HorizontalAlignment="Center" Grid.Row="1" Margin="10, 30" Header="Invoice Type" SelectionChanged="invoiceTypeCb_SelectionChanged" SelectedIndex="0">
                 <ComboBoxItem Content="Monthly"/>
                 <ComboBoxItem Content="Periodic"/>
             </ComboBox>
             <StackPanel Orientation="Horizontal" Spacing="10" Grid.Row="2" Margin="10" HorizontalAlignment="Center" Visibility="Collapsed" x:Name="selectLengthSp">
-                <TextBlock Text="Every" FontSize="35"/>
-                <TextBox FontSize="35" Width="70" MaxLength="2"/>
+                <TextBlock Text="For" FontSize="35"/>
+                <TextBox FontSize="35" Width="70" MaxLength="4" x:Name="amountOfRepeatsTb"/>
                 <ComboBox FontSize="35" x:Name="durationSelectCb" Width="175" SelectedIndex="0">
                     <ComboBoxItem Content="Days"/>
                     <ComboBoxItem Content="Weeks"/>
                     <ComboBoxItem Content="Months"/>
                 </ComboBox>
             </StackPanel>
+            <Button Content="Create" FontSize="35" Width="Auto" x:Name="createBtn" Click="createBtn_Click" Grid.Row="3" HorizontalAlignment="Center"/>
         </Grid>
     </Grid>
 </Page>
