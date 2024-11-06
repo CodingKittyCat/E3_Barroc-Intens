@@ -1,3 +1,5 @@
+using E3_BarrocIntens.Data;
+using E3_BarrocIntens.Model;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -21,6 +23,11 @@ namespace E3_BarrocIntens
         public PurchasingDashboard()
         {
             this.InitializeComponent(); // Initialize the page components.
+
+            using (var db = new AppDbContext())
+            {
+                ProductListView.ItemsSource = db.Products.ToList(); // Set the product list view items source to the product ids.
+            }
         }
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
@@ -76,6 +83,20 @@ namespace E3_BarrocIntens
         private void searchButton3_Click(object sender, RoutedEventArgs e)
         {
             // Placeholder for future search button functionality.
+        }
+
+        private void ProductListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // navigate to CreateProductDashboard with selected product id
+            if (ProductListView.SelectedItem is Product product)
+            {
+                this.Frame.Navigate(typeof(CreateProductDashboard), product.Id); // Navigate to CreateProductDashboard with selected product id.
+            }
+        }
+
+        private void AddProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CreateProductDashboard)); // Navigate to CreateProductDashboard.
         }
     }
 }

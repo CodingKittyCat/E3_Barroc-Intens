@@ -3,6 +3,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:E3_BarrocIntens"
+    xmlns:localModel="using:E3_BarrocIntens.Model"
+    xmlns:localData="using:E3_BarrocIntens.Data"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -46,7 +48,6 @@
         </Grid>
 
         <!-- Products Section -->
-        <!-- Products Section -->
         <Border Grid.Row="1" Margin="20" BorderBrush="Black" BorderThickness="2">
             <Grid>
                 <Grid.RowDefinitions>
@@ -76,13 +77,49 @@
                     <TextBlock Grid.Column="1" Text="PRODUCTS" HorizontalAlignment="Center" Foreground="White" FontSize="16" Margin="10,0"/>
 
                     <!-- Adjusted Add Products Button -->
-                    <Button Grid.Column="3" Content="ADD PRODUCTS" Background="White" BorderBrush="Black" BorderThickness="2" Width="200" HorizontalAlignment="Right"  Padding="5,0"/>
+                    <Button x:Name="AddProductButton"
+                            Grid.Column="3"
+                            Content="ADD PRODUCTS"
+                            Background="White"
+                            BorderBrush="Black"
+                            BorderThickness="2"
+                            Width="200"
+                            HorizontalAlignment="Right"
+                            Padding="5,0"
+                            Click="AddProductButton_Click"/>
                 </Grid>
 
                 <!-- Placeholder for Product List -->
                 <Border Grid.Row="1" Margin="0" BorderBrush="Black" BorderThickness="1" Background="White">
-                    <!-- Product list content will go here -->
+                    <ListView x:Name="ProductListView"
+                              Background="White"
+                              SelectionChanged="ProductListView_SelectionChanged">
+                        <!-- Product Item Template -->
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="localModel:Product">
+                                <Border BorderBrush="Black" BorderThickness="1" Padding="10" Margin="5">
+                                    <StackPanel Orientation="Vertical">
+
+                                        <!-- ListView product template -->
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                            <!-- Product info -->
+                                            <TextBlock>
+                                                <Run Text="{Binding Title}" FontWeight="Bold" />
+                                                <Run Text="{Binding Description}" FontWeight="Bold" />
+                                                <Run Text="Stock: " FontWeight="Bold" />
+                                                <Run Text="{Binding Stock}" />
+                                                <Run Text=" | " FontWeight="Bold" />
+                                                <Run Text="{Binding Status}" FontWeight="Bold" />
+                                            </TextBlock>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </Border>
+
             </Grid>
         </Border>
 
