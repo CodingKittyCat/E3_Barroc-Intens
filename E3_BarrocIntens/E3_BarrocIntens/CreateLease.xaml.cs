@@ -43,6 +43,7 @@ namespace E3_BarrocIntens
                 return;
             }
 
+
             if (invoiceTypeCb.SelectedIndex != 0)
             {
                 switch (durationSelectCb.SelectedIndex)
@@ -63,19 +64,19 @@ namespace E3_BarrocIntens
                     ShowError("Please enter a valid duration for the period.");
                     return;
                 }
+
             }
 
-            if (!int.TryParse(priceTb.Text, out int basePricePerPeriod) || basePricePerPeriod <= 0)
+            if (!int.TryParse(priceTb.Text, out int pricePerPeriod) || pricePerPeriod <= 0)
             {
                 ShowError("Please enter a valid price.");
                 return;
             }
 
+
             DateTime startDate = DateTime.Now;
             DateTime endDate = startDate;
-            int totalPeriods = repeatCount;
 
-            // Calculate end date based on repeat count and type of time
             switch (typeOfTime)
             {
                 case "Monthly":
@@ -89,22 +90,8 @@ namespace E3_BarrocIntens
                     break;
             }
 
-            // Calculate effective price per period based on duration frequency within the time type
-            double adjustedPricePerPeriod = basePricePerPeriod;
-            if (typeOfTime == "Periodic (Days)")
-            {
-                adjustedPricePerPeriod = basePricePerPeriod / (double)timePerPeriod;
-            }
-            else if (typeOfTime == "Periodic (Weeks)")
-            {
-                adjustedPricePerPeriod = basePricePerPeriod / (7.0 / timePerPeriod);
-            }
-            else if (typeOfTime == "Monthly")
-            {
-                adjustedPricePerPeriod = basePricePerPeriod / (30.0 / timePerPeriod);
-            }
 
-            double totalPrice = adjustedPricePerPeriod * totalPeriods;
+            int totalPrice = pricePerPeriod * repeatCount;
 
             Lease_Contracts leaseContract = new Lease_Contracts
             {
@@ -112,8 +99,8 @@ namespace E3_BarrocIntens
                 Company_Id = companyId,
                 Type_Of_Time = typeOfTime,
                 End_Date = endDate,
-                Total_Price = Math.Round(totalPrice, 2),
-                Price_Per_Period = Math.Round(adjustedPricePerPeriod, 2),
+                Total_Price = totalPrice,
+                Price_Per_Period = pricePerPeriod,
                 Time_Per_Period = timePerPeriod,
                 Date_Created = startDate,
                 Payment_Status = "Unpaid"
@@ -135,10 +122,10 @@ namespace E3_BarrocIntens
                 Title = "Invalid Value",
                 Content = message,
                 CloseButtonText = "Ok",
-                XamlRoot = this.XamlRoot  // Ensure the dialog is anchored to the current XAML root
+                XamlRoot = this.XamlRoot 
             };
 
-            await errorDialog.ShowAsync();  // Use async/await to properly display the dialog
+            await errorDialog.ShowAsync(); 
         }
     }
 }
