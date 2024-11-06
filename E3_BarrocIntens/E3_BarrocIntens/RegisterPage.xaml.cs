@@ -64,10 +64,12 @@ namespace E3_BarrocIntens
             User newUser = new User
             {
                 Username = usernameTb.Text,
-                Password = Helper.HashPassword(passwordTb.Text)
+                Password = Helper.HashPassword(passwordTb.Text),
+                RoleId = 4,
+                Name = usernameTb.Text
             };
             // Add the user to the database
-            using (BarrocIntensDataContext db = new BarrocIntensDataContext())
+            using (AppDbContext db = new AppDbContext())
             {
                 db.Add(newUser);
                 db.SaveChanges();

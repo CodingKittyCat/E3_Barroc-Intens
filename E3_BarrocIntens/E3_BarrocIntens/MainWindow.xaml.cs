@@ -69,6 +69,10 @@ namespace E3_BarrocIntens
                         window.Navigate(typeof(MaintenanceDashboard)); // Navigate to MaintenanceDashboard.
                         optionsMenu.Visibility = Visibility.Collapsed; // Hide the options menu.
                         break;
+                    case "Register":
+                        window.Navigate(typeof(RegisterPage));
+                        optionsMenu.Visibility = Visibility.Collapsed;
+                        break;
                 }
             }
         }
