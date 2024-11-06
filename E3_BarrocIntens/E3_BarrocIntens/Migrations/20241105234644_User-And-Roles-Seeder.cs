@@ -20,7 +20,7 @@ namespace E3_BarrocIntens.Migrations
                     { 1, "Maintenance" },
                     { 2, "Finance" },
                     { 3, "Sales" },
-                    { 4, "Customers" }
+                    { 4, "Customer" }
                 });
 
             migrationBuilder.InsertData(

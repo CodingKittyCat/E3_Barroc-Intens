@@ -29,7 +29,7 @@ namespace E3_BarrocIntens.Data
                 new Role { Id = 1, RoleName = "Maintenance" },
                 new Role { Id = 2, RoleName = "Finance" },
                 new Role { Id = 3, RoleName = "Sales" },
-                new Role { Id = 4, RoleName = "Customers"}
+                new Role { Id = 4, RoleName = "Customer"}
             );
 
             modelBuilder.Entity<User>().HasData(
@@ -39,7 +39,7 @@ namespace E3_BarrocIntens.Data
                     Name = "Customer User",
                     Username = "customer",
                     Password = BCrypt.Net.BCrypt.HashPassword("customer123"),
-                    RoleId = 1
+                    RoleId = 4
                 },
                 new User
                 {
@@ -63,7 +63,7 @@ namespace E3_BarrocIntens.Data
                     Name = "Maintenance User",
                     Username = "maintenance",
                     Password = BCrypt.Net.BCrypt.HashPassword("maintenance123"),
-                    RoleId = 3
+                    RoleId = 1
                 }
             );
         }
