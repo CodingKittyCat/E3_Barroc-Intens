@@ -14,7 +14,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="Assets\1485477207-magnifier_78608.ico" />
-    <Content Remove="Data\Classes\Invoice.cs" />
     <Content Remove="Assets\Logo1_klein.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -23,7 +22,6 @@
     <None Remove="DefaultTheme.xaml" />
     <None Remove="FinanceDashboard.xaml" />
     <None Remove="fonts\BigShouldersDisplay-Black.ttf" />
-    <None Remove="LoginPage.xaml" />
     <None Remove="MaintenanceDashboard.xaml" />
     <None Remove="PurchasingDashboard.xaml" />
     <None Remove="SalesDashboard.xaml" />
@@ -44,8 +42,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
-    <PackageReference Include="MailKit" Version="4.8.0" />
     <PackageReference Include="MailKit" Version="4.8.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
@@ -114,15 +110,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\NewFolder1\" />
-    <Folder Include="Data\NewFolder2\" />
-    <Folder Include="Data\NewFolder\" />
     <Folder Include="Model\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="LoginPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
 
   <!--

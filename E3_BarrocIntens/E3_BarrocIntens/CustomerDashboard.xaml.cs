@@ -23,6 +23,20 @@ namespace E3_BarrocIntens
         {
             this.InitializeComponent(); // Initialize the components on the page.
             ShowInvoices();
+            ShowOrders();
+        }
+
+        public void ShowOrders()
+        {
+            using (var db = new AppDbContext())
+            {
+                // Query to filter orders by the specified status
+                var filteredOrders = db.Orders
+                                       .Where(o => o.IsDelivered == false)
+                                       .ToList();
+
+                OrderListview.ItemsSource = filteredOrders;
+            }
         }
 
         public void ShowInvoices()

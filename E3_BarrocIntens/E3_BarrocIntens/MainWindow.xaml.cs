@@ -19,7 +19,9 @@ namespace E3_BarrocIntens
     {
         public MainWindow()
         {
+
             this.InitializeComponent(); // Initialize the window components.
+            window.Navigate(typeof(LoginPage));
         }
 
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
