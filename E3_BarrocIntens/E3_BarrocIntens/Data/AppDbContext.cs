@@ -1,29 +1,39 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.System;
+using E3_BarrocIntens.Data.Classes;
+using E3_BarrocIntens.Data.Lists;
+using Microsoft.EntityFrameworkCore;
 
 namespace E3_BarrocIntens.Data
 {
-  
-    internal class AppDbContext : DbContext
+    class AppDbContext : DbContext
     {
-        string connectionString = "server=localhost;port=3306;user=root;password=;database=pra_barroc-intens";
+        public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
-
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql(connectionString, ServerVersion.Parse("8.0.30"));
+            optionsBuilder.UseMySql(
+                "server=localhost;" +
+                "port=3306;" +
+                "user=root;" +
+                "password=;" +
+                "database=csd_BarrocIntens",
+                ServerVersion.Parse("10.4.17-mariadb"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            OrderList orderList = new OrderList();
+
+            List<Order> orders = orderList.GetOrders();
+            
+            modelBuilder.Entity<Order>().HasData(orders.ToArray());
 
             modelBuilder.Entity<Role>().HasData(
                 new Role { Id = 1, RoleName = "Maintenance" },
@@ -67,7 +77,5 @@ namespace E3_BarrocIntens.Data
                 }
             );
         }
-
-
     }
 }
