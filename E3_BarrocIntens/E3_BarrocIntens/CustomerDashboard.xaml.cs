@@ -13,6 +13,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Diagnostics;
+using E3_BarrocIntens.Data;
 
 namespace E3_BarrocIntens
 {
@@ -21,6 +22,11 @@ namespace E3_BarrocIntens
         public CustomerDashboard()
         {
             this.InitializeComponent(); // Initialize the components on the page.
+
+            using (BarrocIntensDataContext db = new BarrocIntensDataContext())
+            {
+                leaseContractLv.ItemsSource = db.Lease_Contracts.ToList(); // Set the ListView's ItemsSource to the Lease_Contracts table.
+            }
         }
 
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
