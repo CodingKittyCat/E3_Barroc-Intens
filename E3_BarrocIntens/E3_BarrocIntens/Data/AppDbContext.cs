@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using E3_BarrocIntens.Data.Classes;
 using E3_BarrocIntens.Data.Lists;
+using E3_BarrocIntens.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace E3_BarrocIntens.Data
@@ -15,7 +16,8 @@ namespace E3_BarrocIntens.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
-        
+        public DbSet<Product> Products { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql(
@@ -81,6 +83,33 @@ namespace E3_BarrocIntens.Data
                     Username = "maintenance",
                     Password = BCrypt.Net.BCrypt.HashPassword("maintenance123"),
                     RoleId = 1
+                }
+            );
+
+            modelBuilder.Entity<Product>().HasData(
+                new Product
+                {
+                    Id = 1,
+                    Title = "Product 1",
+                    Description = "Description 1",
+                    Stock = 10,
+                    Status = "Delivered"
+                },
+                new Product
+                {
+                    Id = 2,
+                    Title = "Product 2",
+                    Description = "Description 2",
+                    Stock = 20,
+                    Status = "On The Way"
+                },
+                new Product
+                {
+                    Id = 3,
+                    Title = "Product 3",
+                    Description = "Description 3",
+                    Stock = 30,
+                    Status = "Pending"
                 }
             );
         }
