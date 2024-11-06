@@ -47,5 +47,11 @@ namespace E3_BarrocIntens
                 }
             }
         }
+
+        private void createBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int companyId = companyCb.SelectedIndex;
+
+        }
     }
 }
