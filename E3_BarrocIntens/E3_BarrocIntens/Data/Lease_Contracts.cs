@@ -21,7 +21,7 @@ namespace E3_BarrocIntens.Data
 
         public Lease_Contracts()
         {
-            Date_Created = DateTime.Now;
+            Date_Created = DateTime.Now; // Mainly for seeded values, wouldn't be used in production
             End_Date = Date_Created.Value.AddMonths(Time_Per_Period);
             Payment_Status = "Unpaid";
         }

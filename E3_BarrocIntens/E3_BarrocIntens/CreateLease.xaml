@@ -37,15 +37,15 @@
                 </ComboBox>
                 <StackPanel Orientation="Horizontal" Spacing="10" Grid.Row="3" Margin="10" HorizontalAlignment="Center" Visibility="Collapsed" x:Name="selectLengthSp">
                     <TextBlock Text="Every" FontSize="35"/>
-                    <TextBox FontSize="35" Width="70" MaxLength="4" x:Name="amountOfRepeatsTb"/>
+                    <TextBox FontSize="35" Width="70" MaxLength="4" x:Name="durationSelectTb"/>
                     <ComboBox FontSize="35" x:Name="durationSelectCb" Width="175" SelectedIndex="0">
                         <ComboBoxItem Content="Days"/>
                         <ComboBoxItem Content="Weeks"/>
                         <ComboBoxItem Content="Months"/>
                     </ComboBox>
                 </StackPanel>
-                <DatePicker Header="End Date" Width="350" HorizontalAlignment="Center" Grid.Row="4" FontSize="35" Margin="10, 30" x:Name="endDateDp"/>
-                <TextBox Name="priceTb" FontSize="35" Width="350" HorizontalAlignment="Center" Grid.Row="5" Margin="10, 30" Header="Total Price in EUR"/>
+                <TextBox Header="Amount of repeats" Width="350" HorizontalAlignment="Center" Grid.Row="4" FontSize="35" Margin="10, 30" x:Name="repeatTb"/>
+                <TextBox Name="priceTb" FontSize="35" Width="350" HorizontalAlignment="Center" Grid.Row="5" Margin="10, 30" Header="Price per repeat in EUR"/>
                 <Button Content="Create" FontSize="35" Width="Auto" x:Name="createBtn" Click="createBtn_Click" Grid.Row="6" HorizontalAlignment="Center"/>
             </Grid>
         </Grid>
