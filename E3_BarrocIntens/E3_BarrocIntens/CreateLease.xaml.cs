@@ -128,15 +128,17 @@ namespace E3_BarrocIntens
             this.Frame.Navigate(typeof(CustomerDashboard));
         }
 
-        private void ShowError(string message)
+        private async void ShowError(string message)
         {
-            ContentDialog errorDialog = new ContentDialog
+            var errorDialog = new ContentDialog
             {
-                Title = "Error",
+                Title = "Invalid Value",
                 Content = message,
-                CloseButtonText = "Ok"
+                CloseButtonText = "Ok",
+                XamlRoot = this.XamlRoot  // Ensure the dialog is anchored to the current XAML root
             };
-            _ = errorDialog.ShowAsync();
+
+            await errorDialog.ShowAsync();  // Use async/await to properly display the dialog
         }
     }
 }
