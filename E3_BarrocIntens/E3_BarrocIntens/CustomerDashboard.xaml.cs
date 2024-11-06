@@ -23,7 +23,8 @@ namespace E3_BarrocIntens
         {
             this.InitializeComponent(); // Initialize the components on the page.
             ShowInvoices();
-            ShowOrders();
+            ShowOrders(); 
+
         }
 
         public void ShowOrders()
@@ -34,7 +35,6 @@ namespace E3_BarrocIntens
                 var filteredOrders = db.Orders
                                        .Where(o => o.IsDelivered == false)
                                        .ToList();
-
                 OrderListview.ItemsSource = filteredOrders;
             }
         }
