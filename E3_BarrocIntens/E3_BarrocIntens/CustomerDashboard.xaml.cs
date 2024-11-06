@@ -13,6 +13,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Diagnostics;
+using E3_BarrocIntens.Data;
 
 namespace E3_BarrocIntens
 {
@@ -21,8 +22,18 @@ namespace E3_BarrocIntens
         public CustomerDashboard()
         {
             this.InitializeComponent(); // Initialize the components on the page.
+            ShowInvoices();
         }
 
+        public void ShowInvoices()
+        {
+            using (var db = new AppDbContext())
+            {
+                var invoices = db.Invoices.ToList();
+
+                InvoiceListView.ItemsSource = invoices;
+            }
+        }
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox comboBox = sender as ComboBox; // Get the ComboBox that triggered the event.
