@@ -46,13 +46,13 @@
             </ComboBox>
 
             <!-- Logo image -->
-            <Image Margin="0,7,0,7" HorizontalAlignment="Center" Source="C:\Users\miche\Downloads\png2jpg\Logo1_klein.jpg" Grid.Column="1"/>
+            <Image Margin="0,7,0,7" HorizontalAlignment="Center" Source="Assets\Logo1_klein.jpg" Grid.Column="1"/>
 
             <!-- Search bar and button -->
             <StackPanel HorizontalAlignment="Right" Margin="0,0,20,0" Orientation="Horizontal" Grid.Column="2">
                 <TextBox x:Name="searchBar" Width="200" Height="30" Margin="0" PlaceholderText="SEARCH" Background="White" PlaceholderForeground="Black" Foreground="Black"/>
                 <Button x:Name="searchButton" Click="searchButton_Click" Height="35" Background="White" Margin="0">
-                    <Image Source="C:\Users\miche\OneDrive - Curio\Blok E\E1\Algemeen\barroc Intens\img\1485477207-magnifier_78608.ico"/>
+                    <Image Source="Assets\1485477207-magnifier_78608.jpg"/>
                 </Button>
             </StackPanel>
         </Grid>

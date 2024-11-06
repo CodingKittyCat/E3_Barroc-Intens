@@ -36,12 +36,12 @@
                 <ComboBoxItem>Customer</ComboBoxItem>
             </ComboBox>
 
-            <Image Margin="0,7,0,7" HorizontalAlignment="Center" Source="C:\Users\miche\Downloads\png2jpg\Logo1_klein.jpg" Grid.Column="1"/>
+            <Image Margin="0,7,0,7" HorizontalAlignment="Center" Source="Assets\Logo1_klein.jpg" Grid.Column="1"/>
 
             <StackPanel HorizontalAlignment="Right" Margin="0,0,20,0" Orientation="Horizontal" Grid.Column="2">
                 <TextBox x:Name="searchBar" Width="200" Height="30" Margin="0" PlaceholderText="SEARCH" Background="White" PlaceholderForeground="Black" Foreground="Black"/>
                 <Button x:Name="searchButton" Click="searchButton_Click" Height="35" Background="White" Margin="0">
-                    <Image Source="C:\Users\miche\OneDrive - Curio\Blok E\E1\Algemeen\barroc Intens\img\1485477207-magnifier_78608.ico"/>
+                    <Image Source="Assets\1485477207-magnifier_78608.jpg"/>
                 </Button>
             </StackPanel>
         </Grid>
@@ -116,21 +116,21 @@
                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" Margin="20,0,0,0">
                         <TextBox x:Name="searchBar1" Width="200" Height="30" Margin="0" PlaceholderText="SEARCH" Background="White" PlaceholderForeground="Black" Foreground="Black"/>
                         <Button x:Name="searchButton1" Click="searchButton_Click1" Height="35" Width="35" Background="White" Margin="0,0,0,0">
-                            <Image Source="C:\Users\miche\OneDrive - Curio\Blok E\E1\Algemeen\barroc Intens\img\1485477207-magnifier_78608.ico"/>
+                            <Image Source="Assets\1485477207-magnifier_78608.jpg"/>
                         </Button>
-                        <Button Width="40" Background="Transparent">
-                            <Image Source="C:\xampp\htdocs\projects\Blok E\Algemeen\Barroc_Intens\E3_BarrocIntens\E3_BarrocIntens\Assets\Screenshot 2024-10-28 112743.png"/>
+                        <Button Width="50" Background="Transparent">
+                            <Image Source="Assets\MichelImage1.png"/>
                         </Button>
                     </StackPanel>
 
                     <!-- Right Side Search Bar and Button -->
                     <StackPanel VerticalAlignment="Center" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,20,0">
                         <TextBox x:Name="searchBar2" Width="200" Height="30" Margin="0" PlaceholderText="SEARCH" Background="White" PlaceholderForeground="Black" Foreground="Black"/>
-                        <Button x:Name="searchButton2" Click="searchButton_Click2" Height="35" Width="35" Background="White" Margin="0,0,0,0">
-                            <Image Source="C:\Users\miche\OneDrive - Curio\Blok E\E1\Algemeen\barroc Intens\img\1485477207-magnifier_78608.ico"/>
+                        <Button x:Name="searchButton2" Click="searchButton_Click2" Height="50" Width="35" Background="White" Margin="0,0,0,0">
+                            <Image Source="Assets\1485477207-magnifier_78608.jpg"/>
                         </Button>
-                        <Button Width="40" Background="Transparent">
-                            <Image Source="C:\xampp\htdocs\projects\Blok E\Algemeen\Barroc_Intens\E3_BarrocIntens\E3_BarrocIntens\Assets\Screenshot 2024-10-28 112743.png"/>
+                        <Button Width="50" Background="Transparent">
+                            <Image Source="Assets\MichelImage1.png"/>
                         </Button>
                     </StackPanel>
 

@@ -13,6 +13,10 @@
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Assets\1485477207-magnifier_78608.ico" />
+    <Content Remove="Assets\Logo1_klein.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="BlankWindow1.xaml" />
     <None Remove="CustomerDashboard.xaml" />
     <None Remove="DefaultTheme.xaml" />
