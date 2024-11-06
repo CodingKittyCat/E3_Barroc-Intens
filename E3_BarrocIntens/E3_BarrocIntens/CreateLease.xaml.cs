@@ -12,6 +12,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using E3_BarrocIntens.Data;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -50,8 +51,35 @@ namespace E3_BarrocIntens
 
         private void createBtn_Click(object sender, RoutedEventArgs e)
         {
+            string product = productTb.Text;
             int companyId = companyCb.SelectedIndex;
+            string typeOfTime;
+            if (invoiceTypeCb.SelectedIndex == 0)
+            {
+                typeOfTime = "Monthly";
+            }
+            else
+            {
+                typeOfTime = "Unfinished"; // TODO: Make type of time adapt to selected time
+            }
+            DateTime endDate = endDateDp.Date.DateTime;
+            int totalPrice = int.Parse(priceTb.Text); // TODO: Add int validation, this could result in errors at the moment
 
+            using (BarrocIntensDataContext db = new BarrocIntensDataContext())
+            {
+                Lease_Contracts leaseContract = new Lease_Contracts
+                {
+                    Product = product,
+                    Company_Id = companyId,
+                    Type_Of_Time = typeOfTime,
+                    End_Date = endDate,
+                    Total_Price = totalPrice
+                };
+                db.Lease_Contracts.Add(leaseContract);
+                db.SaveChanges();
+            }
+
+            this.Frame.Navigate(typeof(CustomerDashboard)); // Navigate to the CreateLease page.
         }
     }
 }

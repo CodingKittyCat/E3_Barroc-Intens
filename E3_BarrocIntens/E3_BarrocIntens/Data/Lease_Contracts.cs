@@ -13,7 +13,7 @@ namespace E3_BarrocIntens.Data
         public int Time_Per_Period { get; set; }
         public double Total_Price { get; set; }
         public double Price_Per_Period { get; set; }
-        public int Product_Id { get; set; }
+        public string Product { get; set; }
         public int Company_Id { get; set; }
         public DateTime? Date_Created { get; set; }
         public DateTime? End_Date { get; set; }

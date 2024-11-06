@@ -68,5 +68,10 @@ namespace E3_BarrocIntens
                 }
             }
         }
+
+        private void createLeaseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CreateLease)); // Navigate to the CreateLease page.
+        }
     }
 }

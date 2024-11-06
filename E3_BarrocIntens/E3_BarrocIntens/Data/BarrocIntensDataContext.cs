@@ -32,7 +32,7 @@ namespace E3_BarrocIntens.Data
                     Time_Per_Period = 1,
                     Total_Price = 1000,
                     Price_Per_Period = 100,
-                    Product_Id = 1,
+                    Product = "TestProduct",
                     Company_Id = 1
                 },
                 new Lease_Contracts
@@ -42,7 +42,7 @@ namespace E3_BarrocIntens.Data
                     Time_Per_Period = 1,
                     Total_Price = 2000,
                     Price_Per_Period = 200,
-                    Product_Id = 2,
+                    Product = "TestProduct",
                     Company_Id = 2
                 },
                 new Lease_Contracts
@@ -52,7 +52,7 @@ namespace E3_BarrocIntens.Data
                     Time_Per_Period = 1,
                     Total_Price = 3000,
                     Price_Per_Period = 300,
-                    Product_Id = 3,
+                    Product = "TestProduct",
                     Company_Id = 3
                 },
                 new Lease_Contracts
@@ -62,7 +62,7 @@ namespace E3_BarrocIntens.Data
                     Time_Per_Period = 1,
                     Total_Price = 4000,
                     Price_Per_Period = 400,
-                    Product_Id = 4,
+                    Product = "TestProduct",
                     Company_Id = 4
                 }
             );
