@@ -1,3 +1,4 @@
+using E3_BarrocIntens.Data;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -20,6 +21,12 @@ namespace E3_BarrocIntens
         public MainWindow()
         {
             this.InitializeComponent(); // Initialize the window components.
+            using (BarrocIntensDataContext db = new BarrocIntensDataContext())
+            {
+                db.Database.EnsureDeleted();
+                db.Database.EnsureCreated();
+            }
+            window.Navigate(typeof(CreateLease));
         }
 
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
