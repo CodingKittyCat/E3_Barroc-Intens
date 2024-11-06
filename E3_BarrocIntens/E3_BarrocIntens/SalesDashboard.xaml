@@ -141,11 +141,9 @@
                         <Border Margin="0,0,0,3" Grid.Row="2" Grid.Column="2" Background="White" BorderBrush="Black" BorderThickness="2">
                             <!-- Content for additional appointments can be added here -->
                         </Border>
-
                     </Grid>
                 </Border>
             </Grid>
-
         </Border>
     </Grid>
 </Page>

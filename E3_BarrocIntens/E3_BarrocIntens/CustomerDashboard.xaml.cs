@@ -22,6 +22,7 @@ namespace E3_BarrocIntens
         public CustomerDashboard()
         {
             this.InitializeComponent(); // Initialize the components on the page.
+            ShowInvoices();
             ShowOrders();
         }
 
@@ -38,6 +39,15 @@ namespace E3_BarrocIntens
             }
         }
 
+        public void ShowInvoices()
+        {
+            using (var db = new AppDbContext())
+            {
+                var invoices = db.Invoices.ToList();
+
+                InvoiceListView.ItemsSource = invoices;
+            }
+        }
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox comboBox = sender as ComboBox; // Get the ComboBox that triggered the event.

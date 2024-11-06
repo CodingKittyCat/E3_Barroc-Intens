@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +11,7 @@ namespace E3_BarrocIntens.Data
 {
     class AppDbContext : DbContext
     {
+        public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
@@ -29,6 +30,12 @@ namespace E3_BarrocIntens.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            InvoiceList InvoiceList = new InvoiceList();
+
+            List<Invoice> invoices = InvoiceList.GetInvoices();
+            modelBuilder.Entity<Invoice>().HasData(invoices.ToArray());
+
             OrderList orderList = new OrderList();
 
             List<Order> orders = orderList.GetOrders();
