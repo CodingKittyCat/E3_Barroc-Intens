@@ -73,5 +73,11 @@ namespace E3_BarrocIntens
         {
             this.Frame.Navigate(typeof(CreateLease)); // Navigate to the CreateLease page.
         }
+
+        private void showLeaseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Lease_Contracts leaseContract = (sender as Button).CommandParameter as Lease_Contracts;
+            this.Frame.Navigate(typeof(ViewLease), leaseContract.Id);
+        }
     }
 }
