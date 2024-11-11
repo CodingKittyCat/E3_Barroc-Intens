@@ -12,7 +12,7 @@ namespace E3_BarrocIntens.Data
 {
     class AppDbContext : DbContext
     {
-        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<Classes.Invoice> Invoices { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
@@ -35,8 +35,8 @@ namespace E3_BarrocIntens.Data
 
             InvoiceList InvoiceList = new InvoiceList();
 
-            List<Invoice> invoices = InvoiceList.GetInvoices();
-            modelBuilder.Entity<Invoice>().HasData(invoices.ToArray());
+            List<Classes.Invoice> invoices = InvoiceList.GetInvoices();
+            modelBuilder.Entity<Classes.Invoice>().HasData(invoices.ToArray());
 
             OrderList orderList = new OrderList();
 

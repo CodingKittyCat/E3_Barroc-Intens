@@ -18,10 +18,20 @@ namespace E3_BarrocIntens.Data.Classes
         public string InvoiceDateToString => InvoiceDate.ToString("dd/MM/yyyy");
         public string DueDateToString => DueDate.ToString("dd/MM/yyyy");
 
-        // Constructor to initialize all properties
+        // Constructor for seeding or creating an invoice
         public Invoice(int id, string customerName, DateTime invoiceDate, DateTime dueDate, float totalAmount, bool isPayed)
         {
             Id = id;
+            CustomerName = customerName;
+            InvoiceDate = invoiceDate;
+            DueDate = dueDate;
+            TotalAmount = totalAmount;
+            IsPayed = isPayed;
+        }
+
+        // Constructor for creating new invoices without specifying Id
+        public Invoice(string customerName, DateTime invoiceDate, DateTime dueDate, float totalAmount, bool isPayed)
+        {
             CustomerName = customerName;
             InvoiceDate = invoiceDate;
             DueDate = dueDate;

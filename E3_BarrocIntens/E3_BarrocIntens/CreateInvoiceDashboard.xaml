@@ -21,17 +21,8 @@
         <TextBlock Text="Total Amount:" />
         <TextBox x:Name="TotalAmountTextBox" />
 
-        <TextBlock Text="Paid Amount" />
-        <TextBox x:Name="PaidAmountTextBox" />
-
-        <TextBlock Text="Outstanding balance:" />
-        <TextBox x:Name="OutstandingBalanceTextBox" />
-
-        <TextBlock Text="Status:" />
-        <TextBox x:Name="StatusTextBox" />
-
-        <TextBlock Text="Description:" />
-        <TextBox x:Name="DescriptionTextBox" />
+        <TextBlock Text="Is Paid:" />
+        <CheckBox x:Name="IsPayedCheckBox" Content="Paid" />
 
         <Button x:Name="CreateInvoiceButton" Content="Create Invoice" Click="CreateInvoiceButton_Click" />
 

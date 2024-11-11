@@ -1,4 +1,4 @@
-using E3_BarrocIntens.Model;
+using E3_BarrocIntens.Data.Classes;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -31,61 +31,35 @@ namespace E3_BarrocIntens
 
         private void CreateInvoiceButton_Click(object sender, RoutedEventArgs e)
         {
-            double totalAmount;
-            double paidAmount;
-            double outstandingBalance;
+            try
+            {
+                // Parse total amount
+                if (!float.TryParse(TotalAmountTextBox.Text, out float totalAmount))
+                {
+                    ErrorTextblock.Text = "Invalid total amount. Please enter a valid number.";
+                    return;
+                }
 
-            // validate fields
-            if (string.IsNullOrEmpty(CustomerNameTextBox.Text))
-            {
-                Error("Please enter a customer name.");
-                return;
-            }
-            else if (DueDatePicker.Date == null || DueDatePicker.Date < DateTime.Now)
-            {
-                Error("Please enter a valid due date.");
-                return;
-            }
-            else if (!double.TryParse(TotalAmountTextBox.Text, out totalAmount))
-            {
-                Error("Please enter a valid total amount.");
-                return;
-            }
-            else if (!double.TryParse(PaidAmountTextBox.Text, out paidAmount))
-            {
-                Error("Please enter a valid paid amount.");
-                return;
-            }
-            else if (!double.TryParse(OutstandingBalanceTextBox.Text, out outstandingBalance))
-            {
-                Error("Please enter a valid outstanding balance.");
-                return;
-            }
-            else if (string.IsNullOrEmpty(StatusTextBox.Text))
-            {
-                Error("Please enter a status.");
-                return;
-            }
-            else if (string.IsNullOrEmpty(DescriptionTextBox.Text))
-            {
-                Error("Please enter a description.");
-                return;
-            }
+                // Determine if the invoice is paid
+                bool isPayed = IsPayedCheckBox.IsChecked ?? false; // Use a CheckBox for simplicity
 
-            // create invoice
-            Invoice createdInvoice = new()
-            {
-                CustomerName = CustomerNameTextBox.Text,
-                InvoiceDate = DateTime.Now,
-                DueDate = DueDatePicker.Date.DateTime,
-                TotalAmount = totalAmount,
-                PaidAmount = paidAmount,
-                OutstandingBalance = outstandingBalance,
-                Status = StatusTextBox.Text,
-                Description = DescriptionTextBox.Text
-            };
+                // Create the invoice
+                Invoice createdInvoice = new Invoice(
+                    customerName: CustomerNameTextBox.Text,
+                    invoiceDate: DateTime.Now,
+                    dueDate: DueDatePicker.Date.DateTime,
+                    totalAmount: totalAmount,
+                    isPayed: isPayed
+                );
 
-            // TO DO : save invoice to database
+                // Save the created invoice to the database (code for database save goes here)
+
+                ErrorTextblock.Text = "Invoice created successfully!";
+            }
+            catch (Exception ex)
+            {
+                ErrorTextblock.Text = $"Error creating invoice: {ex.Message}";
+            }
         }
 
         private void Error(string message)
