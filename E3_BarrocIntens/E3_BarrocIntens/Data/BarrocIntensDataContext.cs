@@ -33,7 +33,9 @@ namespace E3_BarrocIntens.Data
                     Total_Price = 1000,
                     Price_Per_Period = 100,
                     Product = "TestProduct",
-                    Company_Id = 1
+                    Company_Id = 1,
+                    Bkr_Check = false,
+                    Amount_Of_Periods = 1,
                 },
                 new Lease_Contracts
                 {
@@ -43,7 +45,9 @@ namespace E3_BarrocIntens.Data
                     Total_Price = 2000,
                     Price_Per_Period = 200,
                     Product = "TestProduct",
-                    Company_Id = 2
+                    Company_Id = 2,
+                    Bkr_Check = false,
+                    Amount_Of_Periods = 1,
                 },
                 new Lease_Contracts
                 {
@@ -53,7 +57,9 @@ namespace E3_BarrocIntens.Data
                     Total_Price = 3000,
                     Price_Per_Period = 300,
                     Product = "TestProduct",
-                    Company_Id = 3
+                    Company_Id = 3,
+                    Bkr_Check = false,
+                    Amount_Of_Periods = 1,
                 },
                 new Lease_Contracts
                 {
@@ -63,7 +69,9 @@ namespace E3_BarrocIntens.Data
                     Total_Price = 4000,
                     Price_Per_Period = 400,
                     Product = "TestProduct",
-                    Company_Id = 4
+                    Company_Id = 4,
+                    Bkr_Check = false,
+                    Amount_Of_Periods = 1,
                 }
             );
         }

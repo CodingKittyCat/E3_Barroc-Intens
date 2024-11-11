@@ -16,6 +16,7 @@
             <StackPanel BorderBrush="Black" BorderThickness="3" Padding="10" Margin="5" Spacing="8">
                 <TextBlock x:Name="leaseTypeTbl" FontSize="40"/>
                 <TextBlock x:Name="pricePerPeriodTbl" FontSize="35" MinWidth="400"/>
+                <TextBlock x:Name="bkrCheckTbl" FontSize="25"/>
                 <StackPanel Orientation="Horizontal" Spacing="7">
                     <TextBlock x:Name="startDateTbl" FontSize="30" MinWidth="400"/>
                     <TextBlock x:Name="endDateTbl" FontSize="30"/>
@@ -25,9 +26,9 @@
             <StackPanel BorderBrush="Black" BorderThickness="3" Padding="10" Margin="5" Spacing="8" Width="400">
                 <TextBlock Text="Actions" FontSize="30"/>
                 <StackPanel Orientation="Horizontal" Spacing="10">
-                    <Button Background="Blue" Foreground="White" Content="Edit" x:Name="editBtn" FontSize="30"/>
-                    <Button Background="Red" Foreground="White" Content="Delete" x:Name="deleteBtn" FontSize="30"/>
-                    <Button Background="Gray" Foreground="White" Content="Back" x:Name="backBtn" FontSize="30"/>
+                    <Button Background="Blue" Foreground="White" Content="Edit" x:Name="editBtn" FontSize="30" Click="editBtn_Click"/>
+                    <Button Background="Red" Foreground="White" Content="Delete" x:Name="deleteBtn" FontSize="30" Click="deleteBtn_Click"/>
+                    <Button Background="Gray" Foreground="White" Content="Back" x:Name="backBtn" FontSize="30" Click="backBtn_Click"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

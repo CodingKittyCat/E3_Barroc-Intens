@@ -56,9 +56,30 @@ namespace E3_BarrocIntens
             }
             
             pricePerPeriodTbl.Text = $"{leaseContract.Price_Per_Period} EUR (Total {leaseContract.Total_Price} EUR)";
+            bkrCheckTbl.Text = leaseContract.Bkr_Check ? "BKR Check: Passed" : "BKR Check: Failed";
             startDateTbl.Text = $"Start: {leaseContract.Date_Created.Value.ToString("dd/MM/yyyy")}";
             endDateTbl.Text = $"End: {leaseContract.End_Date.Value.ToString("dd/MM/yyyy")}";
             paymentStatusTbl.Text = leaseContract.Payment_Status;
+        }
+
+        private void editBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(EditLease), leaseContract.Id);
+        }
+
+        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            using (BarrocIntensDataContext dataContext = new BarrocIntensDataContext())
+            {
+                dataContext.Lease_Contracts.Remove(leaseContract);
+                dataContext.SaveChanges();
+            }
+            this.Frame.Navigate(typeof(CustomerDashboard));
+        }
+
+        private void backBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CustomerDashboard));
         }
     }
 }

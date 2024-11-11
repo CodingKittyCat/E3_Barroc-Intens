@@ -32,7 +32,7 @@ namespace E3_BarrocIntens
                 return;
             }
 
-            int companyId = companyCb.SelectedIndex;
+            int companyId = companyCb.SelectedIndex + 1;
 
             string typeOfTime = "Monthly";
             int timePerPeriod = 1;
@@ -92,17 +92,24 @@ namespace E3_BarrocIntens
 
 
             int totalPrice = pricePerPeriod * repeatCount;
-
+            bool? bkrCheck = bkrChb.IsChecked;
+            if (bkrCheck == null)
+            {
+                ShowError("Please select a BKR check status.");
+                return;
+            }
             Lease_Contracts leaseContract = new Lease_Contracts
             {
                 Product = product,
                 Company_Id = companyId,
                 Type_Of_Time = typeOfTime,
+                Amount_Of_Periods = repeatCount,
                 End_Date = endDate,
                 Total_Price = totalPrice,
                 Price_Per_Period = pricePerPeriod,
                 Time_Per_Period = timePerPeriod,
                 Date_Created = startDate,
+                Bkr_Check = (bool)bkrCheck,
                 Payment_Status = "Unpaid"
             };
 

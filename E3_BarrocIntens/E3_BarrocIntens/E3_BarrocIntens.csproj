@@ -20,6 +20,7 @@
     <None Remove="BlankWindow1.xaml" />
     <None Remove="CustomerDashboard.xaml" />
     <None Remove="DefaultTheme.xaml" />
+    <None Remove="EditLease.xaml" />
     <None Remove="FinanceDashboard.xaml" />
     <None Remove="fonts\BigShouldersDisplay-Black.ttf" />
     <None Remove="MaintenanceDashboard.xaml" />
@@ -62,6 +63,11 @@
   -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="EditLease.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="ViewLease.xaml">
