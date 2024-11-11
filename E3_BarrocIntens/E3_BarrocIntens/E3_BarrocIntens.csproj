@@ -20,13 +20,11 @@
     <None Remove="BlankWindow1.xaml" />
     <None Remove="CustomerDashboard.xaml" />
     <None Remove="DefaultTheme.xaml" />
-    <None Remove="EditLease.xaml" />
     <None Remove="FinanceDashboard.xaml" />
     <None Remove="fonts\BigShouldersDisplay-Black.ttf" />
     <None Remove="MaintenanceDashboard.xaml" />
     <None Remove="PurchasingDashboard.xaml" />
     <None Remove="SalesDashboard.xaml" />
-    <None Remove="ViewLease.xaml" />
     <None Remove="WelcomeDashboard.xaml" />
   </ItemGroup>
 
@@ -64,12 +62,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="EditLease.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="ViewLease.xaml">
+    <Page Update="CustomerDashboard.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -81,9 +74,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="PurchasingDashboard.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="CustomerDashboard.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="SalesDashboard.xaml">
