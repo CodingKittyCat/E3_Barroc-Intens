@@ -20,8 +20,9 @@ namespace E3_BarrocIntens
     {
         public MainWindow()
         {
+
             this.InitializeComponent(); // Initialize the window components.
-            window.Navigate(typeof(CreateLease));
+            window.Navigate(typeof(LoginPage));
         }
 
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -68,6 +69,10 @@ namespace E3_BarrocIntens
                     case "Maintenance":
                         window.Navigate(typeof(MaintenanceDashboard)); // Navigate to MaintenanceDashboard.
                         optionsMenu.Visibility = Visibility.Collapsed; // Hide the options menu.
+                        break;
+                    case "Register":
+                        window.Navigate(typeof(RegisterPage));
+                        optionsMenu.Visibility = Visibility.Collapsed;
                         break;
                 }
             }

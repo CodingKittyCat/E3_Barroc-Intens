@@ -26,9 +26,32 @@ namespace E3_BarrocIntens
             using (BarrocIntensDataContext db = new BarrocIntensDataContext())
             {
                 leaseContractLv.ItemsSource = db.Lease_Contracts.ToList(); // Set the ListView's ItemsSource to the Lease_Contracts table.
+            ShowInvoices();
+            ShowOrders(); 
+
+        }
+
+        public void ShowOrders()
+        {
+            using (var db = new AppDbContext())
+            {
+                // Query to filter orders by the specified status
+                var filteredOrders = db.Orders
+                                       .Where(o => o.IsDelivered == false)
+                                       .ToList();
+                OrderListview.ItemsSource = filteredOrders;
             }
         }
 
+        public void ShowInvoices()
+        {
+            using (var db = new AppDbContext())
+            {
+                var invoices = db.Invoices.ToList();
+
+                InvoiceListView.ItemsSource = invoices;
+            }
+        }
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox comboBox = sender as ComboBox; // Get the ComboBox that triggered the event.

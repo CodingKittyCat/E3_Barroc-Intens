@@ -8,9 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-
     <Grid>
-        <Frame x:Name="window"></Frame>
+        <Frame x:Name="window"/>
 
         <ComboBox x:Name="optionsMenu" SelectionChanged="optionsMenu_SelectionChanged" DropDownClosed="optionsMenu_DropDownClosed">
             <ComboBoxItem>Cancel</ComboBoxItem>
@@ -20,6 +19,8 @@
             <ComboBoxItem>Customer</ComboBoxItem>
             <ComboBoxItem>Purchasing</ComboBoxItem>
             <ComboBoxItem>Maintenance</ComboBoxItem>
+            <ComboBoxItem>Register</ComboBoxItem>
         </ComboBox>
     </Grid>
+
 </Window>
