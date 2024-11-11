@@ -1,4 +1,5 @@
-﻿using System;
+﻿using E3_BarrocIntens.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,11 +15,12 @@ namespace E3_BarrocIntens.Data.Classes
         public int Amount_Of_Periods { get; set; }
         public double Total_Price { get; set; }
         public double Price_Per_Period { get; set; }
-        public string Product { get; set; }
         public DateTime? Date_Created { get; set; }
         public DateTime? End_Date { get; set; }
         public string Payment_Status { get; set; }
         public bool Bkr_Check { get; set; }
+        public int ProductId { get; set; }
+        public Product Product { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
 

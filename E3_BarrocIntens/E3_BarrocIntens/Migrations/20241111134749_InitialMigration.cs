@@ -129,18 +129,23 @@ namespace E3_BarrocIntens.Migrations
                     Amount_Of_Periods = table.Column<int>(type: "int", nullable: false),
                     Total_Price = table.Column<double>(type: "double", nullable: false),
                     Price_Per_Period = table.Column<double>(type: "double", nullable: false),
-                    Product = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Date_Created = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     End_Date = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     Payment_Status = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Bkr_Check = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LeaseContracts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LeaseContracts_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_LeaseContracts_Users_UserId",
                         column: x => x.UserId,
@@ -155,11 +160,11 @@ namespace E3_BarrocIntens.Migrations
                 columns: new[] { "Id", "CustomerName", "DueDate", "InvoiceDate", "IsPayed", "TotalAmount" },
                 values: new object[,]
                 {
-                    { 1, "John Doe", new DateTime(2024, 11, 1, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1121), new DateTime(2024, 10, 12, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1071), true, 1200.5f },
-                    { 2, "Jane Smith", new DateTime(2024, 11, 26, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1138), new DateTime(2024, 10, 27, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1135), false, 800.75f },
-                    { 3, "Acme Corp", new DateTime(2024, 11, 6, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1148), new DateTime(2024, 9, 27, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1146), true, 2500f },
-                    { 4, "Global Industries", new DateTime(2024, 11, 21, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1155), new DateTime(2024, 10, 22, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1152), false, 1500.3f },
-                    { 5, "Tech Solutions", new DateTime(2024, 12, 1, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1159), new DateTime(2024, 11, 1, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1157), false, 950.6f }
+                    { 1, "John Doe", new DateTime(2024, 11, 1, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1399), new DateTime(2024, 10, 12, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1313), true, 1200.5f },
+                    { 2, "Jane Smith", new DateTime(2024, 11, 26, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1428), new DateTime(2024, 10, 27, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1426), false, 800.75f },
+                    { 3, "Acme Corp", new DateTime(2024, 11, 6, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1443), new DateTime(2024, 9, 27, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1441), true, 2500f },
+                    { 4, "Global Industries", new DateTime(2024, 11, 21, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1453), new DateTime(2024, 10, 22, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1451), false, 1500.3f },
+                    { 5, "Tech Solutions", new DateTime(2024, 12, 1, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1458), new DateTime(2024, 11, 1, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1456), false, 950.6f }
                 });
 
             migrationBuilder.InsertData(
@@ -215,22 +220,27 @@ namespace E3_BarrocIntens.Migrations
                 columns: new[] { "Id", "Name", "Password", "RoleId", "Username" },
                 values: new object[,]
                 {
-                    { 1, "Customer User", "$2a$11$svRSsdPmUdCJqm15SODX1.fVW3zxauT1GKyyCPDbFExahEnfR0AmS", 4, "customer" },
-                    { 2, "Finance User", "$2a$11$zZEd7s9Vpx33sJfS.2ruieO9N/FGKhfnJNlLNaztEhxZNLbif7Opm", 2, "finance" },
-                    { 3, "Sales User", "$2a$11$qGhekp925IIfZZejz.dp3eFPXZZR0wVM3G6BAp/prCibVbSKXfC16", 3, "sales" },
-                    { 4, "Maintenance User", "$2a$11$faXB61wHg3PsomoEhgZIieypfFKXoy3JpOQX7hNxwQHCMSOOrcpBC", 1, "maintenance" }
+                    { 1, "Customer User", "$2a$11$N2yBIyO9xot.sR6GzuSpwulvYANUGZdd.IIxY4.mzNUwVsItgYUpe", 4, "customer" },
+                    { 2, "Finance User", "$2a$11$7BkYyT9zTpNQLKAXBpVQcuytFqksMdjEYYjUF7ouPHxnXFRp5edL2", 2, "finance" },
+                    { 3, "Sales User", "$2a$11$De8nOWc9d/m/gTt6Js03Juz.BlzhYdqeIwm5YLoM7k4Tkvhi7.Ox2", 3, "sales" },
+                    { 4, "Maintenance User", "$2a$11$p3BpXjddK/oIErrOsCQc3OXZHuve5pll9uwmLe5.f9lTVJ3Va6DF6", 1, "maintenance" }
                 });
 
             migrationBuilder.InsertData(
                 table: "LeaseContracts",
-                columns: new[] { "Id", "Amount_Of_Periods", "Bkr_Check", "Date_Created", "End_Date", "Payment_Status", "Price_Per_Period", "Product", "Time_Per_Period", "Total_Price", "Type_Of_Time", "UserId" },
+                columns: new[] { "Id", "Amount_Of_Periods", "Bkr_Check", "Date_Created", "End_Date", "Payment_Status", "Price_Per_Period", "ProductId", "Time_Per_Period", "Total_Price", "Type_Of_Time", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 1, false, new DateTime(2024, 11, 11, 13, 50, 32, 338, DateTimeKind.Local).AddTicks(5886), new DateTime(2024, 11, 11, 13, 50, 32, 338, DateTimeKind.Local).AddTicks(5886), "Unpaid", 100.0, "TestProduct", 1, 1000.0, "Monthly", 1 },
-                    { 2, 1, false, new DateTime(2024, 11, 11, 13, 50, 32, 338, DateTimeKind.Local).AddTicks(5966), new DateTime(2024, 11, 11, 13, 50, 32, 338, DateTimeKind.Local).AddTicks(5966), "Unpaid", 200.0, "TestProduct", 1, 2000.0, "Monthly", 2 },
-                    { 3, 1, false, new DateTime(2024, 11, 11, 13, 50, 32, 338, DateTimeKind.Local).AddTicks(5970), new DateTime(2024, 11, 11, 13, 50, 32, 338, DateTimeKind.Local).AddTicks(5970), "Unpaid", 300.0, "TestProduct", 1, 3000.0, "Monthly", 3 },
-                    { 4, 1, false, new DateTime(2024, 11, 11, 13, 50, 32, 338, DateTimeKind.Local).AddTicks(5974), new DateTime(2024, 11, 11, 13, 50, 32, 338, DateTimeKind.Local).AddTicks(5974), "Unpaid", 400.0, "TestProduct", 1, 4000.0, "Monthly", 4 }
+                    { 1, 1, false, new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6495), new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6495), "Unpaid", 100.0, 1, 1, 1000.0, "Monthly", 1 },
+                    { 2, 1, false, new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6595), new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6595), "Unpaid", 200.0, 1, 1, 2000.0, "Monthly", 2 },
+                    { 3, 1, false, new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6601), new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6601), "Unpaid", 300.0, 1, 1, 3000.0, "Monthly", 3 },
+                    { 4, 1, false, new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6606), new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6606), "Unpaid", 400.0, 1, 1, 4000.0, "Monthly", 4 }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LeaseContracts_ProductId",
+                table: "LeaseContracts",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LeaseContracts_UserId",

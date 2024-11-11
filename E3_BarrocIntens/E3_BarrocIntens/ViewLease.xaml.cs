@@ -1,5 +1,6 @@
 using E3_BarrocIntens.Data;
 using E3_BarrocIntens.Data.Classes;
+using E3_BarrocIntens.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -42,10 +43,11 @@ namespace E3_BarrocIntens
             }
             using (var dataContext = new AppDbContext())
             {
-                leaseContract = dataContext.LeaseContracts.FirstOrDefault(lc => lc.Id == LeaseId);
+                leaseContract = dataContext.LeaseContracts.Include(leaseContract => leaseContract.Product).FirstOrDefault(lc => lc.Id == LeaseId);
             }
-
+            Product product = leaseContract.Product;
             headerTbl.Text = $"#{leaseContract.Id} - {leaseContract.Product}";
+            productTbl.Text = $"Product: {product.Title}";
 
             if (leaseContract.Type_Of_Time == "Monthly")
             {

@@ -15,6 +15,7 @@ using Microsoft.UI.Xaml.Navigation;
 using System.Diagnostics;
 using E3_BarrocIntens.Data;
 using E3_BarrocIntens.Data.Classes;
+using Microsoft.EntityFrameworkCore;
 
 namespace E3_BarrocIntens
 {
@@ -54,7 +55,7 @@ namespace E3_BarrocIntens
         {
             using (var db = new AppDbContext())
             {
-                var contracts = db.LeaseContracts.ToList();
+                var contracts = db.LeaseContracts.Include(leaseContract => leaseContract.Product).ToList();
 
                 leaseContractLv.ItemsSource = contracts;
             }

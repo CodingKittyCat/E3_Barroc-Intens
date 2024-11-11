@@ -28,7 +28,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBox Name="productTb" FontSize="35" Width="350" HorizontalAlignment="Center" Grid.Row="0" Margin="10, 30" Header="Product Name"/>
+                <ComboBox Name="productCb" FontSize="35" Width="350" HorizontalAlignment="Center" Grid.Row="0" Margin="10, 30" Header="Product" DisplayMemberPath="Title"/>
                 <ComboBox Name="invoiceTypeCb" FontSize="35" Width="350" HorizontalAlignment="Center" Grid.Row="2" Margin="10, 30" Header="Invoice Type" SelectionChanged="invoiceTypeCb_SelectionChanged" SelectedIndex="0">
                     <ComboBoxItem Content="Monthly"/>
                     <ComboBoxItem Content="Periodic"/>

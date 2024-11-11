@@ -14,6 +14,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using E3_BarrocIntens.Data;
 using E3_BarrocIntens.Data.Classes;
+using E3_BarrocIntens.Model;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -30,6 +31,14 @@ namespace E3_BarrocIntens
             this.InitializeComponent();
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            using (var db = new AppDbContext())
+            {
+                productCb.ItemsSource = db.Products.ToList();
+            }
+        }
+
         private void invoiceTypeCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (invoiceTypeCb != null && selectLengthSp != null)
@@ -43,10 +52,15 @@ namespace E3_BarrocIntens
 
         private void createBtn_Click(object sender, RoutedEventArgs e)
         {
-            string product = productTb.Text;
-            if (string.IsNullOrWhiteSpace(product))
+            int productId = productCb.SelectedIndex + 1;
+            Product product = null;
+            using (var db = new AppDbContext())
             {
-                ShowError("Please enter a valid product name.");
+                product = db.Products.FirstOrDefault(p => p.Id == productId);
+            }
+            if (product == null)
+            {
+                ShowError("Please select a valid product.");
                 return;
             }
 
@@ -117,7 +131,7 @@ namespace E3_BarrocIntens
             }
             LeaseContract leaseContract = new LeaseContract
             {
-                Product = product,
+                ProductId = productId,
                 UserId = 1,
                 Type_Of_Time = typeOfTime,
                 Amount_Of_Periods = repeatCount,

@@ -1,5 +1,7 @@
 using E3_BarrocIntens.Data;
 using E3_BarrocIntens.Data.Classes;
+using E3_BarrocIntens.Model;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -42,10 +44,11 @@ namespace E3_BarrocIntens
             }
             using (AppDbContext dataContext = new AppDbContext())
             {
-                LeaseContract = dataContext.LeaseContracts.FirstOrDefault(lc => lc.Id == LeaseId);
+                LeaseContract = dataContext.LeaseContracts.Include(leaseContract => leaseContract.Product).FirstOrDefault(lc => lc.Id == LeaseId);
+                productCb.ItemsSource = dataContext.Products.ToList();
             }
 
-            productTb.Text = LeaseContract.Product;
+            productCb.SelectedIndex = LeaseContract.ProductId - 1;
             durationSelectTb.Text = LeaseContract.Time_Per_Period.ToString();
             durationSelectCb.SelectedIndex = LeaseContract.Type_Of_Time == "Periodic (Days)"
                                             ? 0
@@ -65,10 +68,10 @@ namespace E3_BarrocIntens
 
         private void updateBtn_Click(object sender, RoutedEventArgs e)
         {
-            string product = productTb.Text;
-            if (string.IsNullOrWhiteSpace(product))
+            Product product = (Product)productCb.SelectedItem;
+            if (product == null)
             {
-                ShowError("Please enter a valid product name.");
+                ShowError("Please enter a valid product.");
                 return;
             }
 
@@ -137,6 +140,7 @@ namespace E3_BarrocIntens
                 return;
             }
 
+            LeaseContract.ProductId = product.Id;
             LeaseContract.Product = product;
             LeaseContract.UserId = 1;
             LeaseContract.Type_Of_Time = typeOfTime;

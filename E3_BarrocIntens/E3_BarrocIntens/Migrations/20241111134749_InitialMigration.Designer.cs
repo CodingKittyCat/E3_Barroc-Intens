@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E3_BarrocIntens.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241111125032_InitialMigration")]
+    [Migration("20241111134749_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -57,8 +57,8 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 1,
                             CustomerName = "John Doe",
-                            DueDate = new DateTime(2024, 11, 1, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1121),
-                            InvoiceDate = new DateTime(2024, 10, 12, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1071),
+                            DueDate = new DateTime(2024, 11, 1, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1399),
+                            InvoiceDate = new DateTime(2024, 10, 12, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1313),
                             IsPayed = true,
                             TotalAmount = 1200.5f
                         },
@@ -66,8 +66,8 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 2,
                             CustomerName = "Jane Smith",
-                            DueDate = new DateTime(2024, 11, 26, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1138),
-                            InvoiceDate = new DateTime(2024, 10, 27, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1135),
+                            DueDate = new DateTime(2024, 11, 26, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1428),
+                            InvoiceDate = new DateTime(2024, 10, 27, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1426),
                             IsPayed = false,
                             TotalAmount = 800.75f
                         },
@@ -75,8 +75,8 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 3,
                             CustomerName = "Acme Corp",
-                            DueDate = new DateTime(2024, 11, 6, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1148),
-                            InvoiceDate = new DateTime(2024, 9, 27, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1146),
+                            DueDate = new DateTime(2024, 11, 6, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1443),
+                            InvoiceDate = new DateTime(2024, 9, 27, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1441),
                             IsPayed = true,
                             TotalAmount = 2500f
                         },
@@ -84,8 +84,8 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 4,
                             CustomerName = "Global Industries",
-                            DueDate = new DateTime(2024, 11, 21, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1155),
-                            InvoiceDate = new DateTime(2024, 10, 22, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1152),
+                            DueDate = new DateTime(2024, 11, 21, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1453),
+                            InvoiceDate = new DateTime(2024, 10, 22, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1451),
                             IsPayed = false,
                             TotalAmount = 1500.3f
                         },
@@ -93,8 +93,8 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 5,
                             CustomerName = "Tech Solutions",
-                            DueDate = new DateTime(2024, 12, 1, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1159),
-                            InvoiceDate = new DateTime(2024, 11, 1, 13, 50, 31, 829, DateTimeKind.Local).AddTicks(1157),
+                            DueDate = new DateTime(2024, 12, 1, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1458),
+                            InvoiceDate = new DateTime(2024, 11, 1, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1456),
                             IsPayed = false,
                             TotalAmount = 950.6f
                         });
@@ -126,8 +126,8 @@ namespace E3_BarrocIntens.Migrations
                     b.Property<double>("Price_Per_Period")
                         .HasColumnType("double");
 
-                    b.Property<string>("Product")
-                        .HasColumnType("longtext");
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Time_Per_Period")
                         .HasColumnType("int");
@@ -143,6 +143,8 @@ namespace E3_BarrocIntens.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ProductId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("LeaseContracts");
@@ -153,11 +155,11 @@ namespace E3_BarrocIntens.Migrations
                             Id = 1,
                             Amount_Of_Periods = 1,
                             Bkr_Check = false,
-                            Date_Created = new DateTime(2024, 11, 11, 13, 50, 32, 338, DateTimeKind.Local).AddTicks(5886),
-                            End_Date = new DateTime(2024, 11, 11, 13, 50, 32, 338, DateTimeKind.Local).AddTicks(5886),
+                            Date_Created = new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6495),
+                            End_Date = new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6495),
                             Payment_Status = "Unpaid",
                             Price_Per_Period = 100.0,
-                            Product = "TestProduct",
+                            ProductId = 1,
                             Time_Per_Period = 1,
                             Total_Price = 1000.0,
                             Type_Of_Time = "Monthly",
@@ -168,11 +170,11 @@ namespace E3_BarrocIntens.Migrations
                             Id = 2,
                             Amount_Of_Periods = 1,
                             Bkr_Check = false,
-                            Date_Created = new DateTime(2024, 11, 11, 13, 50, 32, 338, DateTimeKind.Local).AddTicks(5966),
-                            End_Date = new DateTime(2024, 11, 11, 13, 50, 32, 338, DateTimeKind.Local).AddTicks(5966),
+                            Date_Created = new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6595),
+                            End_Date = new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6595),
                             Payment_Status = "Unpaid",
                             Price_Per_Period = 200.0,
-                            Product = "TestProduct",
+                            ProductId = 1,
                             Time_Per_Period = 1,
                             Total_Price = 2000.0,
                             Type_Of_Time = "Monthly",
@@ -183,11 +185,11 @@ namespace E3_BarrocIntens.Migrations
                             Id = 3,
                             Amount_Of_Periods = 1,
                             Bkr_Check = false,
-                            Date_Created = new DateTime(2024, 11, 11, 13, 50, 32, 338, DateTimeKind.Local).AddTicks(5970),
-                            End_Date = new DateTime(2024, 11, 11, 13, 50, 32, 338, DateTimeKind.Local).AddTicks(5970),
+                            Date_Created = new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6601),
+                            End_Date = new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6601),
                             Payment_Status = "Unpaid",
                             Price_Per_Period = 300.0,
-                            Product = "TestProduct",
+                            ProductId = 1,
                             Time_Per_Period = 1,
                             Total_Price = 3000.0,
                             Type_Of_Time = "Monthly",
@@ -198,11 +200,11 @@ namespace E3_BarrocIntens.Migrations
                             Id = 4,
                             Amount_Of_Periods = 1,
                             Bkr_Check = false,
-                            Date_Created = new DateTime(2024, 11, 11, 13, 50, 32, 338, DateTimeKind.Local).AddTicks(5974),
-                            End_Date = new DateTime(2024, 11, 11, 13, 50, 32, 338, DateTimeKind.Local).AddTicks(5974),
+                            Date_Created = new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6606),
+                            End_Date = new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6606),
                             Payment_Status = "Unpaid",
                             Price_Per_Period = 400.0,
-                            Product = "TestProduct",
+                            ProductId = 1,
                             Time_Per_Period = 1,
                             Total_Price = 4000.0,
                             Type_Of_Time = "Monthly",
@@ -489,7 +491,7 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 1,
                             Name = "Customer User",
-                            Password = "$2a$11$svRSsdPmUdCJqm15SODX1.fVW3zxauT1GKyyCPDbFExahEnfR0AmS",
+                            Password = "$2a$11$N2yBIyO9xot.sR6GzuSpwulvYANUGZdd.IIxY4.mzNUwVsItgYUpe",
                             RoleId = 4,
                             Username = "customer"
                         },
@@ -497,7 +499,7 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 2,
                             Name = "Finance User",
-                            Password = "$2a$11$zZEd7s9Vpx33sJfS.2ruieO9N/FGKhfnJNlLNaztEhxZNLbif7Opm",
+                            Password = "$2a$11$7BkYyT9zTpNQLKAXBpVQcuytFqksMdjEYYjUF7ouPHxnXFRp5edL2",
                             RoleId = 2,
                             Username = "finance"
                         },
@@ -505,7 +507,7 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 3,
                             Name = "Sales User",
-                            Password = "$2a$11$qGhekp925IIfZZejz.dp3eFPXZZR0wVM3G6BAp/prCibVbSKXfC16",
+                            Password = "$2a$11$De8nOWc9d/m/gTt6Js03Juz.BlzhYdqeIwm5YLoM7k4Tkvhi7.Ox2",
                             RoleId = 3,
                             Username = "sales"
                         },
@@ -513,7 +515,7 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 4,
                             Name = "Maintenance User",
-                            Password = "$2a$11$faXB61wHg3PsomoEhgZIieypfFKXoy3JpOQX7hNxwQHCMSOOrcpBC",
+                            Password = "$2a$11$p3BpXjddK/oIErrOsCQc3OXZHuve5pll9uwmLe5.f9lTVJ3Va6DF6",
                             RoleId = 1,
                             Username = "maintenance"
                         });
@@ -572,11 +574,19 @@ namespace E3_BarrocIntens.Migrations
 
             modelBuilder.Entity("E3_BarrocIntens.Data.Classes.LeaseContract", b =>
                 {
+                    b.HasOne("E3_BarrocIntens.Model.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("E3_BarrocIntens.Data.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Product");
 
                     b.Navigation("User");
                 });
