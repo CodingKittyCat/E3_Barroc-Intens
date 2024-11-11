@@ -14,6 +14,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Diagnostics;
 using E3_BarrocIntens.Data;
+using E3_BarrocIntens.Data.Classes;
 
 namespace E3_BarrocIntens
 {
@@ -24,7 +25,7 @@ namespace E3_BarrocIntens
             this.InitializeComponent(); // Initialize the components on the page.
             ShowInvoices();
             ShowOrders();
-
+            ShowContracts();
         }
 
         public void ShowOrders()
@@ -48,6 +49,17 @@ namespace E3_BarrocIntens
                 InvoiceListView.ItemsSource = invoices;
             }
         }
+
+        public void ShowContracts()
+        {
+            using (var db = new AppDbContext())
+            {
+                var contracts = db.LeaseContracts.ToList();
+
+                leaseContractLv.ItemsSource = contracts;
+            }
+        }
+
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox comboBox = sender as ComboBox; // Get the ComboBox that triggered the event.
@@ -86,6 +98,17 @@ namespace E3_BarrocIntens
                         break;
                 }
             }
+        }
+
+        private void createLeaseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CreateLease)); // Navigate to the CreateLease page.
+        }
+
+        private void showLeaseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            LeaseContract leaseContract = (sender as Button).CommandParameter as LeaseContract;
+            this.Frame.Navigate(typeof(ViewLease), leaseContract.Id);
         }
     }
 }

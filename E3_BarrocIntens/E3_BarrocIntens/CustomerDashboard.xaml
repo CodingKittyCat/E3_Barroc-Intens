@@ -87,15 +87,65 @@
                 <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0">
                     <!-- Orders content can be added here -->
                 </Border>
-
                 <!-- Contracts title bar -->
-                <Grid Background="Black" Margin="5,5,5,0" Grid.Column="1" Grid.Row="0">
-                    <TextBlock HorizontalAlignment="Center" Foreground="White">LEASE CONTRACTS</TextBlock>
+                <Grid Background="Black" Grid.Column="1" Margin="5,5,5,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Center" Foreground="White" Grid.Column="1">LEASE CONTRACTS</TextBlock>
+                    <Button HorizontalAlignment="Right" Content="CREATE" Grid.Column="2" x:Name="createLeaseButton" Click="createLeaseButton_Click"/>
                 </Grid>
 
                 <!-- Placeholder for Contracts content -->
                 <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1" Grid.Column="1" Margin="5,0,5,0">
-                    <!-- Contracts content can be added here -->
+                    <ScrollViewer>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="ID" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="1" Text="PRODUCT" FontSize="20" HorizontalAlignment="Center" TextAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="2" Text="START DATE" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="3" Text="END DATE" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="4" Text="ACTIONS" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                            </Grid>
+                            <ListView x:Name="leaseContractLv" Grid.Row="1">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="localData:LeaseContract">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{x:Bind Id}" FontSize="20" HorizontalAlignment="Center" TextAlignment="Center" Margin="0, 0, 25, 0"/>
+                                            <TextBlock Grid.Column="1" Text="{x:Bind Product}" FontSize="20" HorizontalAlignment="Center" TextAlignment="Center" Margin="0, 0, 15, 0"/>
+                                            <TextBlock Grid.Column="2" Text="{x:Bind Date_Created}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <TextBlock Grid.Column="3" Text="{x:Bind End_Date}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <Button Grid.Column="4" Content="SHOW" FontSize="20" HorizontalAlignment="Center" Margin="20, 0, 0, 0"  CommandParameter="{Binding}" x:Name="showLeaseBtn" Click="showLeaseBtn_Click"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </ScrollViewer>
                 </Border>
 
                 <!-- Invoices title bar -->
