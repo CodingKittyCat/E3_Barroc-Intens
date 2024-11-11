@@ -22,6 +22,10 @@ namespace E3_BarrocIntens
         public CustomerDashboard()
         {
             this.InitializeComponent(); // Initialize the components on the page.
+
+            using (BarrocIntensDataContext db = new BarrocIntensDataContext())
+            {
+                leaseContractLv.ItemsSource = db.Lease_Contracts.ToList(); // Set the ListView's ItemsSource to the Lease_Contracts table.
             ShowInvoices();
             ShowOrders(); 
 
@@ -86,6 +90,17 @@ namespace E3_BarrocIntens
                         break;
                 }
             }
+        }
+
+        private void createLeaseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CreateLease)); // Navigate to the CreateLease page.
+        }
+
+        private void showLeaseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Lease_Contracts leaseContract = (sender as Button).CommandParameter as Lease_Contracts;
+            this.Frame.Navigate(typeof(ViewLease), leaseContract.Id);
         }
     }
 }

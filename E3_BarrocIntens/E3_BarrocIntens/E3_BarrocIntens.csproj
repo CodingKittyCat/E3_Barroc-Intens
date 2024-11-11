@@ -11,6 +11,24 @@
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
+   
+  <ItemGroup>
+    <Content Remove="Assets\1485477207-magnifier_78608.ico" />
+    <Content Remove="Assets\Logo1_klein.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="BlankWindow1.xaml" />
+    <None Remove="CustomerDashboard.xaml" />
+    <None Remove="DefaultTheme.xaml" />
+    <None Remove="EditLease.xaml" />
+    <None Remove="FinanceDashboard.xaml" />
+    <None Remove="fonts\BigShouldersDisplay-Black.ttf" />
+    <None Remove="MaintenanceDashboard.xaml" />
+    <None Remove="PurchasingDashboard.xaml" />
+    <None Remove="SalesDashboard.xaml" />
+    <None Remove="ViewLease.xaml" />
+    <None Remove="WelcomeDashboard.xaml" />
+  </ItemGroup>
 
   <ItemGroup>
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -45,6 +63,16 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="EditLease.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="ViewLease.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
   <ItemGroup>
     <Page Update="MaintenanceDashboard.xaml">
       <Generator>MSBuild:Compile</Generator>
