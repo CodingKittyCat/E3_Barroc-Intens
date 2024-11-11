@@ -1,3 +1,4 @@
+using E3_BarrocIntens.Data;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -13,24 +14,68 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace E3_BarrocIntens
 {
-    /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainWindow : Window
     {
         public MainWindow()
         {
-            this.InitializeComponent();
+
+            this.InitializeComponent(); // Initialize the window components.
+            window.Navigate(typeof(LoginPage));
         }
 
-        private void myButton_Click(object sender, RoutedEventArgs e)
+        private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            myButton.Content = "Clicked";
+            ComboBox comboBox = sender as ComboBox; // Cast sender to ComboBox.
+            HandleSelection(); // Handle the selection change.
+        }
+
+        private void optionsMenu_DropDownClosed(object sender, object e)
+        {
+            HandleSelection(); // Handle selection when dropdown closes.
+        }
+
+        internal void HandleSelection()
+        {
+            // Check if the selected item is a ComboBoxItem.
+            if (optionsMenu.SelectedItem is ComboBoxItem selectedItem)
+            {
+                switch (selectedItem.Content.ToString())
+                {
+                    case "Cancel":
+                        optionsMenu.SelectedItem = null; // Clear selection.
+                        break;
+                    case "Welcome":
+                        window.Navigate(typeof(WelcomeDashboard)); // Navigate to WelcomeDashboard.
+                        optionsMenu.Visibility = Visibility.Collapsed; // Hide the options menu.
+                        break;
+                    case "Finance":
+                        window.Navigate(typeof(FinanceDashboard)); // Navigate to FinanceDashboard.
+                        optionsMenu.Visibility = Visibility.Collapsed; // Hide the options menu.
+                        break;
+                    case "Sales":
+                        window.Navigate(typeof(SalesDashboard)); // Navigate to SalesDashboard.
+                        optionsMenu.Visibility = Visibility.Collapsed; // Hide the options menu.
+                        break;
+                    case "Customer":
+                        window.Navigate(typeof(CustomerDashboard)); // Navigate to CustomerDashboard.
+                        optionsMenu.Visibility = Visibility.Collapsed; // Hide the options menu.
+                        break;
+                    case "Purchasing":
+                        window.Navigate(typeof(PurchasingDashboard)); // Navigate to PurchasingDashboard.
+                        optionsMenu.Visibility = Visibility.Collapsed; // Hide the options menu.
+                        break;
+                    case "Maintenance":
+                        window.Navigate(typeof(MaintenanceDashboard)); // Navigate to MaintenanceDashboard.
+                        optionsMenu.Visibility = Visibility.Collapsed; // Hide the options menu.
+                        break;
+                    case "Register":
+                        window.Navigate(typeof(RegisterPage));
+                        optionsMenu.Visibility = Visibility.Collapsed;
+                        break;
+                }
+            }
         }
     }
 }

@@ -6,27 +6,12 @@
     <RootNamespace>E3_BarrocIntens</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;ARM64</Platforms>
-    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &gt;= 8">win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &lt; 8">win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
-   
-  <ItemGroup>
-    <Content Remove="Assets\1485477207-magnifier_78608.ico" />
-    <Content Remove="Assets\Logo1_klein.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="BlankWindow1.xaml" />
-    <None Remove="CustomerDashboard.xaml" />
-    <None Remove="DefaultTheme.xaml" />
-    <None Remove="FinanceDashboard.xaml" />
-    <None Remove="fonts\BigShouldersDisplay-Black.ttf" />
-    <None Remove="MaintenanceDashboard.xaml" />
-    <None Remove="PurchasingDashboard.xaml" />
-    <None Remove="SalesDashboard.xaml" />
-    <None Remove="WelcomeDashboard.xaml" />
-  </ItemGroup>
 
   <ItemGroup>
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -36,14 +21,9 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-    <Content Include="fonts\BigShouldersDisplay-Black.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
-    <PackageReference Include="MailKit" Version="4.8.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
       <PrivateAssets>all</PrivateAssets>
@@ -52,53 +32,29 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240923002" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
-    <PackageReference Include="Syncfusion.Pdf.Net.Core" Version="27.1.57" />
     <PackageReference Include="System.Text.Json" Version="8.0.5" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
+  <!--
+    Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
+    Tools extension to be activated for this project even if the Windows App SDK Nuget
+    package has not yet been restored.
+  -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Page Update="CustomerDashboard.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="MaintenanceDashboard.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="BlankWindow1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="PurchasingDashboard.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="SalesDashboard.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="FinanceDashboard.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="DefaultTheme.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="WelcomeDashboard.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="LoginPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
+  <!--
+    Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution
+    Explorer "Package and Publish" context menu entry to be enabled for this project even if
+    the Windows App SDK Nuget package has not yet been restored.
+  -->
   <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <WindowsSdkPackageVersion>10.0.19041.38</WindowsSdkPackageVersion>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-  </PropertyGroup>
+	<PropertyGroup>
+		<WindowsSdkPackageVersion>10.0.19041.38</WindowsSdkPackageVersion>
+	</PropertyGroup>
 </Project>

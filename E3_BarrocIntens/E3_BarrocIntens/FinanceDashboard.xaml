@@ -103,10 +103,10 @@
                     <!-- Invoices title and button -->
                     <Grid Background="Black" Margin="5,5,5,0">
                         <TextBlock HorizontalAlignment="Center" Foreground="White">INVOICES</TextBlock>
-                        <Button x:Name="AddInvoiceButton" Content="ADD INVOICE" Background="White" BorderBrush="Black" 
+                        <Button Content="ADD INVOICE" Background="White" BorderBrush="Black" 
                                 BorderThickness="2" Width="200" HorizontalAlignment="Right" 
                                 Padding="5" HorizontalContentAlignment="Center" 
-                                VerticalContentAlignment="Center" Click="AddInvoiceButton_Click"/>
+                                VerticalContentAlignment="Center"/>
                     </Grid>
 
                     <!-- Placeholder for Invoices content -->

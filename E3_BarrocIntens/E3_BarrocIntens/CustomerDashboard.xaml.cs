@@ -13,36 +13,55 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Diagnostics;
+using E3_BarrocIntens.Data;
 
 namespace E3_BarrocIntens
 {
-    public sealed partial class FinanceDashboard : Page
+    public sealed partial class CustomerDashboard : Page
     {
-        public FinanceDashboard()
+        public CustomerDashboard()
         {
-            this.InitializeComponent(); // Initialize the page components.
+            this.InitializeComponent(); // Initialize the components on the page.
+            ShowInvoices();
+            ShowOrders();
+
         }
 
-        private void searchButton_Click(object sender, RoutedEventArgs e)
+        public void ShowOrders()
         {
-            string searchResult = searchBar.Text; // Get text from search bar.
-            Debug.WriteLine(searchResult); // Log the search result.
+            using (var db = new AppDbContext())
+            {
+                // Query to filter orders by the specified status
+                var filteredOrders = db.Orders
+                                       .Where(o => o.IsDelivered == false)
+                                       .ToList();
+                OrderListview.ItemsSource = filteredOrders;
+            }
         }
 
+        public void ShowInvoices()
+        {
+            using (var db = new AppDbContext())
+            {
+                var invoices = db.Invoices.ToList();
+
+                InvoiceListView.ItemsSource = invoices;
+            }
+        }
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBox comboBox = sender as ComboBox; // Cast sender to ComboBox.
-            HandleSelection(); // Handle the selection change.
+            ComboBox comboBox = sender as ComboBox; // Get the ComboBox that triggered the event.
+            HandleSelection(); // Process the selected item.
         }
 
         private void optionsMenu_DropDownClosed(object sender, object e)
         {
-            HandleSelection(); // Handle selection when dropdown closes.
+            HandleSelection(); // Process the selection when the drop-down closes.
         }
 
         private void HandleSelection()
         {
-            // Check if selected item is a ComboBoxItem.
+            // Check if the selected item is a ComboBoxItem.
             if (optionsMenu.SelectedItem is ComboBoxItem selectedItem)
             {
                 switch (selectedItem.Content.ToString())
@@ -53,11 +72,11 @@ namespace E3_BarrocIntens
                     case "Welcome":
                         this.Frame.Navigate(typeof(WelcomeDashboard)); // Navigate to WelcomeDashboard.
                         break;
+                    case "Finance":
+                        this.Frame.Navigate(typeof(FinanceDashboard)); // Navigate to FinanceDashboard.
+                        break;
                     case "Sales":
                         this.Frame.Navigate(typeof(SalesDashboard)); // Navigate to SalesDashboard.
-                        break;
-                    case "Customer":
-                        this.Frame.Navigate(typeof(CustomerDashboard)); // Navigate to CustomerDashboard.
                         break;
                     case "Purchasing":
                         this.Frame.Navigate(typeof(PurchasingDashboard)); // Navigate to PurchasingDashboard.

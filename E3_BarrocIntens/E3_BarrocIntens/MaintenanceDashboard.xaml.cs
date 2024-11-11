@@ -16,9 +16,9 @@ using System.Diagnostics;
 
 namespace E3_BarrocIntens
 {
-    public sealed partial class FinanceDashboard : Page
+    public sealed partial class MaintenanceDashboard : Page
     {
-        public FinanceDashboard()
+        public MaintenanceDashboard()
         {
             this.InitializeComponent(); // Initialize the page components.
         }
@@ -27,6 +27,18 @@ namespace E3_BarrocIntens
         {
             string searchResult = searchBar.Text; // Get text from search bar.
             Debug.WriteLine(searchResult); // Log the search result.
+        }
+
+        private void searchButton_Click1(object sender, RoutedEventArgs e)
+        {
+            string searchResult = searchBar.Text; // Get text from search bar.
+            Debug.WriteLine(searchResult); // Log the search result (duplicate).
+        }
+
+        private void searchButton_Click2(object sender, RoutedEventArgs e)
+        {
+            string searchResult = searchBar.Text; // Get text from search bar.
+            Debug.WriteLine(searchResult); // Log the search result (duplicate).
         }
 
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -53,6 +65,9 @@ namespace E3_BarrocIntens
                     case "Welcome":
                         this.Frame.Navigate(typeof(WelcomeDashboard)); // Navigate to WelcomeDashboard.
                         break;
+                    case "Finance":
+                        this.Frame.Navigate(typeof(FinanceDashboard)); // Navigate to FinanceDashboard.
+                        break;
                     case "Sales":
                         this.Frame.Navigate(typeof(SalesDashboard)); // Navigate to SalesDashboard.
                         break;
@@ -60,10 +75,7 @@ namespace E3_BarrocIntens
                         this.Frame.Navigate(typeof(CustomerDashboard)); // Navigate to CustomerDashboard.
                         break;
                     case "Purchasing":
-                        this.Frame.Navigate(typeof(PurchasingDashboard)); // Navigate to PurchasingDashboard.
-                        break;
-                    case "Maintenance":
-                        this.Frame.Navigate(typeof(MaintenanceDashboard)); // Navigate to MaintenanceDashboard.
+                        this.Frame.Navigate(typeof(PurchasingDashboard)); // Navigate to CustomerDashboard.
                         break;
                 }
             }

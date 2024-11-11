@@ -16,16 +16,16 @@ using System.Diagnostics;
 
 namespace E3_BarrocIntens
 {
-    public sealed partial class FinanceDashboard : Page
+    public sealed partial class SalesDashboard : Page
     {
-        public FinanceDashboard()
+        public SalesDashboard()
         {
             this.InitializeComponent(); // Initialize the page components.
         }
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
-            string searchResult = searchBar.Text; // Get text from search bar.
+            string searchResult = searchBar.Text; // Get text from the search bar.
             Debug.WriteLine(searchResult); // Log the search result.
         }
 
@@ -42,7 +42,7 @@ namespace E3_BarrocIntens
 
         private void HandleSelection()
         {
-            // Check if selected item is a ComboBoxItem.
+            // Check if the selected item is a ComboBoxItem.
             if (optionsMenu.SelectedItem is ComboBoxItem selectedItem)
             {
                 switch (selectedItem.Content.ToString())
@@ -53,8 +53,8 @@ namespace E3_BarrocIntens
                     case "Welcome":
                         this.Frame.Navigate(typeof(WelcomeDashboard)); // Navigate to WelcomeDashboard.
                         break;
-                    case "Sales":
-                        this.Frame.Navigate(typeof(SalesDashboard)); // Navigate to SalesDashboard.
+                    case "Finance":
+                        this.Frame.Navigate(typeof(FinanceDashboard)); // Navigate to FinanceDashboard.
                         break;
                     case "Customer":
                         this.Frame.Navigate(typeof(CustomerDashboard)); // Navigate to CustomerDashboard.

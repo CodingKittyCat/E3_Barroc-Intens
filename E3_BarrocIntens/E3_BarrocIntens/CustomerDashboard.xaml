@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="E3_BarrocIntens.CustomerDashboard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:E3_BarrocIntens"
+    xmlns:localData="using:E3_BarrocIntens.Data.Classes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <!-- Main container for page content -->
+    <Grid Background="White">
+        <!-- Define row structure -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.12*" MinHeight="50"/>
+            <!-- Top navigation bar -->
+            <RowDefinition Height="0.4*"/>
+            <!-- Orders and Contracts section -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Define a single column for the main layout structure -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Top navigation bar -->
+        <Grid Background="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <!-- ComboBox section -->
+                <ColumnDefinition Width="*"/>
+                <!-- Logo section -->
+                <ColumnDefinition Width="*"/>
+                <!-- Profile icon section -->
+            </Grid.ColumnDefinitions>
+
+            <!-- ComboBox for navigation options -->
+            <ComboBox x:Name="optionsMenu" SelectionChanged="optionsMenu_SelectionChanged" 
+                      DropDownClosed="optionsMenu_DropDownClosed" Margin="20,0,0,0" 
+                      VerticalAlignment="Center" Background="White" Foreground="Black" 
+                      PlaceholderForeground="Black" PlaceholderText="Open this select menu" 
+                      Grid.Column="0">
+                <ComboBoxItem>Cancel</ComboBoxItem>
+                <ComboBoxItem>Welcome</ComboBoxItem>
+                <ComboBoxItem>Sales</ComboBoxItem>
+                <ComboBoxItem>Finance</ComboBoxItem>
+                <ComboBoxItem>Purchasing</ComboBoxItem>
+                <ComboBoxItem>Maintenance</ComboBoxItem>
+            </ComboBox>
+
+            <!-- Logo in the center of the navigation bar -->
+            <Image Margin="0,7,0,7" HorizontalAlignment="Center" 
+                   Source="Assets\Logo1_klein.jpg" Grid.Column="1"/>
+
+            <!-- Profile icon button on the right side -->
+            <StackPanel HorizontalAlignment="Right" Margin="0,0,20,0" Orientation="Horizontal" Grid.Column="2">
+                <Button Background="Transparent">
+                    <Image Source="Assets\1487716857-user_81635-3428194618.png"></Image>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!-- Orders and Contracts section -->
+        <Border Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="2" Background="White">
+            <Grid Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Orders title bar -->
+                <Grid Background="Black" Margin="5,5,5,0" Grid.Column="0" Grid.Row="0">
+                    <TextBlock HorizontalAlignment="Center" Foreground="White">ORDERS</TextBlock>
+                </Grid>
+
+                <!-- Placeholder for Orders content -->
+                <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0">
+                    <!-- Orders content can be added here -->
+                </Border>
+
+                <!-- Contracts title bar -->
+                <Grid Background="Black" Margin="5,5,5,0" Grid.Column="1" Grid.Row="0">
+                    <TextBlock HorizontalAlignment="Center" Foreground="White">LEASE CONTRACTS</TextBlock>
+                </Grid>
+
+                <!-- Placeholder for Contracts content -->
+                <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1" Grid.Column="1" Margin="5,0,5,0">
+                    <!-- Contracts content can be added here -->
+                </Border>
+
+                <!-- Invoices title bar -->
+                <Grid Background="Black" Margin="5,5,5,0" Grid.Row="2" Grid.ColumnSpan="2">
+                    <TextBlock HorizontalAlignment="Center" Foreground="White">INVOICES</TextBlock>
+                </Grid>
+
+
+                <!-- Placeholder for Orders content -->
+                <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1" Margin="5,0,5,0">
+                    <!-- Orders list or content can be added here -->
+                    <ListView x:Name="OrderListview">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="localData:Order" >
+                                <Grid ColumnSpacing="1">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.25*"/>
+                                        <ColumnDefinition Width="0.25*"/>
+                                        <ColumnDefinition Width="0.1*"/>
+                                        <ColumnDefinition Width="0.25*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock HorizontalAlignment = "Left" Text="{x:Bind Name}"/>
+                                    <TextBlock TextAlignment="Center" HorizontalAlignment ="Center"  Grid.Column="1" Text="{x:Bind Description}"/>
+                                    <TextBlock HorizontalAlignment = "Right" Grid.Column="2" Text="{x:Bind Amount}"/>
+                                    <TextBlock HorizontalAlignment = "Center" Grid.Column="3" Text="{x:Bind Status}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Border>
+
+
+                <!-- Placeholder for Invoices content, spanning the full width -->
+                <Grid BorderBrush="Black" BorderThickness="2" Grid.Row="3" Grid.ColumnSpan="2" Margin="5,0,5,0">
+                    <!-- Invoices content can be added here -->
+                    <ListView x:Name="InvoiceListView">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="localData:Invoice">
+                                <Grid ColumnSpacing="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.25*"/>
+                                        <ColumnDefinition Width="0.25*"/>
+                                        <ColumnDefinition Width="0.1*"/>
+                                        <ColumnDefinition Width="0.25*"/>
+                                        <ColumnDefinition Width="0.25*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock HorizontalAlignment = "Left" Text="{x:Bind Id}"/>
+                                    <TextBlock TextAlignment="Center" HorizontalAlignment ="Center"  Grid.Column="1" Text="{x:Bind InvoiceDateToString}"/>
+                                    <TextBlock HorizontalAlignment = "Right" Grid.Column="2" Text="{x:Bind DueDateToString}"/>
+                                    <TextBlock HorizontalAlignment = "Center" Grid.Column="3" Text="{x:Bind TotalAmount}"/>
+                                    <TextBlock HorizontalAlignment = "Center" Grid.Column="4" Text="{x:Bind IsPayed}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
