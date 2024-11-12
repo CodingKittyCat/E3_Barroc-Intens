@@ -17,6 +17,7 @@ namespace E3_BarrocIntens.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<MaintenanceRequest> maintenanceRequests { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
