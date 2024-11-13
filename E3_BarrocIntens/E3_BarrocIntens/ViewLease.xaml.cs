@@ -46,8 +46,7 @@ namespace E3_BarrocIntens
                 leaseContract = dataContext.LeaseContracts.Include(leaseContract => leaseContract.Product).FirstOrDefault(lc => lc.Id == LeaseId);
             }
             Product product = leaseContract.Product;
-            headerTbl.Text = $"#{leaseContract.Id} - {leaseContract.Product}";
-            productTbl.Text = $"Product: {product.Title}";
+            headerTbl.Text = $"#{leaseContract.Id} - {leaseContract.Product.Title}";
 
             if (leaseContract.Type_Of_Time == "Monthly")
             {
