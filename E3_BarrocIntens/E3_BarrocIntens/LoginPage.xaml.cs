@@ -1,4 +1,5 @@
 using E3_BarrocIntens.Data;
+using E3_BarrocIntens.Data.Classes;
 using E3_BarrocIntens.Modules;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.UI.Xaml;
@@ -41,6 +42,8 @@ namespace E3_BarrocIntens
 
             if (user != null)
             {
+                Session.Instance.User = user;
+
                 // Route to the appropriate dashboard based on the user's role
                 Frame.Navigate(user.Role.RoleName switch
                 {

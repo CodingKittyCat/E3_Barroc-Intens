@@ -11,7 +11,7 @@
 
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <TextBox x:Name="UsernameInput" Width="200" PlaceholderText="Username" Margin="0,10,0,0"/>
-        <PasswordBox x:Name="PasswordInput" Width="200" Margin="0,10,0,0"/>
+        <PasswordBox x:Name="PasswordInput" Width="200" Margin="0,10,0,0" PlaceholderText="Password"/>
         <Button Content="Login" Width="200" Click="LoginButton_Click" Margin="0,10,0,0"/>
     </StackPanel>
 </Page>
