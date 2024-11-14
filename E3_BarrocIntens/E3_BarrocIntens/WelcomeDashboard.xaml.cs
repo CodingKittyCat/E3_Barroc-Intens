@@ -24,7 +24,11 @@ namespace E3_BarrocIntens
         public WelcomeDashboard()
         {
             this.InitializeComponent(); // Initialize the page components.
-            welcomeMessage.Text = Session.Instance.User.Name;
+            if (Session.Instance.User != null)
+            {
+                welcomeMessage.Text = Session.Instance.User.Name;
+            }
+
         }
         
 
