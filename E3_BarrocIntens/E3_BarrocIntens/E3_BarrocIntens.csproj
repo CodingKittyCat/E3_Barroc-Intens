@@ -24,6 +24,7 @@
     <None Remove="fonts\BigShouldersDisplay-Black.ttf" />
     <None Remove="MaintenanceCreate.xaml" />
     <None Remove="MaintenanceDashboard.xaml" />
+    <None Remove="PlanRequestDashboard.xaml" />
     <None Remove="PurchasingDashboard.xaml" />
     <None Remove="SalesDashboard.xaml" />
     <None Remove="WelcomeDashboard.xaml" />
@@ -60,6 +61,12 @@
 
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="PlanRequestDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>

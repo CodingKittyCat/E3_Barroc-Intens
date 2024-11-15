@@ -71,20 +71,21 @@
                           IsTodayHighlighted="True"
                           SelectionMode="Single"
                           MinHeight="300"
-                          Margin="10">
+                          Margin="10"
+                          SelectedDatesChanged="CustomCalendar_SelectedDatesChanged">
 
                         <!-- Calendar Colors -->
                         <CalendarView.CalendarItemForeground>
                             <SolidColorBrush Color="Black"/>
                         </CalendarView.CalendarItemForeground>
                         <CalendarView.SelectedForeground>
-                            <SolidColorBrush Color="Yellow"/>
+                            <SolidColorBrush Color="Black"/>
                         </CalendarView.SelectedForeground>
                         <CalendarView.SelectedBorderBrush>
-                            <SolidColorBrush Color="Red"/>
+                            <SolidColorBrush Color="Orange"/>
                         </CalendarView.SelectedBorderBrush>
                         <CalendarView.OutOfScopeBackground>
-                            <SolidColorBrush Color="LightBlue"/>
+                            <SolidColorBrush Color="WhiteSmoke"/>
                         </CalendarView.OutOfScopeBackground>
                     </CalendarView>
                 </Border>

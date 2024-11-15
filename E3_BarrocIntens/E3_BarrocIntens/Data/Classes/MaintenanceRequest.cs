@@ -14,7 +14,9 @@ namespace E3_BarrocIntens.Data.Classes
         public Product Product { get; set; }
         public string Description { get; set; }
         public DateTime RequestedDateTime { get; set; }
+        public DateTime? PlannedDateTime { get; set; }
         public int? UserId { get; set; }
         public User? User { get; set; }
+
     }
 }

@@ -13,7 +13,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Diagnostics;
-using E3_BarrocIntens.Data;
+using E3_BarrocIntens.Data.Classes;
 
 namespace E3_BarrocIntens
 {
@@ -87,6 +87,36 @@ namespace E3_BarrocIntens
 
                 }
             }
+        }
+
+        private DateTime selectedDate;
+        private void CustomCalendar_SelectedDatesChanged(CalendarView sender, CalendarViewSelectedDatesChangedEventArgs args)
+        {
+            if (args.AddedDates.Count > 0)
+            {
+                if (Session.Instance.User != null)
+                {
+                    selectedDate = args.AddedDates[0].DateTime;
+                }
+                else
+                {
+                    ShowError("Please log in to modify the calendar.");
+                }
+            }
+            return;
+        }
+
+        private async void ShowError(string message)
+        {
+            var errorDialog = new ContentDialog
+            {
+                Title = "Attention",
+                Content = message,
+                CloseButtonText = "Ok",
+                XamlRoot = this.XamlRoot
+            };
+
+            await errorDialog.ShowAsync();
         }
     }
 }
