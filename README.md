@@ -1,8 +1,8 @@
 # E3_Barroc-Intens
 
 ## 0. Project Structure
-**Assets**
-- *All the assets used within the application.*
+  **Assets**
+    - *All the assets used within the application.*
 **Data**
 - **Classes**
 - *All the entity classes.*
