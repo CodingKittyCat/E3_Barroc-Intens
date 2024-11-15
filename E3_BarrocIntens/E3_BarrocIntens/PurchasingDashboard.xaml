@@ -35,6 +35,7 @@
                 <ComboBoxItem>Finance</ComboBoxItem>
                 <ComboBoxItem>Customer</ComboBoxItem>
                 <ComboBoxItem>Maintenance</ComboBoxItem>
+                <ComboBoxItem>CreateRequest</ComboBoxItem>
             </ComboBox>
 
             <Image Margin="0,7,0,7" HorizontalAlignment="Center" Source="Assets\Logo1_klein.jpg" Grid.Column="1"/>

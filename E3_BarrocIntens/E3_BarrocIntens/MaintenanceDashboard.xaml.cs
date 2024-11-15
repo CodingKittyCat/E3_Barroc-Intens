@@ -13,6 +13,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Diagnostics;
+using E3_BarrocIntens.Data;
 
 namespace E3_BarrocIntens
 {
@@ -22,6 +23,8 @@ namespace E3_BarrocIntens
         {
             this.InitializeComponent(); // Initialize the page components.
         }
+
+
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
@@ -77,8 +80,14 @@ namespace E3_BarrocIntens
                     case "Purchasing":
                         this.Frame.Navigate(typeof(PurchasingDashboard)); // Navigate to CustomerDashboard.
                         break;
+                    case "CreateRequest":
+                        this.Frame.Navigate(typeof(MaintenanceCreate));
+                        optionsMenu.Visibility = Visibility.Collapsed;
+                        break;
+
                 }
             }
         }
     }
 }
+
