@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     
     <ScrollViewer>
-        <Grid HorizontalAlignment="Center">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -18,7 +18,9 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <TextBlock Text="Plan a maintenance request" FontSize="30" Margin="10"/>
-            <ComboBox DisplayMemberPath="Product.Title" FontSize="20" Margin="10" Grid.Row="1"/>
+            <TextBlock Text="Date: " FontSize="25" Margin="10" Grid.Row="1" x:Name="dateTbl"/>
+            <ComboBox DisplayMemberPath="Description" FontSize="20" Margin="10" Grid.Row="2" x:Name="maintenanceCb" Width="500"/>
+            <Button Content="Plan for this date" FontSize="25" Margin="10" x:Name="planDateBtn" Click="planDateBtn_Click" Grid.Row="3"/>
         </Grid>
     </ScrollViewer>
 

@@ -27,6 +27,7 @@
     <None Remove="PlanRequestDashboard.xaml" />
     <None Remove="PurchasingDashboard.xaml" />
     <None Remove="SalesDashboard.xaml" />
+    <None Remove="ViewDateDashboard.xaml" />
     <None Remove="WelcomeDashboard.xaml" />
   </ItemGroup>
 
@@ -61,6 +62,12 @@
 
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="ViewDateDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>

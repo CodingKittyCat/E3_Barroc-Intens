@@ -1,6 +1,5 @@
 using E3_BarrocIntens.Data;
 using E3_BarrocIntens.Data.Classes;
-using E3_BarrocIntens.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -25,10 +24,10 @@ namespace E3_BarrocIntens
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PlanRequestDashboard : Page
+    public sealed partial class ViewDateDashboard : Page
     {
-        private DateTime requestDate;
-        public PlanRequestDashboard()
+        private DateTime selectedDate;
+        public ViewDateDashboard()
         {
             this.InitializeComponent();
         }
@@ -36,28 +35,29 @@ namespace E3_BarrocIntens
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            requestDate = (DateTime)e.Parameter;
-            dateTbl.Text = "Planning date: " + requestDate.ToString("dd/MM/yyyy");
+            selectedDate = (DateTime)e.Parameter;
+            dateTbl.Text = "Date: " + selectedDate.ToString("dd/MM/yyyy");
+
             using (var db = new AppDbContext())
             {
-                maintenanceCb.ItemsSource = db.maintenanceRequests.ToList();
+                planningLv.ItemsSource = db.maintenanceRequests
+                    .Include(mr => mr.Product)
+                    .Where(mr => mr.PlannedDateTime == selectedDate && mr.UserId == Session.Instance.User.Id);
             }
         }
-
-        private void planDateBtn_Click(object sender, RoutedEventArgs e)
+        private void editBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (maintenanceCb.SelectedItem != null)
-            {
-                MaintenanceRequest maintenanceRequest = (MaintenanceRequest)maintenanceCb.SelectedItem;
-                using (var db = new AppDbContext())
-                {
-                    db.maintenanceRequests.Attach(maintenanceRequest);
-                    maintenanceRequest.PlannedDateTime = requestDate;
-                    maintenanceRequest.UserId = Session.Instance.User.Id;
-                    db.SaveChanges();
-                }
-                this.Frame.Navigate(typeof(ViewDateDashboard), requestDate);
-            }
+            return;
+        }
+
+        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            return;
+        }
+
+        private void createPlanningBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(PlanRequestDashboard), selectedDate);
         }
     }
 }

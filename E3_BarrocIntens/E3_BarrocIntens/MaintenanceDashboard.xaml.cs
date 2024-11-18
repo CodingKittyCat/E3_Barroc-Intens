@@ -97,6 +97,7 @@ namespace E3_BarrocIntens
                 if (Session.Instance.User != null)
                 {
                     selectedDate = args.AddedDates[0].DateTime;
+                    this.Frame.Navigate(typeof(ViewDateDashboard), selectedDate);
                 }
                 else
                 {
