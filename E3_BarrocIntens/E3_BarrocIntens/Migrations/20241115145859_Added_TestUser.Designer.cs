@@ -4,6 +4,7 @@ using E3_BarrocIntens.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E3_BarrocIntens.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241115145859_Added_TestUser")]
+    partial class Added_TestUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,8 +57,8 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 1,
                             CustomerName = "John Doe",
-                            DueDate = new DateTime(2024, 11, 5, 16, 4, 8, 613, DateTimeKind.Local).AddTicks(1506),
-                            InvoiceDate = new DateTime(2024, 10, 16, 16, 4, 8, 613, DateTimeKind.Local).AddTicks(1438),
+                            DueDate = new DateTime(2024, 11, 5, 15, 58, 57, 769, DateTimeKind.Local).AddTicks(3545),
+                            InvoiceDate = new DateTime(2024, 10, 16, 15, 58, 57, 769, DateTimeKind.Local).AddTicks(3486),
                             IsPayed = true,
                             TotalAmount = 1200.5f
                         },
@@ -63,8 +66,8 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 2,
                             CustomerName = "Jane Smith",
-                            DueDate = new DateTime(2024, 11, 30, 16, 4, 8, 613, DateTimeKind.Local).AddTicks(1524),
-                            InvoiceDate = new DateTime(2024, 10, 31, 16, 4, 8, 613, DateTimeKind.Local).AddTicks(1523),
+                            DueDate = new DateTime(2024, 11, 30, 15, 58, 57, 769, DateTimeKind.Local).AddTicks(3566),
+                            InvoiceDate = new DateTime(2024, 10, 31, 15, 58, 57, 769, DateTimeKind.Local).AddTicks(3564),
                             IsPayed = false,
                             TotalAmount = 800.75f
                         },
@@ -72,8 +75,8 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 3,
                             CustomerName = "Acme Corp",
-                            DueDate = new DateTime(2024, 11, 10, 16, 4, 8, 613, DateTimeKind.Local).AddTicks(1529),
-                            InvoiceDate = new DateTime(2024, 10, 1, 16, 4, 8, 613, DateTimeKind.Local).AddTicks(1527),
+                            DueDate = new DateTime(2024, 11, 10, 15, 58, 57, 769, DateTimeKind.Local).AddTicks(3570),
+                            InvoiceDate = new DateTime(2024, 10, 1, 15, 58, 57, 769, DateTimeKind.Local).AddTicks(3568),
                             IsPayed = true,
                             TotalAmount = 2500f
                         },
@@ -81,8 +84,8 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 4,
                             CustomerName = "Global Industries",
-                            DueDate = new DateTime(2024, 11, 25, 16, 4, 8, 613, DateTimeKind.Local).AddTicks(1536),
-                            InvoiceDate = new DateTime(2024, 10, 26, 16, 4, 8, 613, DateTimeKind.Local).AddTicks(1535),
+                            DueDate = new DateTime(2024, 11, 25, 15, 58, 57, 769, DateTimeKind.Local).AddTicks(3577),
+                            InvoiceDate = new DateTime(2024, 10, 26, 15, 58, 57, 769, DateTimeKind.Local).AddTicks(3575),
                             IsPayed = false,
                             TotalAmount = 1500.3f
                         },
@@ -90,8 +93,8 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 5,
                             CustomerName = "Tech Solutions",
-                            DueDate = new DateTime(2024, 12, 5, 16, 4, 8, 613, DateTimeKind.Local).AddTicks(1544),
-                            InvoiceDate = new DateTime(2024, 11, 5, 16, 4, 8, 613, DateTimeKind.Local).AddTicks(1543),
+                            DueDate = new DateTime(2024, 12, 5, 15, 58, 57, 769, DateTimeKind.Local).AddTicks(3585),
+                            InvoiceDate = new DateTime(2024, 11, 5, 15, 58, 57, 769, DateTimeKind.Local).AddTicks(3583),
                             IsPayed = false,
                             TotalAmount = 950.6f
                         });
@@ -408,7 +411,7 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 1,
                             Name = "Customer User",
-                            Password = "$2a$11$QaUelqNDuNGOhRuPbQfVpOOE//xnrPBjO8U1YncqizO5tQChAdn0K",
+                            Password = "$2a$11$.H/79c4NmpdQqmvTcWyrX.CqcDiy1V1NdUFWrS44pvuiwc84Fib8i",
                             RoleId = 4,
                             Username = "customer"
                         },
@@ -416,7 +419,7 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 2,
                             Name = "Finance User",
-                            Password = "$2a$11$NWP7AiCCdyUmOMyK7hgjo.e0CyvkTgExTLQtLI4gL3U/mqSAgAfYS",
+                            Password = "$2a$11$vBzC1O..yQfZ0ruikiIJ..GsfSs8cCLtWMw2.H/rKgUrK2Wat9qOS",
                             RoleId = 2,
                             Username = "finance"
                         },
@@ -424,7 +427,7 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 3,
                             Name = "Sales User",
-                            Password = "$2a$11$lB3B3cE3/yH6K8kbTZhzneKZ2PtpDiu638gnAcpLWl/E2sBmP4oly",
+                            Password = "$2a$11$8YrLQkAva9L1wMl8jQ1QD.bWkQkBDhiSAKd2vRRKrx9MjWMza19a2",
                             RoleId = 3,
                             Username = "sales"
                         },
@@ -432,7 +435,7 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 4,
                             Name = "Maintenance User",
-                            Password = "$2a$11$fDqf7vGhBRQliaw50E/q3uqsJN2hj3NKuz57BTR0tII1lt5qn7SFe",
+                            Password = "$2a$11$OgFvWye8QtQ5iyLkpvSwhuCTMP352y3eiDIV8Khz7jEy2dcWmeKnu",
                             RoleId = 1,
                             Username = "maintenance"
                         },
@@ -440,15 +443,7 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 5,
                             Name = "George Cassel",
-                            Password = "$2a$11$GBmSe4XU85ebUZ8cOVNyeOp7AUugpfatWr/TYtTLDYaDwgXFmJNKO",
-                            RoleId = 1,
-                            Username = "maintenance"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Stan Baker",
-                            Password = "$2a$11$uwA41IoDUEBVESpFopFz7eWuefsJEY5Br9TJPL0OvDaTFB.lIAbc.",
+                            Password = "$2a$11$X5rTrUDorrtZr4piJNI47e3ZF.G24f.KYBciKGGbbfUjXz7ciAQHe",
                             RoleId = 1,
                             Username = "maintenance"
                         });

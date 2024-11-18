@@ -17,6 +17,7 @@
     <Content Remove="Assets\Logo1_klein.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="AddWorkerPage.xaml" />
     <None Remove="BlankWindow1.xaml" />
     <None Remove="CustomerDashboard.xaml" />
     <None Remove="DefaultTheme.xaml" />
@@ -60,6 +61,12 @@
 
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="AddWorkerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>
