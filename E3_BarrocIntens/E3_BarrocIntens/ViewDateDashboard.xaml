@@ -22,9 +22,11 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Date: " x:Name="dateTbl" FontSize="30" Grid.Row="0" Margin="10"/>
-            <Button Content="Plan a new request" FontSize="25" Grid.Row="1" Margin="10" x:Name="createPlanningBtn" Click="createPlanningBtn_Click"/>
+            <Button Content="Back" x:Name="backBtn" Click="backBtn_Click" FontSize="20" Grid.Row="0"/>
+            <TextBlock Text="Date: " x:Name="dateTbl" FontSize="30" Grid.Row="1" Margin="10"/>
+            <Button Content="Plan a new request" FontSize="25" Grid.Row="2" Margin="10" x:Name="createPlanningBtn" Click="createPlanningBtn_Click"/>
         </Grid>
         <Grid Grid.Column="1" BorderBrush="Black" BorderThickness="3">
             <Grid.RowDefinitions>

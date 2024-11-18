@@ -59,5 +59,10 @@ namespace E3_BarrocIntens
         {
             this.Frame.Navigate(typeof(PlanRequestDashboard), selectedDate);
         }
+
+        private void backBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MaintenanceDashboard));
+        }
     }
 }
