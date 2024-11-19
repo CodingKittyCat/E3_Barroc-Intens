@@ -37,7 +37,11 @@ namespace E3_BarrocIntens
             base.OnNavigatedTo(e);
             selectedDate = (DateTime)e.Parameter;
             dateTbl.Text = "Date: " + selectedDate.ToString("dd/MM/yyyy");
+            refreshItems();
+        }
 
+        private void refreshItems()
+        {
             using (var db = new AppDbContext())
             {
                 planningLv.ItemsSource = db.maintenanceRequests
@@ -52,7 +56,16 @@ namespace E3_BarrocIntens
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            return;
+            MaintenanceRequest maintenanceRequest = (sender as Button).CommandParameter as MaintenanceRequest;
+            using (var db = new AppDbContext())
+            {
+                maintenanceRequest.UserId = null;
+                maintenanceRequest.User = null;
+                maintenanceRequest.PlannedDateTime = null;
+                db.Update(maintenanceRequest);
+                db.SaveChanges();
+            }
+            refreshItems();
         }
 
         private void createPlanningBtn_Click(object sender, RoutedEventArgs e)
