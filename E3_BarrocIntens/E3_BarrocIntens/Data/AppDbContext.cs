@@ -17,6 +17,7 @@ namespace E3_BarrocIntens.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet <UserNote> UserNotes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -83,6 +84,14 @@ namespace E3_BarrocIntens.Data
                     Username = "maintenance",
                     Password = BCrypt.Net.BCrypt.HashPassword("maintenance123"),
                     RoleId = 1
+                },
+                new User
+                {
+                    Id = 5,
+                    Name = "Customer2",
+                    Username = "customer2",
+                    Password = BCrypt.Net.BCrypt.HashPassword("customer123"),
+                    RoleId = 4
                 }
             );
 
