@@ -13,6 +13,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Diagnostics;
+using E3_BarrocIntens.Data;
 
 namespace E3_BarrocIntens
 {
@@ -21,6 +22,11 @@ namespace E3_BarrocIntens
         public SalesDashboard()
         {
             this.InitializeComponent(); // Initialize the page components.
+
+            using (var db = new AppDbContext())
+            {
+                customerLv.ItemsSource = db.Users.Where(user => user.Role.RoleName == "Customer").ToList();
+            }
         }
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
@@ -67,6 +73,11 @@ namespace E3_BarrocIntens
                         break;
                 }
             }
+        }
+
+        private void addNotesButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
