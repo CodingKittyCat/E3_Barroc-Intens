@@ -43,6 +43,7 @@
                 <ComboBoxItem>Purchasing</ComboBoxItem>
                 <ComboBoxItem>Customer</ComboBoxItem>
                 <ComboBoxItem>Maintenance</ComboBoxItem>
+                <ComboBoxItem>CreateRequest</ComboBoxItem>
             </ComboBox>
 
             <!-- Logo image -->

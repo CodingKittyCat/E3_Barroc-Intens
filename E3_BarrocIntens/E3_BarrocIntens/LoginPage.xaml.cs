@@ -1,4 +1,5 @@
 using E3_BarrocIntens.Data;
+using E3_BarrocIntens.Data.Classes;
 using E3_BarrocIntens.Modules;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.UI.Xaml;
