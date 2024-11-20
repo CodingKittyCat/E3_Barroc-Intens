@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using E3_BarrocIntens.Data.Classes;
 using E3_BarrocIntens.Data.Lists;
-using E3_BarrocIntens.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace E3_BarrocIntens.Data
@@ -16,8 +15,9 @@ namespace E3_BarrocIntens.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<LeaseContract> LeaseContracts { get; set; }
+        public DbSet<Product> Products { get; set; } 
+        public DbSet<LeaseContract> LeaseContracts { get; set; } 
+        public DbSet<Material> Materials { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -44,6 +44,10 @@ namespace E3_BarrocIntens.Data
             List<Order> orders = orderList.GetOrders();
             
             modelBuilder.Entity<Order>().HasData(orders.ToArray());
+
+            MaterialList materialList = new MaterialList();
+            List<Material> materials = materialList.GetMaterials();
+            modelBuilder.Entity<Material>().HasData(materials.ToArray());
 
             modelBuilder.Entity<Role>().HasData(
                 new Role { Id = 1, RoleName = "Maintenance" },
