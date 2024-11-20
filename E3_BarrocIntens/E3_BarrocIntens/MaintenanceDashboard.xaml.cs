@@ -14,14 +14,31 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Diagnostics;
 using E3_BarrocIntens.Data.Classes;
+using E3_BarrocIntens.Data;
+using Microsoft.UI;
 
 namespace E3_BarrocIntens
 {
     public sealed partial class MaintenanceDashboard : Page
     {
+        private Dictionary<DateTime, SolidColorBrush> plannedDates;
         public MaintenanceDashboard()
         {
             this.InitializeComponent(); // Initialize the page components.
+            if (Session.Instance.User != null)
+            {
+                using (var db = new AppDbContext())
+                {
+                    plannedDates = db.maintenanceRequests
+                        .Where(mr => mr.User.Id == Session.Instance.User.Id)
+                        .GroupBy(mr => mr.PlannedDateTime.Value.Date) // Group by date to handle duplicates
+                        .ToDictionary(
+                            group => group.Key,                          // Use the date as the key
+                            group => new SolidColorBrush(Colors.Yellow)  // Assign a color to the date
+                        );
+                }
+            }
+
         }
 
 
@@ -118,6 +135,25 @@ namespace E3_BarrocIntens
             };
 
             await errorDialog.ShowAsync();
+        }
+
+        private void CustomCalendar_CalendarViewDayItemChanging(CalendarView sender, CalendarViewDayItemChangingEventArgs args)
+        {
+            if (args.Phase == 0)
+            {
+                args.RegisterUpdateCallback(CustomCalendar_CalendarViewDayItemChanging);
+            }
+            else if (args.Phase == 1)
+            {
+                if (plannedDates.ContainsKey(args.Item.Date.Date))
+                {
+                    args.Item.Background = plannedDates[args.Item.Date.Date];
+                }
+            }
+            else
+            {
+                args.Item.Background = null;
+            }
         }
     }
 }

@@ -72,7 +72,8 @@
                           SelectionMode="Single"
                           MinHeight="300"
                           Margin="10"
-                          SelectedDatesChanged="CustomCalendar_SelectedDatesChanged">
+                          SelectedDatesChanged="CustomCalendar_SelectedDatesChanged"
+                          CalendarViewDayItemChanging="CustomCalendar_CalendarViewDayItemChanging">
 
                         <!-- Calendar Colors -->
                         <CalendarView.CalendarItemForeground>
