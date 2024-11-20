@@ -46,12 +46,13 @@ namespace E3_BarrocIntens
             {
                 planningLv.ItemsSource = db.maintenanceRequests
                     .Include(mr => mr.Product)
-                    .Where(mr => mr.PlannedDateTime == selectedDate && mr.UserId == Session.Instance.User.Id);
+                    .Where(mr => mr.PlannedDateTime.Value.Date == selectedDate.Date && mr.UserId == Session.Instance.User.Id);
             }
         }
         private void editBtn_Click(object sender, RoutedEventArgs e)
         {
-            return;
+            MaintenanceRequest maintenanceRequest = (sender as Button).CommandParameter as MaintenanceRequest;
+            this.Frame.Navigate(typeof(RescheduleRequestDashboard), maintenanceRequest);
         }
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
