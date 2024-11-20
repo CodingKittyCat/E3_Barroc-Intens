@@ -139,20 +139,23 @@ namespace E3_BarrocIntens
 
         private void CustomCalendar_CalendarViewDayItemChanging(CalendarView sender, CalendarViewDayItemChangingEventArgs args)
         {
-            if (args.Phase == 0)
+            if (Session.Instance.User != null)
             {
-                args.RegisterUpdateCallback(CustomCalendar_CalendarViewDayItemChanging);
-            }
-            else if (args.Phase == 1)
-            {
-                if (plannedDates.ContainsKey(args.Item.Date.Date))
+                if (args.Phase == 0)
                 {
-                    args.Item.Background = plannedDates[args.Item.Date.Date];
+                    args.RegisterUpdateCallback(CustomCalendar_CalendarViewDayItemChanging);
                 }
-            }
-            else
-            {
-                args.Item.Background = null;
+                else if (args.Phase == 1)
+                {
+                    if (plannedDates.ContainsKey(args.Item.Date.Date))
+                    {
+                        args.Item.Background = plannedDates[args.Item.Date.Date];
+                    }
+                }
+                else
+                {
+                    args.Item.Background = null;
+                }
             }
         }
     }
