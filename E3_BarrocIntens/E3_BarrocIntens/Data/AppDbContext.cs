@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,8 @@ namespace E3_BarrocIntens.Data
         public DbSet<Product> Products { get; set; } 
         public DbSet<LeaseContract> LeaseContracts { get; set; } 
         public DbSet<Material> Materials { get; set; }
+        public DbSet<MaintenanceRequest> maintenanceRequests { get; set; }
+        public DbSet<LeaseContract> LeaseContracts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -87,6 +90,22 @@ namespace E3_BarrocIntens.Data
                     Name = "Maintenance User",
                     Username = "maintenance",
                     Password = BCrypt.Net.BCrypt.HashPassword("maintenance123"),
+                    RoleId = 1
+                },
+                new User
+                {
+                    Id = 5,
+                    Name = "George Cassel",
+                    Username = "maintenance",
+                    Password = BCrypt.Net.BCrypt.HashPassword("maintenance1234"),
+                    RoleId = 1
+                },
+                new User
+                {
+                    Id = 6,
+                    Name = "Stan Baker",
+                    Username = "maintenance",
+                    Password = BCrypt.Net.BCrypt.HashPassword("maintenance12345"),
                     RoleId = 1
                 }
             );

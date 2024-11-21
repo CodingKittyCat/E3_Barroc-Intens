@@ -97,6 +97,10 @@ namespace E3_BarrocIntens
                     case "Maintenance":
                         this.Frame.Navigate(typeof(MaintenanceDashboard)); // Navigate to MaintenanceDashboard.
                         break;
+                    case "CreateRequest":
+                        this.Frame.Navigate(typeof(MaintenanceCreate));
+                        optionsMenu.Visibility = Visibility.Collapsed;
+                        break;
                 }
             }
         }

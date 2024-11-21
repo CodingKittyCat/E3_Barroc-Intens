@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="E3_BarrocIntens.MaintenanceCreate"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:E3_BarrocIntens"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="White">
+
+    <!-- Main grid container for the page -->
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.12*" MinHeight="50"/>
+            <!-- Header row -->
+            <RowDefinition Height="0.2*"/>
+            <!-- Title row -->
+            <RowDefinition Height="0.4*"/>
+            <!-- Product selection row -->
+            <RowDefinition Height="*"/>
+            <!-- Description and send button row -->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <!-- Single column layout -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Header section with a ComboBox for navigation, logo, and search bar -->
+        <Grid Background="Black" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ComboBox x:Name="optionsMenu" SelectionChanged="optionsMenu_SelectionChanged" DropDownClosed="optionsMenu_DropDownClosed"
+                      Margin="20,0,0,0" VerticalAlignment="Center" Background="White" Foreground="Black"
+                      PlaceholderForeground="Black" PlaceholderText="Navigate" Grid.Column="0">
+                <ComboBoxItem>Cancel</ComboBoxItem>
+                <ComboBoxItem>Welcome</ComboBoxItem>
+                <ComboBoxItem>Sales</ComboBoxItem>
+                <ComboBoxItem>Finance</ComboBoxItem>
+                <ComboBoxItem>Purchasing</ComboBoxItem>
+                <ComboBoxItem>Customer</ComboBoxItem>
+                <ComboBoxItem>Maintenance</ComboBoxItem>
+                <ComboBoxItem>CreateRequest</ComboBoxItem>
+            </ComboBox>
+
+            <Image Source="Assets\Logo1_klein.jpg" HorizontalAlignment="Center" Grid.Column="1" Margin="0,10,0,10"/>
+
+            <StackPanel HorizontalAlignment="Right" Margin="0,0,20,0" Orientation="Horizontal" Grid.Column="2">
+                <TextBox x:Name="searchBar" Width="200" Height="30" PlaceholderText="Search" Background="White" PlaceholderForeground="Black" Foreground="Black"/>
+                <Button x:Name="searchButton" Click="searchButton_Click" Height="35" Background="White" Margin="5,0,0,0">
+                    <Image Source="Assets\1485477207-magnifier_78608.jpg"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!-- Title for the Maintenance Request form -->
+        <TextBlock Grid.Row="1" FontSize="30" Foreground="Black" Text="Ask for Maintenance" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <!-- Product selection section -->
+        <Grid Grid.Row="2" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Product" FontSize="20" HorizontalAlignment="Center" Margin="0,10,0,10"/>
+            <TextBox x:Name="FilterBox" Grid.Row="1" TextChanged="FilterBox_TextChanged" HorizontalAlignment="Center" Width="300" Margin="0,10,0,10" PlaceholderText="Search Item..." Background="White" BorderBrush="Black" Foreground="Black"/>
+            <ListBox x:Name="ProductList" Grid.Row="2" MaxHeight="100" Width="300" Background="White" BorderBrush="Black" BorderThickness="2" CornerRadius="10"/>
+        </Grid>
+
+        <!-- Description and send button section -->
+        <Grid Grid.Row="3" Margin="0,20,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="Description" FontSize="20" HorizontalAlignment="Center" Margin="0,10,0,10"/>
+            <TextBox x:Name="DescriptionBox" Grid.Row="1" Width="500" Height="200" TextWrapping="Wrap" AcceptsReturn="True" BorderBrush="Black" Foreground="Black" Background="White" BorderThickness="2" Margin="0,10,0,10"/>
+            <Button x:Name="SendButton" Content="Send" Click="SendButton_Click" Grid.Row="3" HorizontalAlignment="Center" Width="100" Background="Black" Foreground="White" Margin="0,20,0,0"/>
+        </Grid>
+    </Grid>
+</Page>

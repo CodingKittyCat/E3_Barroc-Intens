@@ -49,6 +49,7 @@
                 <ComboBoxItem>Finance</ComboBoxItem>
                 <ComboBoxItem>Purchasing</ComboBoxItem>
                 <ComboBoxItem>Maintenance</ComboBoxItem>
+                <ComboBoxItem>CreateRequest</ComboBoxItem>
             </ComboBox>
 
             <!-- Logo in the center of the navigation bar -->
