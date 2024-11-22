@@ -14,5 +14,6 @@ namespace E3_BarrocIntens.Data
         public string Password { get; set; }
         public int RoleId { get; set; }
         public Role Role { get; set; }
+        public bool IsFirstLogin { get; set; } = true;
     }
 }

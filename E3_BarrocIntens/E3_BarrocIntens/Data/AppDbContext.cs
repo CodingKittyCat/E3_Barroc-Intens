@@ -57,32 +57,36 @@ namespace E3_BarrocIntens.Data
                     Id = 1,
                     Name = "Customer User",
                     Username = "customer",
-                    Password = BCrypt.Net.BCrypt.HashPassword("customer123"),
-                    RoleId = 4
+                    Password = BCrypt.Net.BCrypt.HashPassword("123"),
+                    RoleId = 4,
+                    IsFirstLogin = true
                 },
                 new User
                 {
                     Id = 2,
                     Name = "Finance User",
                     Username = "finance",
-                    Password = BCrypt.Net.BCrypt.HashPassword("finance123"),
-                    RoleId = 2
+                    Password = BCrypt.Net.BCrypt.HashPassword("123"),
+                    RoleId = 2,
+                    IsFirstLogin = true
                 },
                 new User
                 {
                     Id = 3,
                     Name = "Sales User",
                     Username = "sales",
-                    Password = BCrypt.Net.BCrypt.HashPassword("sales123"),
-                    RoleId = 3 
+                    Password = BCrypt.Net.BCrypt.HashPassword("123"),
+                    RoleId = 3,
+                    IsFirstLogin = true
                 },
                 new User
                 {
                     Id = 4,
                     Name = "Maintenance User",
                     Username = "maintenance",
-                    Password = BCrypt.Net.BCrypt.HashPassword("maintenance123"),
-                    RoleId = 1
+                    Password = BCrypt.Net.BCrypt.HashPassword("123"),
+                    RoleId = 1,
+                    IsFirstLogin = true
                 }
             );
 
