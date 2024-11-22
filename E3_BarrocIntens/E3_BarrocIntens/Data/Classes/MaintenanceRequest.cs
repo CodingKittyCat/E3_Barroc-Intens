@@ -17,6 +17,6 @@ namespace E3_BarrocIntens.Data.Classes
         public DateTime? PlannedDateTime { get; set; }
         public int? UserId { get; set; }
         public User? User { get; set; }
-
+        public bool IsClosed { get; set; }
     }
 }

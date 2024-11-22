@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
@@ -17,9 +17,12 @@
     <Content Remove="Assets\Logo1_klein.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="AddWorkerPage.xaml" />
     <None Remove="BlankWindow1.xaml" />
+    <None Remove="CreateLease.xaml" />
     <None Remove="CustomerDashboard.xaml" />
     <None Remove="DefaultTheme.xaml" />
+    <None Remove="EditLease.xaml" />
     <None Remove="FinanceDashboard.xaml" />
     <None Remove="fonts\BigShouldersDisplay-Black.ttf" />
     <None Remove="MaintenanceCreate.xaml" />
@@ -29,6 +32,7 @@
     <None Remove="RescheduleRequestDashboard.xaml" />
     <None Remove="SalesDashboard.xaml" />
     <None Remove="ViewDateDashboard.xaml" />
+    <None Remove="ViewLease.xaml" />
     <None Remove="WelcomeDashboard.xaml" />
   </ItemGroup>
 
@@ -72,6 +76,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="AddWorkerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Update="ViewDateDashboard.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -84,7 +94,25 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="EditLease.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Update="MaintenanceCreate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="ViewLease.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="CreateLease.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
