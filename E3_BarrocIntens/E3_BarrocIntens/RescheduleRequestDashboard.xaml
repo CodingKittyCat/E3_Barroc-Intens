@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="E3_BarrocIntens.RescheduleRequestDashboard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:E3_BarrocIntens"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Reschedule a maintenance request" FontSize="40" Margin="10"/>
+        <Button Content="Back" FontSize="25" Margin="10" Grid.Row="1" x:Name="backBtn" Click="backBtn_Click"/>
+        <StackPanel HorizontalAlignment="Center" Margin="10" Grid.Row="2" BorderBrush="Black" BorderThickness="2" Background="LightGray">
+            <TextBlock x:Name="requestProduct" FontSize="30" Margin="10" FontWeight="Bold"/>
+            <TextBlock x:Name="requestDescription" FontSize="25" Margin="10"/>
+            <DatePicker x:Name="requestDate" FontSize="25" Margin="10"/>
+            <Button x:Name="confirmButton" FontSize="25" Content="Confirm" Margin="10" Click="confirmButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

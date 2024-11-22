@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Page
-    x:Class="E3_BarrocIntens.LoginPage"
+    x:Class="E3_BarrocIntens.AddWorkerPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:E3_BarrocIntens"
@@ -9,9 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBox x:Name="UsernameInput" Width="200" PlaceholderText="Username" Margin="0,10,0,0"/>
-        <PasswordBox x:Name="PasswordInput" Width="200" Margin="0,10,0,0" PlaceholderText="Password"/>
-        <Button Content="Login" Width="200" Click="LoginButton_Click" Margin="0,10,0,0"/>
-    </StackPanel>
+    <Grid>
+
+    </Grid>
 </Page>

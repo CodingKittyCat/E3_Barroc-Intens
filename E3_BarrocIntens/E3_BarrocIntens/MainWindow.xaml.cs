@@ -74,6 +74,10 @@ namespace E3_BarrocIntens
                         window.Navigate(typeof(RegisterPage));
                         optionsMenu.Visibility = Visibility.Collapsed;
                         break;
+                    case "CreateRequest":
+                        window.Navigate(typeof(MaintenanceCreate));
+                        optionsMenu.Visibility = Visibility.Collapsed;
+                        break;
                 }
             }
         }

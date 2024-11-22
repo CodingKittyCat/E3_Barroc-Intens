@@ -1,5 +1,22 @@
 # E3_Barroc-Intens
 
+## 0. Project Structure
+- **Assets**
+  - All the assets used within the application.
+- **Data**
+  - **Classes**
+    - All the entity classes.
+  - **Lists**
+    - Preset lists for database seeding.
+  - **AppDbContext**
+    - The application's data context.
+  - **fonts**
+    - Fonts used within the application.
+  - **Migrations**
+    - Migrations used for the database.
+  - **Modules**
+    - Modules created for use within the application.
+
 ## 1. Naming Conventions
 - **Classes**: Use PascalCase (e.g., `MainWindow`, `CustomerViewModel`).
 - **Properties and Methods**: Use PascalCase for public properties and methods (e.g., `FirstName`, `CalculateTotal`).

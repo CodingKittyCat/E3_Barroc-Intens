@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:E3_BarrocIntens"
+    xmlns:localData="using:E3_BarrocIntens.Data.Classes"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -14,6 +15,7 @@
             <RowDefinition Height="0.12*" MinHeight="50"/>
             <RowDefinition Height="1.5*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -34,6 +36,7 @@
                 <ComboBoxItem>Finance</ComboBoxItem>
                 <ComboBoxItem>Purchasing</ComboBoxItem>
                 <ComboBoxItem>Customer</ComboBoxItem>
+                <ComboBoxItem>CreateRequest</ComboBoxItem>
             </ComboBox>
 
             <Image Margin="0,7,0,7" HorizontalAlignment="Center" Source="Assets\Logo1_klein.jpg" Grid.Column="1"/>
@@ -69,20 +72,22 @@
                           IsTodayHighlighted="True"
                           SelectionMode="Single"
                           MinHeight="300"
-                          Margin="10">
+                          Margin="10"
+                          SelectedDatesChanged="CustomCalendar_SelectedDatesChanged"
+                          CalendarViewDayItemChanging="CustomCalendar_CalendarViewDayItemChanging">
 
                         <!-- Calendar Colors -->
                         <CalendarView.CalendarItemForeground>
                             <SolidColorBrush Color="Black"/>
                         </CalendarView.CalendarItemForeground>
                         <CalendarView.SelectedForeground>
-                            <SolidColorBrush Color="Yellow"/>
+                            <SolidColorBrush Color="Black"/>
                         </CalendarView.SelectedForeground>
                         <CalendarView.SelectedBorderBrush>
-                            <SolidColorBrush Color="Red"/>
+                            <SolidColorBrush Color="Orange"/>
                         </CalendarView.SelectedBorderBrush>
                         <CalendarView.OutOfScopeBackground>
-                            <SolidColorBrush Color="LightBlue"/>
+                            <SolidColorBrush Color="WhiteSmoke"/>
                         </CalendarView.OutOfScopeBackground>
                     </CalendarView>
                 </Border>
@@ -126,7 +131,7 @@
                     <!-- Right Side Search Bar and Button -->
                     <StackPanel VerticalAlignment="Center" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,20,0">
                         <TextBox x:Name="searchBar2" Width="200" Height="30" Margin="0" PlaceholderText="SEARCH" Background="White" PlaceholderForeground="Black" Foreground="Black"/>
-                        <Button x:Name="searchButton2" Click="searchButton_Click2" Height="50" Width="35" Background="White" Margin="0,0,0,0">
+                        <Button x:Name="searchButton2" Click="searchButton_Click2" Height="35" Width="35" Background="White" Margin="0,0,0,0">
                             <Image Source="Assets\1485477207-magnifier_78608.jpg"/>
                         </Button>
                         <Button Width="50" Background="Transparent">
@@ -148,10 +153,59 @@
 
                     <!-- Left Side with Scrollable Appointment List -->
                     <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
-                        <Border Margin="0" BorderBrush="Black" BorderThickness="1" Background="White">
-                            <!-- Left appointment list content will go here -->
-                        </Border>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <!-- Header row -->
+                                <RowDefinition Height="*"/>
+                                <!-- ListView row -->
+                            </Grid.RowDefinitions>
+
+                            <!-- Header Section -->
+                            <Grid Grid.Row="0" Padding="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.1*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="0.3*"/>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="0.1*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="Number" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="1" Text="Description" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="2" Text="Date Requested" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="3" Text="Assigned Worker" FontWeight="Bold"/>
+                            </Grid>
+
+                            <!-- ListView Section -->
+                            <ListView x:Name="RequestListView" Grid.Row="1">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="localData:MaintenanceRequest">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="0.1*"/>
+                                                <ColumnDefinition Width="0.5*"/>
+                                                <ColumnDefinition Width="0.3*"/>
+                                                <ColumnDefinition Width="0.2*"/>
+                                                <ColumnDefinition Width="0.1*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Grid.Column="0" Text="{x:Bind Id}" TextWrapping="Wrap"/>
+                                            <TextBlock Grid.Column="1" Text="{x:Bind Description}" TextWrapping="Wrap"/>
+                                            <TextBlock Grid.Column="2" Text="{x:Bind RequestedDateTime}" TextWrapping="Wrap"/>
+                                            <TextBlock Grid.Column="3" Text="{x:Bind User.Name, FallbackValue='Unassigned'}" TextWrapping="Wrap"/>
+                                            <Button Grid.Column="4" CommandParameter="{Binding}" x:Name="BindWorker" Click="BindWorker_Click" Content="Assign"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
                     </ScrollViewer>
+
 
                     <!-- Right Side with Scrollable Appointment List -->
                     <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
@@ -160,7 +214,14 @@
                         </Border>
                     </ScrollViewer>
                 </Grid>
+
             </Grid>
         </Border>
+        <!-- AddWorker ContentDialog -->
+        <ContentDialog x:Name="AddWorkerDialog" Title="Add Worker" PrimaryButtonText="Add" SecondaryButtonText="Cancel">
+            <StackPanel>
+                <ListBox x:Name="WorkerNameTextBox"  Margin="0,0,0,10"/>
+            </StackPanel>
+        </ContentDialog>
     </Grid>
 </Page>

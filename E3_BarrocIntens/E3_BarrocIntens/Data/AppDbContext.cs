@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,12 +13,14 @@ namespace E3_BarrocIntens.Data
 {
     class AppDbContext : DbContext
     {
-        public DbSet<Classes.Invoice> Invoices { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet <UserNote> UserNotes { get; set; }
+        public DbSet<MaintenanceRequest> maintenanceRequests { get; set; }
+        public DbSet<LeaseContract> LeaseContracts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -88,10 +91,18 @@ namespace E3_BarrocIntens.Data
                 new User
                 {
                     Id = 5,
-                    Name = "Customer2",
-                    Username = "customer2",
-                    Password = BCrypt.Net.BCrypt.HashPassword("customer123"),
-                    RoleId = 4
+                    Name = "George Cassel",
+                    Username = "maintenance",
+                    Password = BCrypt.Net.BCrypt.HashPassword("maintenance1234"),
+                    RoleId = 1
+                },
+                new User
+                {
+                    Id = 6,
+                    Name = "Stan Baker",
+                    Username = "maintenance",
+                    Password = BCrypt.Net.BCrypt.HashPassword("maintenance12345"),
+                    RoleId = 1
                 }
             );
 
@@ -121,6 +132,58 @@ namespace E3_BarrocIntens.Data
                     Status = "Pending"
                 }
             );
+
+            modelBuilder.Entity<LeaseContract>().HasData(
+                new LeaseContract
+                {
+                    Id = 1,
+                    Type_Of_Time = "Monthly",
+                    Time_Per_Period = 1,
+                    Total_Price = 1000,
+                    Price_Per_Period = 100,
+                    ProductId = 1,
+                    UserId = 1,
+                    Bkr_Check = false,
+                    Amount_Of_Periods = 1,
+                },
+                new LeaseContract
+                {
+                    Id = 2,
+                    Type_Of_Time = "Monthly",
+                    Time_Per_Period = 1,
+                    Total_Price = 2000,
+                    Price_Per_Period = 200,
+                    ProductId = 1,
+                    UserId = 2,
+                    Bkr_Check = false,
+                    Amount_Of_Periods = 1,
+                },
+                new LeaseContract
+                {
+                    Id = 3,
+                    Type_Of_Time = "Monthly",
+                    Time_Per_Period = 1,
+                    Total_Price = 3000,
+                    Price_Per_Period = 300,
+                    ProductId = 1,
+                    UserId = 3,
+                    Bkr_Check = false,
+                    Amount_Of_Periods = 1,
+                },
+                new LeaseContract
+                {
+                    Id = 4,
+                    Type_Of_Time = "Monthly",
+                    Time_Per_Period = 1,
+                    Total_Price = 4000,
+                    Price_Per_Period = 400,
+                    ProductId = 1,
+                    UserId = 4,
+                    Bkr_Check = false,
+                    Amount_Of_Periods = 1,
+                }
+            );
+
         }
     }
 }
