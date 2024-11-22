@@ -27,8 +27,11 @@
     <None Remove="fonts\BigShouldersDisplay-Black.ttf" />
     <None Remove="MaintenanceCreate.xaml" />
     <None Remove="MaintenanceDashboard.xaml" />
+    <None Remove="PlanRequestDashboard.xaml" />
     <None Remove="PurchasingDashboard.xaml" />
+    <None Remove="RescheduleRequestDashboard.xaml" />
     <None Remove="SalesDashboard.xaml" />
+    <None Remove="ViewDateDashboard.xaml" />
     <None Remove="ViewLease.xaml" />
     <None Remove="WelcomeDashboard.xaml" />
   </ItemGroup>
@@ -67,7 +70,25 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="RescheduleRequestDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Update="AddWorkerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="ViewDateDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="PlanRequestDashboard.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
