@@ -14,6 +14,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Diagnostics;
 using E3_BarrocIntens.Data;
+using E3_BarrocIntens.Data.Classes;
 
 namespace E3_BarrocIntens
 {
@@ -77,7 +78,8 @@ namespace E3_BarrocIntens
 
         private void addNotesButton_Click(object sender, RoutedEventArgs e)
         {
-
+            User selectedUser = (sender as Button).CommandParameter as User;
+            this.Frame.Navigate(typeof(AddNotesDashboard), selectedUser);
         }
     }
 }
