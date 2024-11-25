@@ -3,7 +3,9 @@ using System.Linq;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System.Diagnostics;
+using E3_BarrocIntens.Data.Classes;
 using E3_BarrocIntens.Data;
+using Microsoft.UI;
 using Microsoft.EntityFrameworkCore;
 
 using E3_BarrocIntens.Data.Classes;
@@ -15,9 +17,24 @@ namespace E3_BarrocIntens
 {
     public sealed partial class MaintenanceDashboard : Page
     {
+        private Dictionary<DateTime, SolidColorBrush> plannedDates;
         public MaintenanceDashboard()
         {
             this.InitializeComponent(); // Initialize the page components.
+            if (Session.Instance.User != null)
+            {
+                using (var db = new AppDbContext())
+                {
+                    plannedDates = db.maintenanceRequests
+                        .Where(mr => mr.User.Id == Session.Instance.User.Id)
+                        .GroupBy(mr => mr.PlannedDateTime.Value.Date) // Group by date to handle duplicates
+                        .ToDictionary(
+                            group => group.Key,                          // Use the date as the key
+                            group => new SolidColorBrush(Colors.Yellow)  // Assign a color to the date
+                        );
+                }
+            }
+
             this.DataContext = this;
             ShowOpenRequests();
             ShowClosedRequests();
@@ -169,7 +186,7 @@ namespace E3_BarrocIntens
                 }
             }
         }
-
+        
         private async void BindWorkReceipt_Click(object sender, RoutedEventArgs e)
         {
             using (var db = new AppDbContext())
@@ -232,6 +249,58 @@ namespace E3_BarrocIntens
                 ShowClosedRequests();
             }
         }
+        
+        private DateTime selectedDate;
+        private void CustomCalendar_SelectedDatesChanged(CalendarView sender, CalendarViewSelectedDatesChangedEventArgs args)
+        {
+            if (args.AddedDates.Count > 0)
+            {
+                if (Session.Instance.User != null)
+                {
+                    selectedDate = args.AddedDates[0].DateTime;
+                    this.Frame.Navigate(typeof(ViewDateDashboard), selectedDate);
+                }
+                else
+                {
+                    ShowError("Please log in to modify the calendar.");
+                }
+            }
+            return;
+        }
+
+        private async void ShowError(string message)
+        {
+            var errorDialog = new ContentDialog
+            {
+                Title = "Attention",
+                Content = message,
+                CloseButtonText = "Ok",
+                XamlRoot = this.XamlRoot
+            };
+
+            await errorDialog.ShowAsync();
+        }
+
+        private void CustomCalendar_CalendarViewDayItemChanging(CalendarView sender, CalendarViewDayItemChangingEventArgs args)
+        {
+            if (Session.Instance.User != null)
+            {
+                if (args.Phase == 0)
+                {
+                    args.RegisterUpdateCallback(CustomCalendar_CalendarViewDayItemChanging);
+                }
+                else if (args.Phase == 1)
+                {
+                    if (plannedDates.ContainsKey(args.Item.Date.Date))
+                    {
+                        args.Item.Background = plannedDates[args.Item.Date.Date];
+                    }
+                }
+                else
+                {
+                    args.Item.Background = null;
+                }
+            }
+        }
     }
 }
-

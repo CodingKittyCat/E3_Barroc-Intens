@@ -20,6 +20,7 @@ namespace E3_BarrocIntens.Data
         public DbSet<WorkReceipt> WorkReceipts { get; set; }
         public DbSet<Material> Materials { get; set; }
         public DbSet<ReceiptMaterial> ReceiptMaterials { get; set; }
+        public DbSet <UserNote> UserNotes { get; set; }
         public DbSet<MaintenanceRequest> maintenanceRequests { get; set; }
         public DbSet<LeaseContract> LeaseContracts { get; set; }
 
