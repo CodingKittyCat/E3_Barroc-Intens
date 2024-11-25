@@ -87,5 +87,10 @@ namespace E3_BarrocIntens
                 }
             }
         }
+
+        private void UserProfileButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(UserProfileDashboard)); // Navigate to UserProfileDashboard.
+        }
     }
 }
