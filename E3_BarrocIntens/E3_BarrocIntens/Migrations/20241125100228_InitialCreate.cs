@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace E3_BarrocIntens.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,6 +33,23 @@ namespace E3_BarrocIntens.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Invoices", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Materials",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Description = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Materials", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -92,6 +109,21 @@ namespace E3_BarrocIntens.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "WorkReceipts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Description = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WorkReceipts", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -112,6 +144,32 @@ namespace E3_BarrocIntens.Migrations
                         name: "FK_Users_Roles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "Roles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "ReceiptMaterials",
+                columns: table => new
+                {
+                    ReceiptId = table.Column<int>(type: "int", nullable: false),
+                    MaterialId = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ReceiptMaterials", x => new { x.ReceiptId, x.MaterialId });
+                    table.ForeignKey(
+                        name: "FK_ReceiptMaterials_Materials_MaterialId",
+                        column: x => x.MaterialId,
+                        principalTable: "Materials",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ReceiptMaterials_WorkReceipts_ReceiptId",
+                        column: x => x.ReceiptId,
+                        principalTable: "WorkReceipts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -155,16 +213,63 @@ namespace E3_BarrocIntens.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.CreateTable(
+                name: "maintenanceRequests",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    RequestedDateTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: true),
+                    WorkReceiptId = table.Column<int>(type: "int", nullable: true),
+                    IsClosed = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_maintenanceRequests", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_maintenanceRequests_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_maintenanceRequests_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_maintenanceRequests_WorkReceipts_WorkReceiptId",
+                        column: x => x.WorkReceiptId,
+                        principalTable: "WorkReceipts",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.InsertData(
                 table: "Invoices",
                 columns: new[] { "Id", "CustomerName", "DueDate", "InvoiceDate", "IsPayed", "TotalAmount" },
                 values: new object[,]
                 {
-                    { 1, "John Doe", new DateTime(2024, 11, 1, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1399), new DateTime(2024, 10, 12, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1313), true, 1200.5f },
-                    { 2, "Jane Smith", new DateTime(2024, 11, 26, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1428), new DateTime(2024, 10, 27, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1426), false, 800.75f },
-                    { 3, "Acme Corp", new DateTime(2024, 11, 6, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1443), new DateTime(2024, 9, 27, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1441), true, 2500f },
-                    { 4, "Global Industries", new DateTime(2024, 11, 21, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1453), new DateTime(2024, 10, 22, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1451), false, 1500.3f },
-                    { 5, "Tech Solutions", new DateTime(2024, 12, 1, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1458), new DateTime(2024, 11, 1, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1456), false, 950.6f }
+                    { 1, "John Doe", new DateTime(2024, 11, 15, 11, 2, 27, 193, DateTimeKind.Local).AddTicks(741), new DateTime(2024, 10, 26, 11, 2, 27, 193, DateTimeKind.Local).AddTicks(676), true, 1200.5f },
+                    { 2, "Jane Smith", new DateTime(2024, 12, 10, 11, 2, 27, 193, DateTimeKind.Local).AddTicks(754), new DateTime(2024, 11, 10, 11, 2, 27, 193, DateTimeKind.Local).AddTicks(751), false, 800.75f },
+                    { 3, "Acme Corp", new DateTime(2024, 11, 20, 11, 2, 27, 193, DateTimeKind.Local).AddTicks(761), new DateTime(2024, 10, 11, 11, 2, 27, 193, DateTimeKind.Local).AddTicks(759), true, 2500f },
+                    { 4, "Global Industries", new DateTime(2024, 12, 5, 11, 2, 27, 193, DateTimeKind.Local).AddTicks(768), new DateTime(2024, 11, 5, 11, 2, 27, 193, DateTimeKind.Local).AddTicks(766), false, 1500.3f },
+                    { 5, "Tech Solutions", new DateTime(2024, 12, 15, 11, 2, 27, 193, DateTimeKind.Local).AddTicks(771), new DateTime(2024, 11, 15, 11, 2, 27, 193, DateTimeKind.Local).AddTicks(770), false, 950.6f }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Materials",
+                columns: new[] { "Id", "Description", "Name" },
+                values: new object[,]
+                {
+                    { 1, "This plank is made from wood, I promise, no deceptions here.", "Wooden Plank 50cm" },
+                    { 2, "This plank is made from wood, I promise, deceptions here.", "Wooden Plink 75cm" },
+                    { 3, "This plank is made from iron, I swear, no deceptions here.", "Wooden Plonk 25cm" },
+                    { 4, "This 20cm is made from wood, I promise, deceptions here.", "Wooden Plunk 20cm" }
                 });
 
             migrationBuilder.InsertData(
@@ -216,14 +321,31 @@ namespace E3_BarrocIntens.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "WorkReceipts",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 1, "This is most definitely a work receipt" });
+
+            migrationBuilder.InsertData(
+                table: "ReceiptMaterials",
+                columns: new[] { "MaterialId", "ReceiptId", "Quantity" },
+                values: new object[,]
+                {
+                    { 1, 1, 3 },
+                    { 2, 1, 3 },
+                    { 3, 1, 3 }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Name", "Password", "RoleId", "Username" },
                 values: new object[,]
                 {
-                    { 1, "Customer User", "$2a$11$N2yBIyO9xot.sR6GzuSpwulvYANUGZdd.IIxY4.mzNUwVsItgYUpe", 4, "customer" },
-                    { 2, "Finance User", "$2a$11$7BkYyT9zTpNQLKAXBpVQcuytFqksMdjEYYjUF7ouPHxnXFRp5edL2", 2, "finance" },
-                    { 3, "Sales User", "$2a$11$De8nOWc9d/m/gTt6Js03Juz.BlzhYdqeIwm5YLoM7k4Tkvhi7.Ox2", 3, "sales" },
-                    { 4, "Maintenance User", "$2a$11$p3BpXjddK/oIErrOsCQc3OXZHuve5pll9uwmLe5.f9lTVJ3Va6DF6", 1, "maintenance" }
+                    { 1, "Customer User", "$2a$11$eIPKDDHo5ZE5jjoPOoNuYeeebCNdvgvDAgJXd7vlhmYiN.ErJgLf.", 4, "customer" },
+                    { 2, "Finance User", "$2a$11$4pTnT0febeIfp4dv8iNwoOLfuvu/uePQ.OGG622wAzEn7b1pBRf1a", 2, "finance" },
+                    { 3, "Sales User", "$2a$11$nCkKe8LkzjCnVehoJ915ben4wGTxGzUPPgXXtDEAyyoxYFZSGj.lC", 3, "sales" },
+                    { 4, "Maintenance User", "$2a$11$R/OIGCRTaXbb2yJCsvBOu.p5iOAc1mjNb0odpJweEixs0dp.35yOq", 1, "maintenance" },
+                    { 5, "George Cassel", "$2a$11$YKMph2nFURAkxgfMaPihj.fGII65LxyFJbTaZUbL.KIwhOEBTouSu", 1, "georgecassel" },
+                    { 6, "Stan Baker", "$2a$11$z6d3iPNZAmhrDJGqvFtpd.i0vBBYeonYlLsdPe50VUyIqlmdkwhea", 1, "stanbaker" }
                 });
 
             migrationBuilder.InsertData(
@@ -231,10 +353,10 @@ namespace E3_BarrocIntens.Migrations
                 columns: new[] { "Id", "Amount_Of_Periods", "Bkr_Check", "Date_Created", "End_Date", "Payment_Status", "Price_Per_Period", "ProductId", "Time_Per_Period", "Total_Price", "Type_Of_Time", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 1, false, new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6495), new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6495), "Unpaid", 100.0, 1, 1, 1000.0, "Monthly", 1 },
-                    { 2, 1, false, new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6595), new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6595), "Unpaid", 200.0, 1, 1, 2000.0, "Monthly", 2 },
-                    { 3, 1, false, new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6601), new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6601), "Unpaid", 300.0, 1, 1, 3000.0, "Monthly", 3 },
-                    { 4, 1, false, new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6606), new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6606), "Unpaid", 400.0, 1, 1, 4000.0, "Monthly", 4 }
+                    { 1, 1, false, new DateTime(2024, 11, 25, 11, 2, 27, 881, DateTimeKind.Local).AddTicks(2626), new DateTime(2024, 11, 25, 11, 2, 27, 881, DateTimeKind.Local).AddTicks(2626), "Unpaid", 100.0, 1, 1, 1000.0, "Monthly", 1 },
+                    { 2, 1, false, new DateTime(2024, 11, 25, 11, 2, 27, 881, DateTimeKind.Local).AddTicks(2797), new DateTime(2024, 11, 25, 11, 2, 27, 881, DateTimeKind.Local).AddTicks(2797), "Unpaid", 200.0, 1, 1, 2000.0, "Monthly", 2 },
+                    { 3, 1, false, new DateTime(2024, 11, 25, 11, 2, 27, 881, DateTimeKind.Local).AddTicks(2801), new DateTime(2024, 11, 25, 11, 2, 27, 881, DateTimeKind.Local).AddTicks(2801), "Unpaid", 300.0, 1, 1, 3000.0, "Monthly", 3 },
+                    { 4, 1, false, new DateTime(2024, 11, 25, 11, 2, 27, 881, DateTimeKind.Local).AddTicks(2805), new DateTime(2024, 11, 25, 11, 2, 27, 881, DateTimeKind.Local).AddTicks(2805), "Unpaid", 400.0, 1, 1, 4000.0, "Monthly", 4 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -246,6 +368,26 @@ namespace E3_BarrocIntens.Migrations
                 name: "IX_LeaseContracts_UserId",
                 table: "LeaseContracts",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_maintenanceRequests_ProductId",
+                table: "maintenanceRequests",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_maintenanceRequests_UserId",
+                table: "maintenanceRequests",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_maintenanceRequests_WorkReceiptId",
+                table: "maintenanceRequests",
+                column: "WorkReceiptId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ReceiptMaterials_MaterialId",
+                table: "ReceiptMaterials",
+                column: "MaterialId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_RoleId",
@@ -263,13 +405,25 @@ namespace E3_BarrocIntens.Migrations
                 name: "LeaseContracts");
 
             migrationBuilder.DropTable(
+                name: "maintenanceRequests");
+
+            migrationBuilder.DropTable(
                 name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "ReceiptMaterials");
 
             migrationBuilder.DropTable(
                 name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Materials");
+
+            migrationBuilder.DropTable(
+                name: "WorkReceipts");
 
             migrationBuilder.DropTable(
                 name: "Roles");

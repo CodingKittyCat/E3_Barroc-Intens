@@ -1,5 +1,5 @@
 using E3_BarrocIntens.Data;
-using E3_BarrocIntens.Model;
+using E3_BarrocIntens.Data.Classes;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;

@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using E3_BarrocIntens.Data.Classes;
 using System.ComponentModel;
 using Windows.Storage;
+using System.Xml.Linq;
 
 namespace E3_BarrocIntens
 {
@@ -36,6 +37,7 @@ namespace E3_BarrocIntens
 
             this.DataContext = this;
             ShowOpenRequests();
+            ShowClosedRequests();
         }
 
         private void ShowOpenRequests()
@@ -50,6 +52,22 @@ namespace E3_BarrocIntens
                     .ToList();
 
                 RequestListView.ItemsSource = requests;
+            }
+        }
+
+        private void ShowClosedRequests()
+        {
+            using (var db = new AppDbContext())
+            {
+                // Load maintenance requests with the associated User
+                var requests = db.maintenanceRequests
+                    .Where(MR => MR.IsClosed == true)
+                    .Include(m => m.User)
+                    .Include(m => m.WorkReceipt)
+                    .OrderBy(MR => MR.Id)
+                    .ToList();
+
+                ClosedRequestsListView.ItemsSource = requests;
             }
         }
 
@@ -168,7 +186,70 @@ namespace E3_BarrocIntens
                 }
             }
         }
+        
+        private async void BindWorkReceipt_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new AppDbContext())
+            {
+                // Load materials to select from
+                var materials = db.Materials
+                    .OrderBy(m => m.Name)
+                    .ToList();
 
+                MaterialList.ItemsSource = materials;
+            }
+
+            MaintenanceRequest selectedMaintenance = (sender as Button).CommandParameter as MaintenanceRequest;
+
+            // Set DataContext for AddReceiptWorkDialog
+            AddWorkReceiptDialog.DataContext = selectedMaintenance;
+
+            // Show AddWorkReceiptDialog
+            var result = await AddWorkReceiptDialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                // STEP 1: Create and save the WorkReceipt
+                WorkReceipt workReceipt = new WorkReceipt(DescriptionTextBox.Text);
+
+                using (var db = new AppDbContext())
+                {
+                    db.WorkReceipts.Add(workReceipt);
+                    db.SaveChanges(); // Save to generate the ID
+
+                    // STEP 2: Add selected materials to the pivot table
+                    foreach (var material in MaterialList.SelectedItems.OfType<Material>())
+                    {
+                        var container = MaterialList.ContainerFromItem(material) as ListViewItem;
+                        var quantityTextBox = (container.ContentTemplateRoot as StackPanel)?
+                            .Children.OfType<TextBox>()
+                            .FirstOrDefault(tb => tb.Name == "QuantityTextBox");
+
+
+                        if (quantityTextBox != null && int.TryParse(quantityTextBox.Text, out int quantity) && quantity > 0)
+                        {
+                            ReceiptMaterial receiptMaterial = new ReceiptMaterial
+                            {
+                                ReceiptId = workReceipt.Id, // Use the newly created WorkReceipt's ID
+                                MaterialId = material.Id,   // Use the Material's ID
+                                Quantity = quantity         // Save the entered quantity
+                            };
+                            db.ReceiptMaterials.Add(receiptMaterial);
+                        };
+                    }
+
+                    // Update the MaintenanceRequest with the new WorkReceiptId
+                    selectedMaintenance.WorkReceiptId = workReceipt.Id;
+                    db.Entry(selectedMaintenance).Property(m => m.WorkReceiptId).IsModified = true;
+
+                    await db.SaveChangesAsync(); // Save all changes to the database
+                }
+
+                // Refresh the list to display updated data
+                ShowClosedRequests();
+            }
+        }
+        
         private DateTime selectedDate;
         private void CustomCalendar_SelectedDatesChanged(CalendarView sender, CalendarViewSelectedDatesChangedEventArgs args)
         {

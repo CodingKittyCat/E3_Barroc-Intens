@@ -102,9 +102,7 @@
                     <RowDefinition Height="*"/>
                     <!-- Content Row -->
                 </Grid.RowDefinitions>
-
-
-
+                
                 <Grid Background="Black" Padding="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -209,18 +207,84 @@
 
                     <!-- Right Side with Scrollable Appointment List -->
                     <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-                        <Border Margin="0" BorderBrush="Black" BorderThickness="1" Background="White">
-                            <!-- Right appointment list content will go here -->
-                        </Border>
+                        <Grid Margin="0" BorderBrush="Black" BorderThickness="1" Background="White" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.1*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            
+                            <Grid Grid.Row="0" Padding="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.1*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="0.3*"/>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="0.1*"/>
+                                    <ColumnDefinition Width="0.1*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="Number" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="1" Text="Description" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="2" Text="Date Requested" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="3" Text="Assigned Worker" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="4" Text="Work Receipt" FontWeight="Bold" />
+                            </Grid>
+
+                            <ListView x:Name="ClosedRequestsListView" Grid.Row="1">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="localData:MaintenanceRequest">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="0.1*"/>
+                                                <ColumnDefinition Width="0.5*"/>
+                                                <ColumnDefinition Width="0.3*"/>
+                                                <ColumnDefinition Width="0.2*"/>
+                                                <ColumnDefinition Width="0.1*"/>
+                                                <ColumnDefinition Width="0.1*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Grid.Column="0" Text="{x:Bind Id}" TextWrapping="Wrap"/>
+                                            <TextBlock Grid.Column="1" Text="{x:Bind Description}" TextWrapping="Wrap"/>
+                                            <TextBlock Grid.Column="2" Text="{x:Bind RequestedDateTime}" TextWrapping="Wrap"/>
+                                            <TextBlock Grid.Column="3" Text="{x:Bind User.Name, FallbackValue='Unassigned'}" TextWrapping="Wrap"/>
+                                            <TextBlock Grid.Column="4" Text="{x:Bind WorkReceipt.Description, FallbackValue='None'}" TextWrapping="Wrap" />
+                                            <Button Grid.Column="5" CommandParameter="{Binding}" x:Name="BindWorkReceipt" Click="BindWorkReceipt_Click" Content="Receipt"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
                     </ScrollViewer>
+                        
                 </Grid>
 
             </Grid>
         </Border>
+        
         <!-- AddWorker ContentDialog -->
         <ContentDialog x:Name="AddWorkerDialog" Title="Add Worker" PrimaryButtonText="Add" SecondaryButtonText="Cancel">
             <StackPanel>
                 <ListBox x:Name="WorkerNameTextBox"  Margin="0,0,0,10"/>
+            </StackPanel>
+        </ContentDialog>
+
+        <ContentDialog x:Name="AddWorkReceiptDialog" Title="Add Work Receipt" PrimaryButtonText="Add" SecondaryButtonText="Cancel">
+            <StackPanel>
+                <TextBox x:Name="DescriptionTextBox" PlaceholderText="Test" />
+                <ListView x:Name="MaterialList" SelectionMode="Multiple">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="localData:Material">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{x:Bind Name}" Width="200" />
+                                <TextBox x:Name="QuantityTextBox"  Text="" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackPanel>
         </ContentDialog>
     </Grid>
