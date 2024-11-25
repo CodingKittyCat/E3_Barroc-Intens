@@ -12,6 +12,8 @@ using E3_BarrocIntens.Data.Classes;
 using System.ComponentModel;
 using Windows.Storage;
 using System.Xml.Linq;
+using System.Collections.Generic;
+using Microsoft.UI.Xaml.Media;
 
 namespace E3_BarrocIntens
 {
