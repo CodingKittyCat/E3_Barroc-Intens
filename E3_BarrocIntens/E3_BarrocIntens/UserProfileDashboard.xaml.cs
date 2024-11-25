@@ -135,6 +135,9 @@ namespace E3_BarrocIntens
                     case "Maintenance":
                         this.Frame.Navigate(typeof(MaintenanceDashboard)); // Navigate to MaintenanceDashboard.
                         break;
+                    case "Customer":
+                        this.Frame.Navigate(typeof(CustomerDashboard)); // Navigate to CustomerDashboard.
+                        break;
                 }
             }
         }
