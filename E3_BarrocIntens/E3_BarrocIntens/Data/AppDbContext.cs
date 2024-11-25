@@ -16,9 +16,10 @@ namespace E3_BarrocIntens.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<Product> Products { get; set; } 
-        public DbSet<LeaseContract> LeaseContracts { get; set; } 
+        public DbSet<Product> Products { get; set; }
+        public DbSet<WorkReceipt> WorkReceipts { get; set; }
         public DbSet<Material> Materials { get; set; }
+        public DbSet<ReceiptMaterial> ReceiptMaterials { get; set; }
         public DbSet<MaintenanceRequest> maintenanceRequests { get; set; }
         public DbSet<LeaseContract> LeaseContracts { get; set; }
 
@@ -37,20 +38,39 @@ namespace E3_BarrocIntens.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            InvoiceList InvoiceList = new InvoiceList();
+            WorkReceiptList workReceiptList = new WorkReceiptList();
+            List<WorkReceipt> workReceipts = workReceiptList.GetWorkReceipts();
+            modelBuilder.Entity<WorkReceipt>().HasData(workReceipts.ToArray());
 
+            ReceiptMaterialsList receiptMaterialsList = new ReceiptMaterialsList();
+            List<ReceiptMaterial> receiptMaterials = receiptMaterialsList.GetReceiptMaterials();
+            modelBuilder.Entity<ReceiptMaterial>().HasData(receiptMaterials.ToArray());
+
+            InvoiceList InvoiceList = new InvoiceList();
             List<Classes.Invoice> invoices = InvoiceList.GetInvoices();
             modelBuilder.Entity<Classes.Invoice>().HasData(invoices.ToArray());
 
             OrderList orderList = new OrderList();
-
             List<Order> orders = orderList.GetOrders();
-            
             modelBuilder.Entity<Order>().HasData(orders.ToArray());
 
             MaterialList materialList = new MaterialList();
             List<Material> materials = materialList.GetMaterials();
             modelBuilder.Entity<Material>().HasData(materials.ToArray());
+
+            modelBuilder.Entity<ReceiptMaterial>()
+               .HasKey(rm => new { rm.ReceiptId, rm.MaterialId }); // Composite key
+
+                    modelBuilder.Entity<ReceiptMaterial>()
+                        .HasOne(rm => rm.WorkReceipt)
+                        .WithMany(wr => wr.ReceiptMaterials)
+                        .HasForeignKey(rm => rm.ReceiptId);
+
+                    modelBuilder.Entity<ReceiptMaterial>()
+                        .HasOne(rm => rm.Material)
+                        .WithMany(m => m.ReceiptMaterials)
+                        .HasForeignKey(rm => rm.MaterialId);
+
 
             modelBuilder.Entity<Role>().HasData(
                 new Role { Id = 1, RoleName = "Maintenance" },
@@ -96,7 +116,7 @@ namespace E3_BarrocIntens.Data
                 {
                     Id = 5,
                     Name = "George Cassel",
-                    Username = "maintenance",
+                    Username = "georgecassel",
                     Password = BCrypt.Net.BCrypt.HashPassword("maintenance1234"),
                     RoleId = 1
                 },
@@ -104,7 +124,7 @@ namespace E3_BarrocIntens.Data
                 {
                     Id = 6,
                     Name = "Stan Baker",
-                    Username = "maintenance",
+                    Username = "stanbaker",
                     Password = BCrypt.Net.BCrypt.HashPassword("maintenance12345"),
                     RoleId = 1
                 }

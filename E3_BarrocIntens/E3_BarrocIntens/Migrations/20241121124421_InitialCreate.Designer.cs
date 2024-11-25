@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E3_BarrocIntens.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241111134749_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20241121124421_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,8 +57,8 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 1,
                             CustomerName = "John Doe",
-                            DueDate = new DateTime(2024, 11, 1, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1399),
-                            InvoiceDate = new DateTime(2024, 10, 12, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1313),
+                            DueDate = new DateTime(2024, 11, 11, 13, 44, 20, 624, DateTimeKind.Local).AddTicks(5093),
+                            InvoiceDate = new DateTime(2024, 10, 22, 13, 44, 20, 624, DateTimeKind.Local).AddTicks(5004),
                             IsPayed = true,
                             TotalAmount = 1200.5f
                         },
@@ -66,8 +66,8 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 2,
                             CustomerName = "Jane Smith",
-                            DueDate = new DateTime(2024, 11, 26, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1428),
-                            InvoiceDate = new DateTime(2024, 10, 27, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1426),
+                            DueDate = new DateTime(2024, 12, 6, 13, 44, 20, 624, DateTimeKind.Local).AddTicks(5140),
+                            InvoiceDate = new DateTime(2024, 11, 6, 13, 44, 20, 624, DateTimeKind.Local).AddTicks(5138),
                             IsPayed = false,
                             TotalAmount = 800.75f
                         },
@@ -75,8 +75,8 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 3,
                             CustomerName = "Acme Corp",
-                            DueDate = new DateTime(2024, 11, 6, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1443),
-                            InvoiceDate = new DateTime(2024, 9, 27, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1441),
+                            DueDate = new DateTime(2024, 11, 16, 13, 44, 20, 624, DateTimeKind.Local).AddTicks(5148),
+                            InvoiceDate = new DateTime(2024, 10, 7, 13, 44, 20, 624, DateTimeKind.Local).AddTicks(5146),
                             IsPayed = true,
                             TotalAmount = 2500f
                         },
@@ -84,8 +84,8 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 4,
                             CustomerName = "Global Industries",
-                            DueDate = new DateTime(2024, 11, 21, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1453),
-                            InvoiceDate = new DateTime(2024, 10, 22, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1451),
+                            DueDate = new DateTime(2024, 12, 1, 13, 44, 20, 624, DateTimeKind.Local).AddTicks(5153),
+                            InvoiceDate = new DateTime(2024, 11, 1, 13, 44, 20, 624, DateTimeKind.Local).AddTicks(5152),
                             IsPayed = false,
                             TotalAmount = 1500.3f
                         },
@@ -93,8 +93,8 @@ namespace E3_BarrocIntens.Migrations
                         {
                             Id = 5,
                             CustomerName = "Tech Solutions",
-                            DueDate = new DateTime(2024, 12, 1, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1458),
-                            InvoiceDate = new DateTime(2024, 11, 1, 14, 47, 48, 915, DateTimeKind.Local).AddTicks(1456),
+                            DueDate = new DateTime(2024, 12, 11, 13, 44, 20, 624, DateTimeKind.Local).AddTicks(5157),
+                            InvoiceDate = new DateTime(2024, 11, 11, 13, 44, 20, 624, DateTimeKind.Local).AddTicks(5155),
                             IsPayed = false,
                             TotalAmount = 950.6f
                         });
@@ -155,8 +155,8 @@ namespace E3_BarrocIntens.Migrations
                             Id = 1,
                             Amount_Of_Periods = 1,
                             Bkr_Check = false,
-                            Date_Created = new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6495),
-                            End_Date = new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6495),
+                            Date_Created = new DateTime(2024, 11, 21, 13, 44, 21, 323, DateTimeKind.Local).AddTicks(25),
+                            End_Date = new DateTime(2024, 11, 21, 13, 44, 21, 323, DateTimeKind.Local).AddTicks(25),
                             Payment_Status = "Unpaid",
                             Price_Per_Period = 100.0,
                             ProductId = 1,
@@ -170,8 +170,8 @@ namespace E3_BarrocIntens.Migrations
                             Id = 2,
                             Amount_Of_Periods = 1,
                             Bkr_Check = false,
-                            Date_Created = new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6595),
-                            End_Date = new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6595),
+                            Date_Created = new DateTime(2024, 11, 21, 13, 44, 21, 323, DateTimeKind.Local).AddTicks(182),
+                            End_Date = new DateTime(2024, 11, 21, 13, 44, 21, 323, DateTimeKind.Local).AddTicks(182),
                             Payment_Status = "Unpaid",
                             Price_Per_Period = 200.0,
                             ProductId = 1,
@@ -185,8 +185,8 @@ namespace E3_BarrocIntens.Migrations
                             Id = 3,
                             Amount_Of_Periods = 1,
                             Bkr_Check = false,
-                            Date_Created = new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6601),
-                            End_Date = new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6601),
+                            Date_Created = new DateTime(2024, 11, 21, 13, 44, 21, 323, DateTimeKind.Local).AddTicks(187),
+                            End_Date = new DateTime(2024, 11, 21, 13, 44, 21, 323, DateTimeKind.Local).AddTicks(187),
                             Payment_Status = "Unpaid",
                             Price_Per_Period = 300.0,
                             ProductId = 1,
@@ -200,8 +200,8 @@ namespace E3_BarrocIntens.Migrations
                             Id = 4,
                             Amount_Of_Periods = 1,
                             Bkr_Check = false,
-                            Date_Created = new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6606),
-                            End_Date = new DateTime(2024, 11, 11, 14, 47, 49, 456, DateTimeKind.Local).AddTicks(6606),
+                            Date_Created = new DateTime(2024, 11, 21, 13, 44, 21, 323, DateTimeKind.Local).AddTicks(190),
+                            End_Date = new DateTime(2024, 11, 21, 13, 44, 21, 323, DateTimeKind.Local).AddTicks(190),
                             Payment_Status = "Unpaid",
                             Price_Per_Period = 400.0,
                             ProductId = 1,
@@ -209,6 +209,83 @@ namespace E3_BarrocIntens.Migrations
                             Total_Price = 4000.0,
                             Type_Of_Time = "Monthly",
                             UserId = 4
+                        });
+                });
+
+            modelBuilder.Entity("E3_BarrocIntens.Data.Classes.MaintenanceRequest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("IsClosed")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("RequestedDateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("maintenanceRequests");
+                });
+
+            modelBuilder.Entity("E3_BarrocIntens.Data.Classes.Material", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Materials");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "This plank is made from wood, I promise, no deceptions here.",
+                            Name = "Wooden Plank 50cm"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "This plank is made from wood, I promise, deceptions here.",
+                            Name = "Wooden Plink 75cm"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "This plank is made from iron, I swear, no deceptions here.",
+                            Name = "Wooden Plonk 25cm"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "This 20cm is made from wood, I promise, deceptions here.",
+                            Name = "Wooden Plunk 20cm"
                         });
                 });
 
@@ -422,106 +499,7 @@ namespace E3_BarrocIntens.Migrations
                         });
                 });
 
-            modelBuilder.Entity("E3_BarrocIntens.Data.Role", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("RoleName")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Roles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            RoleName = "Maintenance"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            RoleName = "Finance"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            RoleName = "Sales"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            RoleName = "Customer"
-                        });
-                });
-
-            modelBuilder.Entity("E3_BarrocIntens.Data.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Username")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Customer User",
-                            Password = "$2a$11$N2yBIyO9xot.sR6GzuSpwulvYANUGZdd.IIxY4.mzNUwVsItgYUpe",
-                            RoleId = 4,
-                            Username = "customer"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Finance User",
-                            Password = "$2a$11$7BkYyT9zTpNQLKAXBpVQcuytFqksMdjEYYjUF7ouPHxnXFRp5edL2",
-                            RoleId = 2,
-                            Username = "finance"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Sales User",
-                            Password = "$2a$11$De8nOWc9d/m/gTt6Js03Juz.BlzhYdqeIwm5YLoM7k4Tkvhi7.Ox2",
-                            RoleId = 3,
-                            Username = "sales"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Maintenance User",
-                            Password = "$2a$11$p3BpXjddK/oIErrOsCQc3OXZHuve5pll9uwmLe5.f9lTVJ3Va6DF6",
-                            RoleId = 1,
-                            Username = "maintenance"
-                        });
-                });
-
-            modelBuilder.Entity("E3_BarrocIntens.Model.Product", b =>
+            modelBuilder.Entity("E3_BarrocIntens.Data.Classes.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -572,15 +550,191 @@ namespace E3_BarrocIntens.Migrations
                         });
                 });
 
+            modelBuilder.Entity("E3_BarrocIntens.Data.Classes.ReceiptMaterial", b =>
+                {
+                    b.Property<int>("ReceiptId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MaterialId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("ReceiptId", "MaterialId");
+
+                    b.HasIndex("MaterialId");
+
+                    b.ToTable("ReceiptMaterials");
+
+                    b.HasData(
+                        new
+                        {
+                            ReceiptId = 1,
+                            MaterialId = 1,
+                            Quantity = 3
+                        },
+                        new
+                        {
+                            ReceiptId = 1,
+                            MaterialId = 2,
+                            Quantity = 3
+                        },
+                        new
+                        {
+                            ReceiptId = 1,
+                            MaterialId = 3,
+                            Quantity = 3
+                        });
+                });
+
+            modelBuilder.Entity("E3_BarrocIntens.Data.Classes.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("RoleName")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            RoleName = "Maintenance"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            RoleName = "Finance"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            RoleName = "Sales"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            RoleName = "Customer"
+                        });
+                });
+
+            modelBuilder.Entity("E3_BarrocIntens.Data.Classes.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Customer User",
+                            Password = "$2a$11$OsI0Prr2eMC7sqKtEGLjxO/iCx2Z389SSAYO4BChS6Hs47zAyMFkK",
+                            RoleId = 4,
+                            Username = "customer"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Finance User",
+                            Password = "$2a$11$LFiWFjAPawvs/1XmY1A/JOqaqgtY6q41FQYsYJgdVzHCUB91vRtVq",
+                            RoleId = 2,
+                            Username = "finance"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Sales User",
+                            Password = "$2a$11$NjQgiVCOKIxTGagz6mSMSOCYE9bQEEMqEpQqWubNFDKm73MZOaNHy",
+                            RoleId = 3,
+                            Username = "sales"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Maintenance User",
+                            Password = "$2a$11$oplfp1lscvXT3v6odg./SuYBPin7SJ9EjPlbsDSt7RAVF28A9TjJy",
+                            RoleId = 1,
+                            Username = "maintenance"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "George Cassel",
+                            Password = "$2a$11$BTg7U2A8m7VZQupIhFA9B.Q9PIsVZvcQl6nTP9DiNo6SHGXgpAbyC",
+                            RoleId = 1,
+                            Username = "georgecassel"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Stan Baker",
+                            Password = "$2a$11$2WRt8H97WiyN3WtOrZtj7eg/0oXQDIp.gq0bTe2X8/zmw/MpLRyMe",
+                            RoleId = 1,
+                            Username = "stanbaker"
+                        });
+                });
+
+            modelBuilder.Entity("E3_BarrocIntens.Data.Classes.WorkReceipt", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WorkReceipts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "This is most definitely a work receipt"
+                        });
+                });
+
             modelBuilder.Entity("E3_BarrocIntens.Data.Classes.LeaseContract", b =>
                 {
-                    b.HasOne("E3_BarrocIntens.Model.Product", "Product")
+                    b.HasOne("E3_BarrocIntens.Data.Classes.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("E3_BarrocIntens.Data.User", "User")
+                    b.HasOne("E3_BarrocIntens.Data.Classes.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -591,15 +745,61 @@ namespace E3_BarrocIntens.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("E3_BarrocIntens.Data.User", b =>
+            modelBuilder.Entity("E3_BarrocIntens.Data.Classes.MaintenanceRequest", b =>
                 {
-                    b.HasOne("E3_BarrocIntens.Data.Role", "Role")
+                    b.HasOne("E3_BarrocIntens.Data.Classes.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E3_BarrocIntens.Data.Classes.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("E3_BarrocIntens.Data.Classes.ReceiptMaterial", b =>
+                {
+                    b.HasOne("E3_BarrocIntens.Data.Classes.Material", "Material")
+                        .WithMany("ReceiptMaterials")
+                        .HasForeignKey("MaterialId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E3_BarrocIntens.Data.Classes.WorkReceipt", "WorkReceipt")
+                        .WithMany("ReceiptMaterials")
+                        .HasForeignKey("ReceiptId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Material");
+
+                    b.Navigation("WorkReceipt");
+                });
+
+            modelBuilder.Entity("E3_BarrocIntens.Data.Classes.User", b =>
+                {
+                    b.HasOne("E3_BarrocIntens.Data.Classes.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("E3_BarrocIntens.Data.Classes.Material", b =>
+                {
+                    b.Navigation("ReceiptMaterials");
+                });
+
+            modelBuilder.Entity("E3_BarrocIntens.Data.Classes.WorkReceipt", b =>
+                {
+                    b.Navigation("ReceiptMaterials");
                 });
 #pragma warning restore 612, 618
         }

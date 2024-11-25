@@ -6,20 +6,21 @@ using System.Threading.Tasks;
 
 namespace E3_BarrocIntens.Data.Classes
 {
-    internal class Material
+    internal class WorkReceipt
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
 
+        public int Id { get; set; }
+        public string Description { get; set; }
         public ICollection<ReceiptMaterial> ReceiptMaterials { get; set; }
-        public Material(int id, string name, string description)
+
+        public WorkReceipt(int id, string description)
         {
             Id = id;
-            Name = name;
             Description = description;
         }
 
-
+        public WorkReceipt(string description) {
+            Description = description;
+        }
     }
 }
