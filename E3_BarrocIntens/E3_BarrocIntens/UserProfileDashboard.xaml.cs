@@ -12,58 +12,96 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using System.Diagnostics;
-using E3_BarrocIntens.Data;
+using MimeKit;
 using E3_BarrocIntens.Data.Classes;
-using Microsoft.EntityFrameworkCore;
+using E3_BarrocIntens.Data;
+using E3_BarrocIntens.Modules;
+
+// To learn more about WinUI, the WinUI project structure,
+// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace E3_BarrocIntens
 {
-    public sealed partial class CustomerDashboard : Page
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class UserProfileDashboard : Page
     {
-        public CustomerDashboard()
+        public UserProfileDashboard()
         {
-            this.InitializeComponent(); // Initialize the components on the page.
-            ShowInvoices();
-            ShowOrders();
-            ShowContracts();
-        }
+            this.InitializeComponent();
 
-        public void ShowOrders()
-        {
-            using (var db = new AppDbContext())
-            {
-                // Query to filter orders by the specified status
-                var filteredOrders = db.Orders
-                                       .Where(o => o.IsDelivered == false)
-                                       .ToList();
-                OrderListview.ItemsSource = filteredOrders;
+            // Fill fields with user data
+            User user = Session.Instance.User;
+            if (user != null){
+                UsernameTextBox.Text = user.Username;
             }
         }
 
-        public void ShowInvoices()
+        private void ChangePasswordButton_Click(object sender, RoutedEventArgs e)
         {
+            // Edge cases
+            User user = Session.Instance.User;
+            if (user == null)
+                return;
+
+            string password = PasswordBox.Password;
+            if (string.IsNullOrEmpty(password))
+                return;
+
+            // Update user password
+            user.Password = PasswordHasher.HashPassword(password);
+
+            // Save user
             using (var db = new AppDbContext())
             {
-                var invoices = db.Invoices.ToList();
-
-                InvoiceListView.ItemsSource = invoices;
+                db.Users.Update(user);
+                db.SaveChanges();
             }
+
+            // Notify user of change
+            Notify("Password changed", "Your password has been successfully updated!");
         }
 
-        public void ShowContracts()
+        private void ChangeUsernameButton_Click(object sender, RoutedEventArgs e)
         {
+            // Edge cases
+            User user = Session.Instance.User;
+            if (user == null)
+                return;
+
+            string username = UsernameTextBox.Text;
+            if (string.IsNullOrEmpty(username))
+                return;
+
+            // Update user name
+            user.Username = username;
+
+            // Save user
             using (var db = new AppDbContext())
             {
-                var contracts = db.LeaseContracts.Include(leaseContract => leaseContract.Product).ToList();
-
-                leaseContractLv.ItemsSource = contracts;
+                db.Users.Update(user);
+                db.SaveChanges();
             }
+
+            // Notify user of change
+            Notify("Username changed", "Your display name has been successfully updated!");
+        }
+
+        private async void Notify(string title, string message)
+        {
+            ContentDialog dialog = new()
+            {
+                Title = title,
+                Content = message,
+                CloseButtonText = "OK",
+                XamlRoot = this.XamlRoot
+            };
+            await dialog.ShowAsync();
         }
 
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBox comboBox = sender as ComboBox; // Get the ComboBox that triggered the event.
             HandleSelection(); // Process the selected item.
         }
 
@@ -97,28 +135,11 @@ namespace E3_BarrocIntens
                     case "Maintenance":
                         this.Frame.Navigate(typeof(MaintenanceDashboard)); // Navigate to MaintenanceDashboard.
                         break;
-                    case "CreateRequest":
-                        this.Frame.Navigate(typeof(MaintenanceCreate));
-                        optionsMenu.Visibility = Visibility.Collapsed;
+                    case "Customer":
+                        this.Frame.Navigate(typeof(CustomerDashboard)); // Navigate to CustomerDashboard.
                         break;
                 }
             }
-        }
-        
-        private void UserProfileButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(UserProfileDashboard)); // Navigate to UserProfileDashboard.
-        }
-        
-        private void createLeaseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(CreateLease)); // Navigate to the CreateLease page.
-        }
-
-        private void showLeaseBtn_Click(object sender, RoutedEventArgs e)
-        {
-            LeaseContract leaseContract = (sender as Button).CommandParameter as LeaseContract;
-            this.Frame.Navigate(typeof(ViewLease), leaseContract.Id);
         }
     }
 }

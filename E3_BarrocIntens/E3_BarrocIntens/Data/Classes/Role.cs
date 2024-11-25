@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E3_BarrocIntens.Data.Classes
+namespace E3_BarrocIntens.Data
 {
     internal class Role
     {

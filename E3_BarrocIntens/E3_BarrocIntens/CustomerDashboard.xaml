@@ -58,7 +58,9 @@
 
             <!-- Profile icon button on the right side -->
             <StackPanel HorizontalAlignment="Right" Margin="0,0,20,0" Orientation="Horizontal" Grid.Column="2">
-                <Button Background="Transparent">
+                <Button x:Name="UserProfileButton"
+                        Background="Transparent"
+                        Click="UserProfileButton_Click">
                     <Image Source="Assets\1487716857-user_81635-3428194618.png"></Image>
                 </Button>
             </StackPanel>
