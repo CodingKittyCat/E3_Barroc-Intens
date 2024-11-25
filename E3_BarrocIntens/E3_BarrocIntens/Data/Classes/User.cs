@@ -17,4 +17,3 @@ namespace E3_BarrocIntens.Data
         public bool IsFirstLogin { get; set; } = true;
     }
 }
-
