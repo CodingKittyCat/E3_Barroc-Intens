@@ -27,6 +27,7 @@ namespace E3_BarrocIntens
             using (var db = new AppDbContext())
             {
                 customerLv.ItemsSource = db.Users.Where(user => user.Role.RoleName == "Customer").ToList();
+                quotesLv.ItemsSource = db.Quotes.ToList();
             }
         }
 
@@ -84,6 +85,17 @@ namespace E3_BarrocIntens
         {
             User selectedUser = (sender as Button).CommandParameter as User;
             this.Frame.Navigate(typeof(AddNotesDashboard), selectedUser);
+        }
+
+        private void quotesLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Quote quote = quotesLv.SelectedItem as Quote;
+            if (quote == null)
+            {
+                return;
+            }
+
+            this.Frame.Navigate(typeof(CustomerQuoteDashboard), quote);
         }
     }
 }

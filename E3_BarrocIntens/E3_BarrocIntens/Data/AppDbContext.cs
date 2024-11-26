@@ -23,6 +23,7 @@ namespace E3_BarrocIntens.Data
         public DbSet <UserNote> UserNotes { get; set; }
         public DbSet<MaintenanceRequest> maintenanceRequests { get; set; }
         public DbSet<LeaseContract> LeaseContracts { get; set; }
+        public DbSet<Quote> Quotes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -84,8 +85,9 @@ namespace E3_BarrocIntens.Data
                 new User
                 {
                     Id = 1,
-                    Name = "Customer User",
-                    Username = "customer",
+                    Name = "Customer User1",
+                    Username = "customer1",
+                    Email = "D295372@edu.curio.nl",
                     Password = BCrypt.Net.BCrypt.HashPassword("123"),
                     RoleId = 4,
                     IsFirstLogin = true
@@ -93,43 +95,68 @@ namespace E3_BarrocIntens.Data
                 new User
                 {
                     Id = 2,
+                    Name = "Customer User2",
+                    Username = "customer2",
+                    Email = "customer2@example.com",
+                    Password = BCrypt.Net.BCrypt.HashPassword("123"),
+                    RoleId = 4,
+                    IsFirstLogin = true
+                },
+                new User
+                {
+                    Id = 3,
+                    Name = "Customer User3",
+                    Username = "customer3",
+                    Email = "customer3@example.com",
+                    Password = BCrypt.Net.BCrypt.HashPassword("123"),
+                    RoleId = 4,
+                    IsFirstLogin = true
+                },
+                new User
+                {
+                    Id = 4,
                     Name = "Finance User",
                     Username = "finance",
+                    Email = "finance@example.com",
                     Password = BCrypt.Net.BCrypt.HashPassword("123"),
                     RoleId = 2,
                     IsFirstLogin = true
                 },
                 new User
                 {
-                    Id = 3,
+                    Id = 5,
                     Name = "Sales User",
                     Username = "sales",
+                    Email = "sales@example.com",
                     Password = BCrypt.Net.BCrypt.HashPassword("123"),
                     RoleId = 3,
                     IsFirstLogin = true
                 },
                 new User
                 {
-                    Id = 4,
+                    Id = 6,
                     Name = "Maintenance User",
                     Username = "maintenance",
+                    Email = "maintenance@example.com",
                     Password = BCrypt.Net.BCrypt.HashPassword("123"),
                     RoleId = 1,
                     IsFirstLogin = true
                 },
                 new User
                 {
-                    Id = 5,
+                    Id = 7,
                     Name = "George Cassel",
                     Username = "georgecassel",
+                    Email = "georgecassel@example.com",
                     Password = BCrypt.Net.BCrypt.HashPassword("123"),
                     RoleId = 1,
                     IsFirstLogin = true
                 },
                 new User
                 {
-                    Id = 6,
+                    Id = 8,
                     Name = "Stan Baker",
+                    Email = "stanbaker@example.com",
                     Username = "stanbaker",
                     Password = BCrypt.Net.BCrypt.HashPassword("123"),
                     RoleId = 1,
@@ -215,6 +242,35 @@ namespace E3_BarrocIntens.Data
                 }
             );
 
+            modelBuilder.Entity<Quote>().HasData(
+                new Quote
+                {
+                    Id = 1,
+                    CustomerId = 1,
+                    QuoteDate = DateTime.Now,
+                    ExpirationDate = DateTime.Now.AddDays(30),
+                    TotalAmount = 1000,
+                    Status = "Pending"
+                },
+                new Quote
+                {
+                    Id = 2,
+                    CustomerId = 2,
+                    QuoteDate = DateTime.Now,
+                    ExpirationDate = DateTime.Now.AddDays(30),
+                    TotalAmount = 2000,
+                    Status = "Pending"
+                },
+                new Quote
+                {
+                    Id = 3,
+                    CustomerId = 3,
+                    QuoteDate = DateTime.Now,
+                    ExpirationDate = DateTime.Now.AddDays(30),
+                    TotalAmount = 3000,
+                    Status = "Pending"
+                }
+            );
         }
     }
 }
