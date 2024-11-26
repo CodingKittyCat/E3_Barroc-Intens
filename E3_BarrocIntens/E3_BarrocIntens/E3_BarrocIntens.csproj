@@ -21,6 +21,7 @@
     <None Remove="BlankWindow1.xaml" />
     <None Remove="CreateLease.xaml" />
     <None Remove="CustomerDashboard.xaml" />
+    <None Remove="CustomerQuoteDashboard.xaml" />
     <None Remove="DefaultTheme.xaml" />
     <None Remove="EditLease.xaml" />
     <None Remove="FinanceDashboard.xaml" />
@@ -155,9 +156,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
 
   <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
@@ -167,4 +165,10 @@
     <WindowsSdkPackageVersion>10.0.19041.38</WindowsSdkPackageVersion>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Page Update="CustomerQuoteDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
 </Project>
