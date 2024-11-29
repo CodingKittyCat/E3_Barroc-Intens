@@ -17,15 +17,24 @@
     <Content Remove="Assets\Logo1_klein.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="AddWorkerPage.xaml" />
     <None Remove="BlankWindow1.xaml" />
+    <None Remove="CreateLease.xaml" />
     <None Remove="CustomerDashboard.xaml" />
+    <None Remove="CustomerQuoteDashboard.xaml" />
     <None Remove="DefaultTheme.xaml" />
+    <None Remove="EditLease.xaml" />
     <None Remove="FinanceDashboard.xaml" />
     <None Remove="fonts\BigShouldersDisplay-Black.ttf" />
+    <None Remove="MaintenanceCreate.xaml" />
     <None Remove="MaintenanceDashboard.xaml" />
+    <None Remove="PlanRequestDashboard.xaml" />
     <None Remove="PurchasingDashboard.xaml" />
+    <None Remove="RescheduleRequestDashboard.xaml" />
     <None Remove="SalesDashboard.xaml" />
     <None Remove="UserProfileDashboard.xaml" />
+    <None Remove="ViewDateDashboard.xaml" />
+    <None Remove="ViewLease.xaml" />
     <None Remove="WelcomeDashboard.xaml" />
   </ItemGroup>
 
@@ -64,6 +73,54 @@
 
   <ItemGroup>
     <Page Update="UserProfileDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="RescheduleRequestDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="AddWorkerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="ViewDateDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="PlanRequestDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="EditLease.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="MaintenanceCreate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="ViewLease.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="CreateLease.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -108,4 +165,10 @@
     <WindowsSdkPackageVersion>10.0.19041.38</WindowsSdkPackageVersion>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Page Update="CustomerQuoteDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
 </Project>

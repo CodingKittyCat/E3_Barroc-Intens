@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:E3_BarrocIntens"
-    xmlns:localModel="using:E3_BarrocIntens.Model"
+    xmlns:localModel="using:E3_BarrocIntens.Data.Classes"
     xmlns:localData="using:E3_BarrocIntens.Data"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -35,6 +35,7 @@
                 <ComboBoxItem>Finance</ComboBoxItem>
                 <ComboBoxItem>Customer</ComboBoxItem>
                 <ComboBoxItem>Maintenance</ComboBoxItem>
+                <ComboBoxItem>CreateRequest</ComboBoxItem>
             </ComboBox>
 
             <Image Margin="0,7,0,7" HorizontalAlignment="Center" Source="Assets\Logo1_klein.jpg" Grid.Column="1"/>

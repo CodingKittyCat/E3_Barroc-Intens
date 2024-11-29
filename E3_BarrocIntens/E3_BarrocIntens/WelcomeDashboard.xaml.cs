@@ -1,3 +1,4 @@
+using E3_BarrocIntens.Data.Classes;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -23,7 +24,13 @@ namespace E3_BarrocIntens
         public WelcomeDashboard()
         {
             this.InitializeComponent(); // Initialize the page components.
+            if (Session.Instance.User != null)
+            {
+                welcomeMessage.Text = Session.Instance.User.Name;
+            }
+
         }
+        
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
@@ -69,6 +76,10 @@ namespace E3_BarrocIntens
                         break;
                     case "Maintenance":
                         this.Frame.Navigate(typeof(MaintenanceDashboard)); // Navigate to MaintenanceDashboard.
+                        break;
+                    case "CreateRequest":
+                        this.Frame.Navigate(typeof(MaintenanceCreate));
+                        optionsMenu.Visibility = Visibility.Collapsed;
                         break;
                 }
             }

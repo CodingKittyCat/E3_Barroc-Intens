@@ -43,6 +43,7 @@
                 <ComboBoxItem>Customer</ComboBoxItem>
                 <ComboBoxItem>Purchasing</ComboBoxItem>
                 <ComboBoxItem>Maintenance</ComboBoxItem>
+                <ComboBoxItem>CreateRequest</ComboBoxItem>
                 <ComboBoxItem>Back</ComboBoxItem>
             </ComboBox>
 

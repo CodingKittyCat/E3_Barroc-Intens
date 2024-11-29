@@ -23,6 +23,7 @@
 - **Fields**: Use camelCase or an underscore prefix (`_`) for private fields (e.g., `_isRunning`, `isInitialized`).
 - **Events**: Use the past tense with PascalCase for event names (e.g., `DataLoaded`, `ButtonClicked`).
 - **XAML Elements**: Name UI elements consistently, using PascalCase and adding their type (e.g., `SubmitButton`, `UserNameTextBox`).
+- **Element Events**: Element event names consist of the Element Name and Event Name, split by an underscore (e.g., `Button1_Click`).
 
 ## 2. Binding and Data Context
 - Use `{Binding PropertyName}` for binding syntax.
