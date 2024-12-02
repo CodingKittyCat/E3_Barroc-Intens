@@ -91,6 +91,52 @@ namespace E3_BarrocIntens
             Debug.WriteLine(searchResult); // Log the search result (duplicate).
         }
 
+        private async void setToClosed_Click(object sender, RoutedEventArgs e)
+        {
+            //return;
+            using (var db = new AppDbContext())
+            {
+                // Load maintenance workers to select from
+                var requests = db.maintenanceRequests
+                    .Where(mr => mr.IsClosed == false)
+                    .ToList();
+
+                AppointmentNameTextBox.ItemsSource = requests;
+                AppointmentNameTextBox.DisplayMemberPath = "Description"; // Display user name in ListBox
+                AppointmentNameTextBox.SelectedValuePath = "Id"; // Use user ID as selected value
+            }
+
+      
+
+                var result = await SetAppointmentToClosedDialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                // Get selected worker ID
+                int selectedRequestId = (int)AppointmentNameTextBox.SelectedValue;
+
+                using (var db = new AppDbContext())
+                {
+                    // Load the selected user
+                    var selectedRequest = db.maintenanceRequests.FirstOrDefault(mr => mr.Id == selectedRequestId);
+
+                    if (selectedRequest != null)
+                    {
+                        // Update the MaintenanceRequest with the selected user
+                        selectedRequest.IsClosed = true;
+
+                        db.maintenanceRequests.Attach(selectedRequest);
+                        db.Entry(selectedRequest).Property(mr => mr.IsClosed).IsModified = true;
+
+                        await db.SaveChangesAsync();
+                    }
+                }
+
+                // Refresh the list to display updated data
+                ShowOpenRequests();
+                ShowClosedRequests();
+            }
+        }
+
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox comboBox = sender as ComboBox; // Cast sender to ComboBox.
