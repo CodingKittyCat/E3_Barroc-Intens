@@ -15,6 +15,7 @@ using Microsoft.UI.Xaml.Navigation;
 using System.Diagnostics;
 using E3_BarrocIntens.Data;
 using E3_BarrocIntens.Data.Classes;
+using System.Collections;
 
 namespace E3_BarrocIntens
 {
@@ -96,6 +97,11 @@ namespace E3_BarrocIntens
             }
 
             this.Frame.Navigate(typeof(CustomerQuoteDashboard), quote);
+        }
+
+        private void AddCustomerButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CreateCustomerDashboard));
         }
     }
 }
