@@ -28,7 +28,6 @@ namespace E3_BarrocIntens
                 using (var db = new AppDbContext())
                 {
                     plannedDates = db.maintenanceRequests
-                        .Where(mr => mr.User.Id == Session.Instance.User.Id)
                         .GroupBy(mr => mr.PlannedDateTime.Value.Date) // Group by date to handle duplicates
                         .ToDictionary(
                             group => group.Key,                          // Use the date as the key
