@@ -18,14 +18,5 @@ namespace E3_BarrocIntens.Modules
         {
             return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
         }
-
-        public static string GenerateRandomString(int length)
-        {
-            // generate random string for strong password
-            Random random = new();
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
-        }
     }
 }
