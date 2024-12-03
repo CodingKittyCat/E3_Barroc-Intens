@@ -55,6 +55,17 @@ namespace E3_BarrocIntens
                 Error("Please enter a name for the customer.");
                 return;
             }
+
+            // check if username already exists
+            using (var db = new AppDbContext())
+            {
+                if (db.Users.Any(u => u.Username.ToLower() == CustomerUsernameBox.Text.ToLower()))
+                {
+                    Error("Username already exists.");
+                    return;
+                }
+            }
+
             if (string.IsNullOrEmpty(CustomerUsernameBox.Text))
             {
                 Error("Please enter a username for the customer.");

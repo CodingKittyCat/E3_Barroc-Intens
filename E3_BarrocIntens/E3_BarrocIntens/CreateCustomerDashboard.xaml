@@ -39,7 +39,7 @@
 
             <!-- ComboBox for navigation options -->
             <ComboBox x:Name="optionsMenu" SelectionChanged="optionsMenu_SelectionChanged"  
-              DropDownClosed="optionsMenu_DropDownClosed_1" Margin="20,0,0,0" 
+              DropDownClosed="optionsMenu_DropDownClosed" Margin="20,0,0,0" 
               VerticalAlignment="Center" Background="White" Foreground="Black" 
               PlaceholderForeground="Black" PlaceholderText="Open this select menu" 
               Grid.Column="0">
