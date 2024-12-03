@@ -108,8 +108,17 @@ namespace E3_BarrocIntens
                 Title = productTitle.Text,
                 Description = productDescription.Text,
                 Stock = int.Parse(productStock.Text),
-                Status = productStatus.SelectionBoxItem.ToString()
             };
+
+            if (product.Stock >= 5000)
+            {
+                ShowNotification("This order will have to be approved by an administrator\nfor having more than 5000 orders.");
+                product.Status = "Pending Approval";
+            }
+            else
+            {
+                product.Status = productStatus.SelectionBoxItem.ToString();
+            }
 
             // save product
             using (var db = new AppDbContext())
@@ -132,7 +141,17 @@ namespace E3_BarrocIntens
             _selectedProduct.Title = productTitle.Text;
             _selectedProduct.Description = productDescription.Text;
             _selectedProduct.Stock = int.Parse(productStock.Text);
-            _selectedProduct.Status = productStatus.SelectionBoxItem.ToString();
+
+
+            if (_selectedProduct.Stock >= 5000)
+            {
+                ShowNotification("This order will have to be approved by an administrator\nfor having more than 5000 orders.");
+                _selectedProduct.Status = "Pending Approval";
+            }
+            else
+            {
+                _selectedProduct.Status = productStatus.SelectionBoxItem.ToString();
+            }
 
             // save product
             using (var db = new AppDbContext())
@@ -170,6 +189,19 @@ namespace E3_BarrocIntens
         private void RedirectToPurchasingDashboard()
         {
             this.Frame.Navigate(typeof(PurchasingDashboard), 3); // Navigate to PurchasingDashboard.
+        }
+
+        private async void ShowNotification(string message)
+        {
+            var errorDialog = new ContentDialog
+            {
+                Title = "Attention",
+                Content = message,
+                CloseButtonText = "Ok",
+                XamlRoot = this.XamlRoot
+            };
+
+            await errorDialog.ShowAsync();
         }
     }
 }

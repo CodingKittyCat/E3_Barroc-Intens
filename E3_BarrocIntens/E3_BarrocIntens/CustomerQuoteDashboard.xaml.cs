@@ -119,6 +119,7 @@ namespace E3_BarrocIntens
                 // save changes to database
                 db.Quotes.Update(quote);
                 db.SaveChanges();
+                this.Frame.Navigate(typeof(SalesDashboard));
             }
         }
 
