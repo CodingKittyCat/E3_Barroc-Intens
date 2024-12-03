@@ -166,6 +166,16 @@ namespace E3_BarrocIntens.Data
                 new User
                 {
                     Id = 9,
+                    Name = "Dhr. Maintenance",
+                    Email = "d295372@edu.curio.nl", // martijn mail
+                    Username = "headmaintenance",
+                    Password = BCrypt.Net.BCrypt.HashPassword("123"),
+                    RoleId = 1,
+                    IsFirstLogin = true
+                },
+                new User
+                {
+                    Id = 10,
                     Name = "Admin",
                     Email = "admin@barrocintens.com",
                     Username = "admin",
