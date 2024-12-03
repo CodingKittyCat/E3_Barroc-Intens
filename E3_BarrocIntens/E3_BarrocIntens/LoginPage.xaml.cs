@@ -76,6 +76,7 @@ namespace E3_BarrocIntens
                     }
                 }
 
+
                 // Route to the appropriate dashboard based on the user's role
                 Frame.Navigate(user.Role.RoleName switch
                 {
@@ -83,6 +84,7 @@ namespace E3_BarrocIntens
                     "Finance" => typeof(FinanceDashboard),
                     "Sales" => typeof(SalesDashboard),
                     "Maintenance" => typeof(MaintenanceDashboard),
+                    "Admin" => typeof(AdminDashboard),
                     _ => throw new InvalidOperationException("Role not recognized.")
                 });
             }
