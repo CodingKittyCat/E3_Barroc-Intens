@@ -16,6 +16,7 @@ using System.Diagnostics;
 using E3_BarrocIntens.Data;
 using E3_BarrocIntens.Data.Classes;
 using System.Collections;
+using System.Threading.Tasks;
 
 namespace E3_BarrocIntens
 {
@@ -142,7 +143,7 @@ namespace E3_BarrocIntens
         {
             this.Frame.Navigate(typeof(CreateCustomerDashboard));
         }
-        
+
         private async void RemoveQuoteButton_Click(object sender, RoutedEventArgs e)
         {
             // Get the selected Quote using the sender button's CommandParameter.
@@ -171,9 +172,8 @@ namespace E3_BarrocIntens
                             db.Quotes.Remove(quoteToDelete);
                             await db.SaveChangesAsync();
 
-                            // Refresh the quotes list
-                            customerLv.ItemsSource = db.Users.Where(user => user.Role.RoleName == "Customer").ToList();
-                            quotesLv.ItemsSource = db.Quotes.ToList();
+                            // Refresh all of the sales lists
+                            RefreshLists();
                         }
                     }
                 }
@@ -181,6 +181,53 @@ namespace E3_BarrocIntens
             else
             {
                 Debug.WriteLine("No quote selected or CommandParameter is missing.");
+            }
+        }
+
+        private async void deleteCustomerButton_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDialog deleteDialog = new ContentDialog
+            {
+                Title = "Delete User",
+                Content = "Are you sure you want to delete this user?",
+                PrimaryButtonText = "Delete",
+                CloseButtonText = "Cancel",
+                XamlRoot = this.XamlRoot
+            };
+
+            // Await the result of the dialog
+            var result = await deleteDialog.ShowAsync();
+            if (result != ContentDialogResult.Primary)
+                return;
+
+            // Parse user from the sender as Button
+            Button button = sender as Button;
+            if (button?.DataContext is User selectedUser)
+            {
+                using (var db = new AppDbContext())
+                {
+                    // Find the user to delete
+                    var userToDelete = db.Users.Find(selectedUser.Id);
+                    if (userToDelete != null)
+                    {
+                        // Remove the user from the database
+                        db.Users.Remove(userToDelete);
+                        await db.SaveChangesAsync();
+
+                        // Refresh the sales lists
+                        RefreshLists();
+                    }
+                }
+            }
+        }
+
+        private void RefreshLists()
+        {
+            // Refresh the customers & quotes list by querying the database
+            using (var db = new AppDbContext())
+            {
+                customerLv.ItemsSource = db.Users.Where(user => user.Role.RoleName == "Customer").ToList();
+                quotesLv.ItemsSource = db.Quotes.ToList();
             }
         }
     }

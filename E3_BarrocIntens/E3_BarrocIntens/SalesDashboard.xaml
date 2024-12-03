@@ -249,7 +249,15 @@
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock Grid.Column="0" Text="{x:Bind Id}" FontSize="20" HorizontalAlignment="Center" Margin="-22, 0, 0, 0"/>
                                                 <TextBlock Grid.Column="1" Text="{x:Bind Name}" FontSize="20" HorizontalAlignment="Center"/>
-                                                <Button Grid.Column="2" Content="View Notes" x:Name="addNotesButton" Click="addNotesButton_Click" HorizontalAlignment="Center" Margin="0, 0, -20, 0" CommandParameter="{Binding}"/>
+                                                <!-- Customer Action Buttons -->
+                                                <Grid Grid.Column="2">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="1*"/>
+                                                        <ColumnDefinition Width="1*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Button Grid.Column="0" Content="View Notes" x:Name="addNotesButton" Click="addNotesButton_Click" HorizontalAlignment="Center" Margin="0, 0, -20, 0" CommandParameter="{Binding}"/>
+                                                    <Button Grid.Column="1" Content="Delete" x:Name="deleteCustomerButton" Click="deleteCustomerButton_Click" HorizontalAlignment="Center" Margin="0, 0, -20, 0" CommandParameter="{Binding}"/>
+                                                </Grid>
                                             </Grid>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
