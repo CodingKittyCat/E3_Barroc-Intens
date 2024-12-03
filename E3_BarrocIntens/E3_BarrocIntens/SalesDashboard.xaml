@@ -211,7 +211,7 @@
                     <!-- Customers section -->
                     <Grid Background="Black" Grid.Column="1" Margin="5,5,5,0">
                         <TextBlock HorizontalAlignment="Center" Foreground="White">CUSTOMERS</TextBlock>
-                        <Button x:Name="AddCustomerButton" Background="White" BorderBrush="Black" BorderThickness="3" Width="100" Height="40" HorizontalAlignment="Right" Click="AddCustomerButton_Click">ADD CUSTOMER</Button>
+                        <Button Background="White" BorderBrush="Black" BorderThickness="3" Width="100" Height="40" HorizontalAlignment="Right">ADD CUSTOMER</Button>
                         <Button Background="White" BorderBrush="Black" BorderThickness="3" Width="100" Height="40" HorizontalAlignment="Left">DATABASE</Button>
                     </Grid>
 

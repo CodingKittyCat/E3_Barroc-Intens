@@ -20,7 +20,6 @@
     <None Remove="AddWorkerPage.xaml" />
     <None Remove="AdminDashboard.xaml" />
     <None Remove="BlankWindow1.xaml" />
-    <None Remove="CreateCustomerDashboard.xaml" />
     <None Remove="CreateLease.xaml" />
     <None Remove="CustomerDashboard.xaml" />
     <None Remove="CustomerQuoteDashboard.xaml" />

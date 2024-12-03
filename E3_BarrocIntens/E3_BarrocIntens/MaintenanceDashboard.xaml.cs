@@ -14,6 +14,7 @@ using Windows.Storage;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using Microsoft.UI.Xaml.Media;
+using E3_BarrocIntens.Modules;
 
 namespace E3_BarrocIntens
 {
@@ -28,7 +29,7 @@ namespace E3_BarrocIntens
                 using (var db = new AppDbContext())
                 {
                     plannedDates = db.maintenanceRequests
-                        .Where(mr => mr.User.Id == Session.Instance.User.Id)
+                        .Where(mr => mr.PlannedDateTime != null)
                         .GroupBy(mr => mr.PlannedDateTime.Value.Date) // Group by date to handle duplicates
                         .ToDictionary(
                             group => group.Key,                          // Use the date as the key
@@ -291,6 +292,28 @@ namespace E3_BarrocIntens
                     db.Entry(selectedMaintenance).Property(m => m.WorkReceiptId).IsModified = true;
 
                     await db.SaveChangesAsync(); // Save all changes to the database
+
+                    // Email head of maintenance with the work receipt
+                    string email = db.Users.FirstOrDefault(u => u.Username == "headmaintenance").Email;
+                    if (email != null)
+                    {
+                        // Get the email subject
+                        string emailSubject = $"Maintenance Work Receipt #{workReceipt.Id}";
+
+                        // Create the email body
+                        string emailBody = $"The work receipt for the maintenance request #{selectedMaintenance.Id} has been created.\n\n";
+                        emailBody += $"Description: {workReceipt.Description}\n\n";
+                        emailBody += "Materials used:\n";
+
+                        // Get the materials used in the work receipt
+                        foreach (var receiptMaterial in db.ReceiptMaterials.Where(rm => rm.ReceiptId == workReceipt.Id).Include(rm => rm.Material))
+                        {
+                            emailBody += $"- {receiptMaterial.Material.Name}: {receiptMaterial.Quantity}x\n";
+                        }
+
+                        // send email to head of maintenance
+                        new QuoteGenerator().SendEmail(email, emailSubject, emailBody);
+                    }
                 }
 
                 // Refresh the list to display updated data

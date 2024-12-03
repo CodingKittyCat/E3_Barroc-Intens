@@ -52,7 +52,6 @@ namespace E3_BarrocIntens
                 {
                     db.maintenanceRequests.Attach(maintenanceRequest);
                     maintenanceRequest.PlannedDateTime = requestDate;
-                    maintenanceRequest.UserId = Session.Instance.User.Id;
                     db.SaveChanges();
                 }
                 this.Frame.Navigate(typeof(ViewDateDashboard), requestDate);
