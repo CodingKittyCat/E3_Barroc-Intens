@@ -68,11 +68,12 @@ namespace E3_BarrocIntens
             productTitle.Text = product.Title;
             productDescription.Text = product.Description;
             productStock.Text = product.Stock.ToString();
-            productStatus.SelectedValue = product.Status;
         }
 
         private void HandleMaterial(Material material)
         {
+            productStockLabel.Text = "Quantity:";
+            AddButton.Content = "Order Material";
             ShowAddMode();
 
             // Fill fields (adjust based on Material properties)
@@ -92,7 +93,6 @@ namespace E3_BarrocIntens
             productTitle.Text = string.Empty;
             productDescription.Text = string.Empty;
             productStock.Text = string.Empty;
-            productStatus.SelectedValue = null;
         }
 
         private void ShowEditMode()
@@ -123,12 +123,6 @@ namespace E3_BarrocIntens
                 ShowError("Enter a valid stock amount!");
                 return false;
             }
-            if (productStatus.SelectedItem == null)
-            {
-                ShowError("Select a status!");
-                return false;
-            }
-
             return true;
         }
 
@@ -147,7 +141,7 @@ namespace E3_BarrocIntens
                         Title = productTitle.Text,
                         Description = productDescription.Text,
                         Stock = int.Parse(productStock.Text),
-                        Status = productStatus.SelectionBoxItem.ToString()
+                        Status = "Pending"
                     };
                     db.Products.Add(product);
                 }
@@ -182,7 +176,6 @@ namespace E3_BarrocIntens
                     product.Title = productTitle.Text;
                     product.Description = productDescription.Text;
                     product.Stock = int.Parse(productStock.Text);
-                    product.Status = productStatus.SelectionBoxItem.ToString();
                     db.Products.Update(product);
                 }
                 else if (_selectedItem is Material material)
