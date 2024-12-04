@@ -27,6 +27,7 @@ namespace E3_BarrocIntens
             ShowInvoices();
             ShowOrders();
             ShowContracts();
+            ShowProducts();
         }
 
         public void ShowOrders()
@@ -61,6 +62,15 @@ namespace E3_BarrocIntens
             }
         }
 
+        public void ShowProducts()
+        {
+            using (var db = new AppDbContext())
+            {
+                var products = db.Products.ToList();
+                ProductListView.ItemsSource = products;
+            }
+
+        }
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox comboBox = sender as ComboBox; // Get the ComboBox that triggered the event.
