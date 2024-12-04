@@ -190,7 +190,7 @@
 
                 <!-- Placeholder for Products content -->
                 <Grid Grid.Row="3" Grid.Column="1">
-                    <Border BorderBrush="Black" BorderThickness="2">
+                    <Border BorderBrush="Black" BorderThickness="2" Margin="5,0,5,0">
                         <Grid>
                             <!-- Define Rows for Header and Content -->
                             <Grid.RowDefinitions>
