@@ -10,6 +10,16 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Background="White">
+        <Button x:Name="BackButton" Content="⟵ Back"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="20"
+            Width="100"
+            Height="40"
+            Background="White"
+            BorderBrush="Black"
+            BorderThickness="2"
+            Click="BackButton_Click"/>
         <Border Grid.Row="1" Margin="20" BorderBrush="Black" BorderThickness="2">
             <Grid>
                 <Grid.RowDefinitions>
@@ -44,15 +54,6 @@
                         <TextBox x:Name="productStock" Width="100" Height="30" PlaceholderText="Enter stock quantity" />
                     </StackPanel>
 
-                    <!-- Status -->
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                        <TextBlock Text="Status:" Width="150" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="productStatus" Width="150" Height="30">
-                            <ComboBoxItem Content="Delivered"/>
-                            <ComboBoxItem Content="On The Way"/>
-                        </ComboBox>
-                    </StackPanel>
-
                     <!-- Add Button -->
                     <Button x:Name="AddButton" 
                             Content="Add Product" 
@@ -75,18 +76,6 @@
                             Margin="0,20,0,0"
                             Visibility="Collapsed"
                             Click="EditButton_Click"/>
-
-                    <!-- Delete Button -->
-                    <Button x:Name="DeleteButton" 
-                            Content="Delete Product" 
-                            Width="150" 
-                            HorizontalAlignment="Center" 
-                            Background="White" 
-                            BorderBrush="Black" 
-                            BorderThickness="2" 
-                            Margin="0,20,0,0"
-                            Visibility="Collapsed"
-                            Click="DeleteButton_Click"/>
 
                     <TextBlock x:Name="ErrorTextblock"
                                Foreground="Red"

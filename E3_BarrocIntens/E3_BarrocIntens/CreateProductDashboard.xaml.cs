@@ -48,20 +48,17 @@ namespace E3_BarrocIntens
                     // toggle buttons
                     AddButton.Visibility = Visibility.Collapsed;
                     EditButton.Visibility = Visibility.Visible;
-                    DeleteButton.Visibility = Visibility.Visible;
 
                     // Fill fields
                     productTitle.Text = _selectedProduct.Title;
                     productDescription.Text = _selectedProduct.Description;
                     productStock.Text = _selectedProduct.Stock.ToString();
-                    productStatus.SelectedValue = _selectedProduct.Status;
                 }
                 else
                 {
                     // toggle buttons
                     AddButton.Visibility = Visibility.Visible;
                     EditButton.Visibility = Visibility.Collapsed;
-                    DeleteButton.Visibility = Visibility.Collapsed;
                 }
             }
         }
@@ -86,12 +83,6 @@ namespace E3_BarrocIntens
                 Error("Enter a valid stock amount!");
                 return false;
             }
-            else if (productStatus.SelectedItem == null)
-            {
-                Error("Select a status!");
-                return false;
-            }
-
             return true;
         }
 
@@ -108,7 +99,6 @@ namespace E3_BarrocIntens
                 Title = productTitle.Text,
                 Description = productDescription.Text,
                 Stock = int.Parse(productStock.Text),
-                Status = productStatus.SelectionBoxItem.ToString()
             };
 
             // save product
@@ -132,7 +122,6 @@ namespace E3_BarrocIntens
             _selectedProduct.Title = productTitle.Text;
             _selectedProduct.Description = productDescription.Text;
             _selectedProduct.Stock = int.Parse(productStock.Text);
-            _selectedProduct.Status = productStatus.SelectionBoxItem.ToString();
 
             // save product
             using (var db = new AppDbContext())
@@ -149,27 +138,14 @@ namespace E3_BarrocIntens
             ErrorTextblock.Text = message;
             ErrorTextblock.Visibility = Visibility.Visible;
         }
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_selectedProduct == null)
-            {
-                return;
-            }
-
-            // delete product
-            using (var db = new AppDbContext())
-            {
-                db.Products.Remove(_selectedProduct);
-                db.SaveChanges();
-            }
-
-            RedirectToPurchasingDashboard();
-        }
-
         private void RedirectToPurchasingDashboard()
         {
             this.Frame.Navigate(typeof(PurchasingDashboard), 3); // Navigate to PurchasingDashboard.
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(PurchasingDashboard));
         }
     }
 }
