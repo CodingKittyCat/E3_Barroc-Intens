@@ -1,5 +1,6 @@
 using E3_BarrocIntens.Data;
 using E3_BarrocIntens.Data.Classes;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -28,6 +29,7 @@ namespace E3_BarrocIntens
             {
                 ProductListView.ItemsSource = db.Products.ToList(); // Set the product list view items source to the product ids.
             }
+            LoadWorkReceipts();
         }
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
@@ -102,5 +104,42 @@ namespace E3_BarrocIntens
         {
             this.Frame.Navigate(typeof(CreateProductDashboard)); // Navigate to CreateProductDashboard.
         }
+
+
+        private void LoadWorkReceipts()
+        {
+            using (var db = new AppDbContext())
+            {
+                var usedMaterials = db.Materials
+                .Include(m => m.ReceiptMaterials)
+                .ThenInclude(m => m.WorkReceipt)
+                .ToList();
+
+                DateTime fifteenDaysAgo = DateTime.Now.AddDays(-15);
+
+                var recentlyUsedMaterials = usedMaterials
+                .Where(m => m.TotalQuantity > 0 && m.Stock < 100)
+                .Where(m => m.ReceiptMaterials
+                .Any(rm => rm.WorkReceipt.ReceiptDate >= fifteenDaysAgo))
+                .ToList();
+
+                UsedProductsListView.ItemsSource = recentlyUsedMaterials;
+            }
+        }
+
+        private void searchButton4_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OrderProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            var selectedItem = clickedButton?.Tag as Material;
+
+            // Pass both the Material Id and the type (either "Product" or "Material")
+            this.Frame.Navigate(typeof(CreateProductDashboard), new Tuple<int, string>(selectedItem?.Id ?? 0, "Material"));
+        }
+
     }
 }
