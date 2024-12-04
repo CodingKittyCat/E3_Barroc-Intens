@@ -212,8 +212,11 @@ namespace E3_BarrocIntens
             if (result == ContentDialogResult.Primary)
             {
                 // STEP 1: Create and save the WorkReceipt
-                WorkReceipt workReceipt = new WorkReceipt(DescriptionTextBox.Text);
-
+                WorkReceipt workReceipt = new WorkReceipt
+                (
+                    DescriptionTextBox.Text,
+                    DateTime.Now
+                );
                 using (var db = new AppDbContext())
                 {
                     db.WorkReceipts.Add(workReceipt);
@@ -250,6 +253,11 @@ namespace E3_BarrocIntens
                 // Refresh the list to display updated data
                 ShowClosedRequests();
             }
+        }
+
+        private void SendNotificationPurchasing()
+        {
+
         }
         
         private DateTime selectedDate;
