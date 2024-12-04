@@ -13,7 +13,6 @@
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.12*" MinHeight="50"/>
-            <RowDefinition Height="0.4*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -52,7 +51,7 @@
         <Border Grid.Row="1" Margin="20" BorderBrush="Black" BorderThickness="2">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.4*"/>
+                    <RowDefinition Height="0.1*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
@@ -121,40 +120,6 @@
                     </ListView>
                 </Border>
 
-            </Grid>
-        </Border>
-
-
-        <!-- Appointments Section -->
-        <Border Grid.Row="2" Margin="20" BorderBrush="Black" BorderThickness="2">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <!-- Appointments Title and Add Button -->
-                <Grid Background="Black" Padding="10">
-                    <TextBlock Text="APPOINTMENTS" HorizontalAlignment="Center" Foreground="White" FontSize="16"/>
-                    <Button Content="ADD APPOINTMENT" Background="White" BorderBrush="Black" BorderThickness="2" Width="200" HorizontalAlignment="Right"/>
-
-                    <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
-                        <TextBox x:Name="searchBar3" Width="200" Height="30" PlaceholderText="SEARCH" Background="White" 
-                             PlaceholderForeground="Black" Foreground="Black" HorizontalAlignment="Center"/>
-                        <Button x:Name="searchButton3" Click="searchButton2_Click" Height="35" Background="White" Margin="5,0,0,0">
-                            <Image Source="Assets\1485477207-magnifier_78608.jpg"/>
-                        </Button>
-                        <Button Width="50" Background="Transparent">
-                            <Image VerticalAlignment="Center" HorizontalAlignment="Right" Height="40" Source="Assets\MichelImage1.png"/>
-
-                        </Button>
-                    </StackPanel>
-                </Grid>
-
-                <!-- Placeholder for Appointment List -->
-                <Border Grid.Row="1" Margin="0" BorderBrush="Black" BorderThickness="1" Background="White" >
-                    <!-- Appointment list content will go here -->
-                </Border>
             </Grid>
         </Border>
     </Grid>
