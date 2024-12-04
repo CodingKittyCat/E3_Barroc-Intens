@@ -12,32 +12,33 @@
 
     <!-- Main container for page content -->
     <Grid Background="White">
-        <!-- Define row structure -->
+        <!-- Row structure -->
         <Grid.RowDefinitions>
             <RowDefinition Height="0.12*" MinHeight="50"/>
             <!-- Top navigation bar -->
             <RowDefinition Height="0.4*"/>
-            <!-- Orders and Contracts section -->
+            <!-- Orders and Contracts -->
             <RowDefinition Height="*"/>
+            <!-- Products and Invoices -->
         </Grid.RowDefinitions>
 
-        <!-- Define a single column for the main layout structure -->
+        <!-- Column structure -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <!-- Top navigation bar -->
+        <!-- Top Navigation Bar -->
         <Grid Background="Black">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <!-- ComboBox section -->
+                <!-- ComboBox Section -->
                 <ColumnDefinition Width="*"/>
-                <!-- Logo section -->
+                <!-- Logo Section -->
                 <ColumnDefinition Width="*"/>
-                <!-- Profile icon section -->
+                <!-- Profile Section -->
             </Grid.ColumnDefinitions>
 
-            <!-- ComboBox for navigation options -->
+            <!-- ComboBox -->
             <ComboBox x:Name="optionsMenu" SelectionChanged="optionsMenu_SelectionChanged" 
                       DropDownClosed="optionsMenu_DropDownClosed" Margin="20,0,0,0" 
                       VerticalAlignment="Center" Background="White" Foreground="Black" 
@@ -52,46 +53,69 @@
                 <ComboBoxItem>CreateRequest</ComboBoxItem>
             </ComboBox>
 
-            <!-- Logo in the center of the navigation bar -->
+            <!-- Logo -->
             <Image Margin="0,7,0,7" HorizontalAlignment="Center" 
                    Source="Assets\Logo1_klein.jpg" Grid.Column="1"/>
 
-            <!-- Profile icon button on the right side -->
+            <!-- Profile Button -->
             <StackPanel HorizontalAlignment="Right" Margin="0,0,20,0" Orientation="Horizontal" Grid.Column="2">
-                <Button x:Name="UserProfileButton"
-                        Background="Transparent"
-                        Click="UserProfileButton_Click">
-                    <Image Source="Assets\1487716857-user_81635-3428194618.png"></Image>
+                <Button x:Name="UserProfileButton" Background="Transparent" Click="UserProfileButton_Click">
+                    <Image Source="Assets\1487716857-user_81635-3428194618.png"/>
                 </Button>
             </StackPanel>
         </Grid>
 
-        <!-- Orders and Contracts section -->
+        <!-- Orders and Contracts Section -->
         <Border Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="2" Background="White">
             <Grid Margin="0,10,0,0">
+                <!-- Column definitions -->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
+                    <!-- Orders -->
                     <ColumnDefinition Width="*"/>
+                    <!-- Contracts -->
                 </Grid.ColumnDefinitions>
 
+                <!-- Row definitions -->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.1*"/>
+                    <!-- Headers -->
                     <RowDefinition Height="*"/>
+                    <!-- Content -->
                     <RowDefinition Height="0.1*"/>
+                    <!-- Headers -->
                     <RowDefinition Height="*"/>
+                    <!-- Content -->
                 </Grid.RowDefinitions>
 
-                <!-- Orders title bar -->
+                <!-- Orders Header -->
                 <Grid Background="Black" Margin="5,5,5,0" Grid.Column="0" Grid.Row="0">
                     <TextBlock HorizontalAlignment="Center" Foreground="White">ORDERS</TextBlock>
                 </Grid>
 
-
-                <!-- Placeholder for Orders content -->
+                <!-- Orders Content -->
                 <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0">
-                    <!-- Orders content can be added here -->
+                    <ListView x:Name="OrderListview">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="localData:Order">
+                                <Grid ColumnSpacing="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.25*"/>
+                                        <ColumnDefinition Width="0.25*"/>
+                                        <ColumnDefinition Width="0.1*"/>
+                                        <ColumnDefinition Width="0.25*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock HorizontalAlignment="Left" Text="{x:Bind Name}"/>
+                                    <TextBlock TextAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Text="{x:Bind Description}"/>
+                                    <TextBlock HorizontalAlignment="Right" Grid.Column="2" Text="{x:Bind Amount}"/>
+                                    <TextBlock HorizontalAlignment="Center" Grid.Column="3" Text="{x:Bind Status}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </Border>
-                <!-- Contracts title bar -->
+
+                <!-- Contracts Header -->
                 <Grid Background="Black" Grid.Column="1" Margin="5,5,5,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -102,13 +126,15 @@
                     <Button HorizontalAlignment="Right" Content="CREATE" Grid.Column="2" x:Name="createLeaseButton" Click="createLeaseButton_Click"/>
                 </Grid>
 
-                <!-- Placeholder for Contracts content -->
+                <!-- Contracts Content -->
                 <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1" Grid.Column="1" Margin="5,0,5,0">
                     <ScrollViewer>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
+                                <!-- Header -->
                                 <RowDefinition Height="Auto"/>
+                                <!-- Content -->
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
                                 <Grid.ColumnDefinitions>
@@ -118,7 +144,6 @@
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
-
                                 <TextBlock Grid.Column="0" Text="ID" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
                                 <TextBlock Grid.Column="1" Text="PRODUCT" FontSize="20" HorizontalAlignment="Center" TextAlignment="Center" FontWeight="Bold"/>
                                 <TextBlock Grid.Column="2" Text="START DATE" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
@@ -136,14 +161,11 @@
                                                 <ColumnDefinition Width="1*"/>
                                                 <ColumnDefinition Width="1*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"/>
-                                            </Grid.RowDefinitions>
                                             <TextBlock Grid.Column="0" Text="{x:Bind Id}" FontSize="20" HorizontalAlignment="Center" TextAlignment="Center" Margin="0, 0, 25, 0"/>
                                             <TextBlock Grid.Column="1" Text="{x:Bind Product.Title}" FontSize="20" HorizontalAlignment="Center" TextAlignment="Center" Margin="0, 0, 15, 0"/>
                                             <TextBlock Grid.Column="2" Text="{x:Bind Date_Created}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                             <TextBlock Grid.Column="3" Text="{x:Bind End_Date}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            <Button Grid.Column="4" Content="SHOW" FontSize="20" HorizontalAlignment="Center" Margin="20, 0, 0, 0"  CommandParameter="{Binding}" x:Name="showLeaseBtn" Click="showLeaseBtn_Click"/>
+                                            <Button Grid.Column="4" Content="SHOW" FontSize="20" HorizontalAlignment="Center" Margin="20, 0, 0, 0" CommandParameter="{Binding}" x:Name="showLeaseBtn" Click="showLeaseBtn_Click"/>
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -152,101 +174,46 @@
                     </ScrollViewer>
                 </Border>
 
-                <!-- Invoices title bar -->
-                <Grid Background="Black" Margin="5,5,5,0" Grid.Row="2" Grid.ColumnSpan="1">
-                    <TextBlock HorizontalAlignment="Center" Foreground="White">INVOICES</TextBlock>
-                </Grid>
-
-
-                <!-- Placeholder for Orders content -->
-                <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1" Margin="5,0,5,0">
-                    <!-- Orders list or content can be added here -->
-                    <ListView x:Name="OrderListview">
-                        <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="localData:Order" >
-                                <Grid ColumnSpacing="1">
-
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.25*"/>
-                                        <ColumnDefinition Width="0.25*"/>
-                                        <ColumnDefinition Width="0.1*"/>
-                                        <ColumnDefinition Width="0.25*"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock HorizontalAlignment = "Left" Text="{x:Bind Name}"/>
-                                    <TextBlock TextAlignment="Center" HorizontalAlignment ="Center"  Grid.Column="1" Text="{x:Bind Description}"/>
-                                    <TextBlock HorizontalAlignment = "Right" Grid.Column="2" Text="{x:Bind Amount}"/>
-                                    <TextBlock HorizontalAlignment = "Center" Grid.Column="3" Text="{x:Bind Status}"/>
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Border>
-
-
-                <Grid Background="Black" Margin="5,5,5,0" Grid.Column="1" Grid.Row="2">
+                <!-- Products Header -->
+                <Grid Background="Black" Margin="5,5,5,0" Grid.Row="2" Grid.Column="1">
                     <TextBlock HorizontalAlignment="Center" Foreground="White">PRODUCTS</TextBlock>
                 </Grid>
 
-                <!-- Placeholder for Products content -->
+                <!-- Products Content -->
                 <Grid Grid.Row="3" Grid.Column="1">
                     <Border BorderBrush="Black" BorderThickness="2" Margin="5,0,5,0">
-                        <Grid>
-                            <!-- Define Rows for Header and Content -->
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <!-- Header Row -->
-                                <RowDefinition Height="*"/>
-                                <!-- Content Row -->
-                            </Grid.RowDefinitions>
-
-                            <!-- Header Row -->
-                            <Grid Grid.Row="0" Height="50" Margin="0,0,0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="ID" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                                <TextBlock Grid.Column="1" Text="TITLE" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"  FontWeight="Bold"/>
-                                <TextBlock Grid.Column="2" Text="DESCRIPTION" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"  FontWeight="Bold"/>
-                                <TextBlock Grid.Column="3" Text="STOCK" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"  FontWeight="Bold"/>
-                                <TextBlock Grid.Column="4" Text="STATUS" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"  FontWeight="Bold"/>
-                            </Grid>
-
-                            <!-- Content Row -->
-                            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                                <ListView x:Name="ProductListView">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate x:DataType="localData:Product">
-                                            <Grid Margin="5" ColumnSpacing="10">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="1*"/>
-                                                    <ColumnDefinition Width="1*"/>
-                                                    <ColumnDefinition Width="1*"/>
-                                                    <ColumnDefinition Width="1*"/>
-                                                    <ColumnDefinition Width="1*"/>
-                                                </Grid.ColumnDefinitions>
-                                                <TextBlock Grid.Column="0" Text="{x:Bind Id}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                <TextBlock Grid.Column="1" Text="{x:Bind Title}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWholeWords"/>
-                                                <TextBlock Grid.Column="2" Text="{x:Bind Description}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWholeWords"/>
-                                                <TextBlock Grid.Column="3" Text="{x:Bind Stock}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                <TextBlock Grid.Column="4" Text="{x:Bind Status}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                            </ScrollViewer>
-                        </Grid>
+                        <ScrollViewer>
+                            <ListView x:Name="ProductListView">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="localData:Product">
+                                        <Grid ColumnSpacing="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{x:Bind Id}" HorizontalAlignment="Center"/>
+                                            <TextBlock Grid.Column="1" Text="{x:Bind Title}" HorizontalAlignment="Center"/>
+                                            <TextBlock Grid.Column="2" Text="{x:Bind Description}" HorizontalAlignment="Center"/>
+                                            <TextBlock Grid.Column="3" Text="{x:Bind Stock}" HorizontalAlignment="Center"/>
+                                            <TextBlock Grid.Column="4" Text="{x:Bind Status}" HorizontalAlignment="Center"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </ScrollViewer>
                     </Border>
                 </Grid>
 
+                <!-- Invoices Header -->
+                <Grid Background="Black" Margin="5,5,5,0" Grid.Row="2" Grid.Column="0">
+                    <TextBlock HorizontalAlignment="Center" Foreground="White">INVOICES</TextBlock>
+                </Grid>
 
-                <!-- Placeholder for Invoices content, spanning the full width -->
-                <Grid BorderBrush="Black" BorderThickness="2" Grid.Row="3" Grid.ColumnSpan="1" Margin="5,0,5,0">
-                    <!-- Invoices content can be added here -->
+                <!-- Invoices Content -->
+                <Grid BorderBrush="Black" BorderThickness="2" Grid.Row="3" Grid.Column="0" Margin="5,0,5,0">
                     <ListView x:Name="InvoiceListView">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="localData:Invoice">
@@ -258,19 +225,16 @@
                                         <ColumnDefinition Width="0.25*"/>
                                         <ColumnDefinition Width="0.25*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock HorizontalAlignment = "Left" Text="{x:Bind Id}"/>
-                                    <TextBlock TextAlignment="Center" HorizontalAlignment ="Center"  Grid.Column="1" Text="{x:Bind InvoiceDateToString}"/>
-                                    <TextBlock HorizontalAlignment = "Right" Grid.Column="2" Text="{x:Bind DueDateToString}"/>
-                                    <TextBlock HorizontalAlignment = "Center" Grid.Column="3" Text="{x:Bind TotalAmount}"/>
-                                    <TextBlock HorizontalAlignment = "Center" Grid.Column="4" Text="{x:Bind IsPayed}"/>
+                                    <TextBlock HorizontalAlignment="Left" Text="{x:Bind Id}"/>
+                                    <TextBlock TextAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Text="{x:Bind InvoiceDateToString}"/>
+                                    <TextBlock HorizontalAlignment="Right" Grid.Column="2" Text="{x:Bind DueDateToString}"/>
+                                    <TextBlock HorizontalAlignment="Center" Grid.Column="3" Text="{x:Bind TotalAmount}"/>
+                                    <TextBlock HorizontalAlignment="Center" Grid.Column="4" Text="{x:Bind IsPayed}"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
                 </Grid>
-                
-                
-
             </Grid>
         </Border>
     </Grid>
