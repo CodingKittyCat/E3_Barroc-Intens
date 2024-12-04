@@ -82,7 +82,6 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <!-- Title row -->
-                    <RowDefinition Height="*"/>
                     <!-- Content area row -->
                 </Grid.RowDefinitions>
 
@@ -113,7 +112,7 @@
 
                     <!-- Placeholder for Invoices content -->
                     <Border BorderBrush="Black" BorderThickness="2" Grid.Row="2" Margin="5,0,5,0">
-                      
+
 
                     </Border>
 
@@ -177,42 +176,6 @@
 
                     </Border>
                 </Grid>
-
-                <!-- Additional section for financial summary -->
-                <Border Grid.ColumnSpan="2" Grid.Row="2" Margin="20,20,20,20">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <!-- Yearly balance column -->
-                            <!-- Balance column -->
-                            <ColumnDefinition Width="*"/>
-                            <!-- Monthly balance column -->
-                        </Grid.ColumnDefinitions>
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.1*"/>
-                            <!-- Title row -->
-                            <RowDefinition Height="*"/>
-                            <!-- Content area row -->
-                        </Grid.RowDefinitions>
-
-                        <!-- Financial summary titles -->
-                        <Grid HorizontalAlignment="Stretch" Background="Black" Grid.ColumnSpan="3">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Margin="5,0,0,0" Grid.Column="0" Grid.ColumnSpan="3" Foreground="White">YEARLY</TextBlock>
-                            <TextBlock Grid.Column="1" Foreground="White" HorizontalAlignment="Center">BALANCE</TextBlock>
-                            <TextBlock Margin="0,0,5,0" Grid.Column="2" Grid.ColumnSpan="1" Foreground="White">MONTHLY</TextBlock>
-                        </Grid>
-
-                        <!-- Borders for financial summary areas -->
-                        <Border Margin="0,0,3,3" Grid.Row="2" Background="White" BorderBrush="Black" BorderThickness="2"/>
-                        <Border Margin="0,0,0,3" Grid.Row="2" Grid.Column="2" Background="White" BorderBrush="Black" BorderThickness="2"/>
-                    </Grid>
-                </Border>
             </Grid>
         </Border>
     </Grid>
