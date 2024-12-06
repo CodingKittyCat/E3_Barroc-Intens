@@ -26,7 +26,8 @@ namespace E3_BarrocIntens
 
             using (var db = new AppDbContext())
             {
-                ProductListView.ItemsSource = db.Products.ToList(); // Set the product list view items source to the product ids.
+                ProductListView.ItemsSource = db.Products
+                    .ToList(); // Set the product list view items source to the product ids.
             }
         }
         private void searchButton_Click(object sender, RoutedEventArgs e)

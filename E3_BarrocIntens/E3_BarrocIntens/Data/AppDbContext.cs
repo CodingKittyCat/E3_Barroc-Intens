@@ -78,7 +78,8 @@ namespace E3_BarrocIntens.Data
                 new Role { Id = 1, RoleName = "Maintenance" },
                 new Role { Id = 2, RoleName = "Finance" },
                 new Role { Id = 3, RoleName = "Sales" },
-                new Role { Id = 4, RoleName = "Customer"}
+                new Role { Id = 4, RoleName = "Customer"},
+                new Role { Id = 99, RoleName = "Admin" }
             );
 
             modelBuilder.Entity<User>().HasData(
@@ -161,6 +162,26 @@ namespace E3_BarrocIntens.Data
                     Password = BCrypt.Net.BCrypt.HashPassword("123"),
                     RoleId = 1,
                     IsFirstLogin = true
+                },
+                new User
+                {
+                    Id = 9,
+                    Name = "Dhr. Maintenance",
+                    Email = "d295372@edu.curio.nl", // martijn mail
+                    Username = "headmaintenance",
+                    Password = BCrypt.Net.BCrypt.HashPassword("123"),
+                    RoleId = 1,
+                    IsFirstLogin = true
+                },
+                new User
+                {
+                    Id = 10,
+                    Name = "Admin",
+                    Email = "admin@barrocintens.com",
+                    Username = "admin",
+                    Password = BCrypt.Net.BCrypt.HashPassword("123"),
+                    RoleId = 99,
+                    IsFirstLogin = false
                 }
             );
 

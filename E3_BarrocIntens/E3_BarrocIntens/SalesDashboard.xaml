@@ -95,34 +95,118 @@
                     <!-- Quotes section -->
                     <Grid Background="Black" Margin="5,5,5,0">
                         <TextBlock HorizontalAlignment="Center" Foreground="White">QUOTES</TextBlock>
-                        <Button Background="White" BorderBrush="Black" BorderThickness="3" Width="100" HorizontalAlignment="Right">ADD QUOTE</Button>
+                        <Button Background="White" BorderBrush="Black" Click="AddQuoteButton_Click" BorderThickness="3" Width="100" HorizontalAlignment="Right">ADD QUOTE</Button>
                     </Grid>
 
+
                     <Border BorderBrush="Black" BorderThickness="2" Grid.Row="2" Margin="5,0,5,0">
-                        <ScrollView>
-                            <ListView x:Name="quotesLv"
-                                      SelectionChanged="quotesLv_SelectionChanged">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate x:DataType="localData:Quote">
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
-                                                <ColumnDefinition Width="1*"/>
-                                                <ColumnDefinition Width="1*"/>
-                                                <ColumnDefinition Width="1*"/>
-                                                <ColumnDefinition Width="1*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0" Text="{x:Bind Id}" FontSize="20" HorizontalAlignment="Center" Margin="-22, 0, 0, 0"/>
-                                            <TextBlock Grid.Column="1" Text="{x:Bind Customer.Name}" FontSize="20" HorizontalAlignment="Center"/>
-                                            <TextBlock Grid.Column="2" Text="{x:Bind TotalAmount}" FontSize="20" HorizontalAlignment="Center"/>
-                                            <TextBlock Grid.Column="3" Text="{x:Bind ExpirationDate}" FontSize="20" HorizontalAlignment="Center"/>
-                                            <TextBlock Grid.Column="4" Text="{x:Bind Status}" FontSize="20" HorizontalAlignment="Center"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </ScrollView>
+                        <!-- Use a container for the headers and ListView -->
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <!-- Header row -->
+                                <RowDefinition Height="*"/>
+                                <!-- ListView row -->
+                            </Grid.RowDefinitions>
+
+                            <!-- Header Row -->
+                            <Grid Grid.Row="0" Padding="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <!-- Delete button -->
+                                    <ColumnDefinition Width="2*"/>
+                                    <!-- ID -->
+                                    <ColumnDefinition Width="3*"/>
+                                    <!-- Customer Name -->
+                                    <ColumnDefinition Width="2*"/>
+                                    <!-- Total Amount -->
+                                    <ColumnDefinition Width="3*"/>
+                                    <!-- Expiration Date -->
+                                    <ColumnDefinition Width="2*"/>
+                                    <!-- Status -->
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="Actions" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="ID" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="2" Text="Customer Name" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="3" Text="Total Amount" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="4" Text="Expiration Date" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="5" Text="Status" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <!-- Scrollable ListView -->
+                            <ScrollViewer Grid.Row="1">
+                                <ListView x:Name="quotesLv" SelectionChanged="quotesLv_SelectionChanged">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate x:DataType="localData:Quote">
+                                            <Grid>
+                                                <!-- Proportional column widths -->
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="2*"/>
+                                                    <ColumnDefinition Width="3*"/>
+                                                    <ColumnDefinition Width="2*"/>
+                                                    <ColumnDefinition Width="3*"/>
+                                                    <ColumnDefinition Width="2*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- Delete button -->
+                                                <Button Grid.Column="0"
+                                    Content="Delete"
+                                    FontSize="16"
+                                    HorizontalAlignment="Center"
+                                    Click="RemoveQuoteButton_Click"
+                                    CommandParameter="{Binding}" />
+
+                                                <!-- ID -->
+                                                <TextBlock Grid.Column="1"
+                                       Text="{x:Bind Id}"
+                                       FontSize="16"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       TextWrapping="Wrap" />
+
+                                                <!-- Customer Name -->
+                                                <TextBlock Grid.Column="2"
+                                       Text="{x:Bind Customer.Name}"
+                                       FontSize="16"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       TextWrapping="Wrap" />
+
+                                                <!-- Total Amount -->
+                                                <TextBlock Grid.Column="3"
+                                       Text="{x:Bind TotalAmount}"
+                                       FontSize="16"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       TextWrapping="Wrap" />
+
+                                                <!-- Expiration Date -->
+                                                <TextBlock Grid.Column="4"
+                                       Text="{x:Bind ExpirationDate}"
+                                       FontSize="16"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       TextWrapping="Wrap" />
+
+                                                <!-- Status -->
+                                                <TextBlock Grid.Column="5"
+                                       Text="{x:Bind Status}"
+                                       FontSize="16"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       TextWrapping="Wrap" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </ScrollViewer>
+                        </Grid>
                     </Border>
+
+
+
 
                     <!-- Customers section -->
                     <Grid Background="Black" Grid.Column="1" Margin="5,5,5,0">
@@ -165,7 +249,15 @@
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock Grid.Column="0" Text="{x:Bind Id}" FontSize="20" HorizontalAlignment="Center" Margin="-22, 0, 0, 0"/>
                                                 <TextBlock Grid.Column="1" Text="{x:Bind Name}" FontSize="20" HorizontalAlignment="Center"/>
-                                                <Button Grid.Column="2" Content="View Notes" x:Name="addNotesButton" Click="addNotesButton_Click" HorizontalAlignment="Center" Margin="0, 0, -20, 0" CommandParameter="{Binding}"/>
+                                                <!-- Customer Action Buttons -->
+                                                <Grid Grid.Column="2">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="1*"/>
+                                                        <ColumnDefinition Width="1*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Button Grid.Column="0" Content="View Notes" x:Name="addNotesButton" Click="addNotesButton_Click" HorizontalAlignment="Center" Margin="0, 0, -20, 0" CommandParameter="{Binding}"/>
+                                                    <Button Grid.Column="1" Content="Delete" x:Name="deleteCustomerButton" Click="deleteCustomerButton_Click" HorizontalAlignment="Center" Margin="0, 0, -20, 0" CommandParameter="{Binding}"/>
+                                                </Grid>
                                             </Grid>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
@@ -207,5 +299,40 @@
                 </Border>
             </Grid>
         </Border>
+
+        <ContentDialog x:Name="AddQuoteDialog" Title="Add Quote" PrimaryButtonText="Add" SecondaryButtonText="Cancel">
+
+            <StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Select a Customer" />
+                    <ListBox x:Name="CustomerListbox" Margin="0,0,0,10"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Quote Date" />
+                    <DatePicker x:Name="QuoteDatePicker" />
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Quote Expiration Date" />
+                    <DatePicker x:Name="QuoteExpirationDatePicker" />
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Select a Product" />
+                    <NumberBox x:Name="QuoteTotalAmountBox"
+                                Header="Total Amount"
+                                PlaceholderText="Enter the total amount of the quote" />
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Select a Payment Method" />
+                    <TextBox x:Name="QuoteStatusBox"
+                        PlaceholderText="Enter the status of the quote" />
+                </StackPanel>
+            </StackPanel>
+
+        </ContentDialog>
+
     </Grid>
 </Page>

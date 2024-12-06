@@ -132,40 +132,48 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
-                                <!-- Header -->
-                                <RowDefinition Height="Auto"/>
-                                <!-- Content -->
+                                <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Grid Grid.Row="0">
+
+                            <!-- Header -->
+                            <Grid Grid.Row="0" Margin="5,5,5,5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="ID" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
-                                <TextBlock Grid.Column="1" Text="PRODUCT" FontSize="20" HorizontalAlignment="Center" TextAlignment="Center" FontWeight="Bold"/>
-                                <TextBlock Grid.Column="2" Text="START DATE" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
-                                <TextBlock Grid.Column="3" Text="END DATE" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
-                                <TextBlock Grid.Column="4" Text="ACTIONS" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+
+                                <TextBlock Grid.Column="0" Text="ID" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="1" Text="PRODUCT" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="2" Text="START DATE" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="3" Text="END DATE" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="4" Text="ACTIONS" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                             </Grid>
-                            <ListView x:Name="leaseContractLv" Grid.Row="1">
+
+                            <!-- ListView -->
+                            <ListView x:Name="leaseContractLv" Grid.Row="1" Margin="5">
                                 <ListView.ItemTemplate>
                                     <DataTemplate x:DataType="localData:LeaseContract">
-                                        <Grid>
+                                        <Grid Margin="0,5,0,5">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="1*"/>
-                                                <ColumnDefinition Width="1*"/>
-                                                <ColumnDefinition Width="1*"/>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="1*"/>
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0" Text="{x:Bind Id}" FontSize="20" HorizontalAlignment="Center" TextAlignment="Center" Margin="0, 0, 25, 0"/>
-                                            <TextBlock Grid.Column="1" Text="{x:Bind Product.Title}" FontSize="20" HorizontalAlignment="Center" TextAlignment="Center" Margin="0, 0, 15, 0"/>
-                                            <TextBlock Grid.Column="2" Text="{x:Bind Date_Created}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            <TextBlock Grid.Column="3" Text="{x:Bind End_Date}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            <Button Grid.Column="4" Content="SHOW" FontSize="20" HorizontalAlignment="Center" Margin="20, 0, 0, 0" CommandParameter="{Binding}" x:Name="showLeaseBtn" Click="showLeaseBtn_Click"/>
+                                            
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Column="0" Text="{x:Bind Id}" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <TextBlock Grid.Column="1" Text="{x:Bind Product.Title}" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWholeWords"/>
+                                            <TextBlock Grid.Column="2" Text="{x:Bind Date_Created}" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <TextBlock Grid.Column="3" Text="{x:Bind End_Date}" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <Button Grid.Column="4" Content="SHOW" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" CommandParameter="{Binding}" x:Name="showLeaseBtn" Click="showLeaseBtn_Click" Padding="5,2"/>
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -207,8 +215,56 @@
                     </Border>
                 </Grid>
 
-                <!-- Invoices Header -->
-                <Grid Background="Black" Margin="5,5,5,0" Grid.Row="2" Grid.Column="0">
+                <!-- Placeholder for Orders content -->
+                <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1" Margin="5,0,5,0">
+                    <!-- Orders list or content -->
+                    <ListView x:Name="OrderListview" Margin="5">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="localData:Order">
+                                <Grid Margin="0,5,0,5" ColumnSpacing="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Name -->
+                                    <TextBlock Grid.Column="0" Text="{x:Bind Name}" 
+                               FontSize="14" 
+                               VerticalAlignment="Center" 
+                               Margin="5,0,5,0" 
+                               TextWrapping="WrapWholeWords"/>
+
+                                    <!-- Description -->
+                                    <TextBlock Grid.Column="1" Text="{x:Bind Description}" 
+                               FontSize="14" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" 
+                               Margin="5,0,5,0" 
+                               TextWrapping="WrapWholeWords"/>
+
+                                    <!-- Amount -->
+                                    <TextBlock Grid.Column="2" Text="{x:Bind Amount}" 
+                               FontSize="14" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" 
+                               Margin="5,0,5,0"/>
+
+                                    <!-- Status -->
+                                    <TextBlock Grid.Column="3" Text="{x:Bind Status}" 
+                               FontSize="14" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" 
+                               Margin="5,0,5,0"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Border>
+
+                <!-- Invoices title bar -->
+                <Grid Background="Black" Margin="5,5,5,0" Grid.Row="2" Grid.ColumnSpan="2">
                     <TextBlock HorizontalAlignment="Center" Foreground="White">INVOICES</TextBlock>
                 </Grid>
 
