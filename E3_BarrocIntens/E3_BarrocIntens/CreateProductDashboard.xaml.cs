@@ -58,8 +58,6 @@ namespace E3_BarrocIntens
             }
         }
 
-
-
         private void HandleProduct(Product product)
         {
             ShowEditMode();
@@ -118,11 +116,13 @@ namespace E3_BarrocIntens
                 ShowError("Product description is required!");
                 return false;
             }
+            
             if (!int.TryParse(productStock.Text, out stockAmount))
             {
                 ShowError("Enter a valid stock amount!");
                 return false;
             }
+            
             return true;
         }
 
