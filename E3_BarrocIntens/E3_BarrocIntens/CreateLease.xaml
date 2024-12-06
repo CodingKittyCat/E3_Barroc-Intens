@@ -27,6 +27,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <ComboBox Name="productCb" FontSize="35" Width="350" HorizontalAlignment="Center" Grid.Row="0" Margin="10, 30" Header="Product" DisplayMemberPath="Title"/>
                 <ComboBox Name="invoiceTypeCb" FontSize="35" Width="350" HorizontalAlignment="Center" Grid.Row="2" Margin="10, 30" Header="Invoice Type" SelectionChanged="invoiceTypeCb_SelectionChanged" SelectedIndex="0">
@@ -45,7 +46,10 @@
                 <TextBox Header="Amount of repeats" Width="350" HorizontalAlignment="Center" Grid.Row="4" FontSize="35" Margin="10, 30" x:Name="repeatTb"/>
                 <TextBox Name="priceTb" FontSize="35" Width="350" HorizontalAlignment="Center" Grid.Row="5" Margin="10, 30" Header="Price per repeat in EUR"/>
                 <CheckBox Content="BKR Check" FontSize="35" Width="350" HorizontalAlignment="Center" x:Name="bkrChb" Margin="10, 30" Grid.Row="6" />
+
+                <!-- BUTTONS -->
                 <Button Content="Create" FontSize="35" Width="Auto" x:Name="createBtn" Click="createBtn_Click" Grid.Row="7" Foreground="Black" HorizontalAlignment="Center"/>
+                <Button Content="Back" FontSize="35" Width="Auto" x:Name="backBtn" Click="backBtn_Click" Grid.Row="8" Foreground="Black" HorizontalAlignment="Center"/>
             </Grid>
         </Grid>
     </ScrollViewer>

@@ -11,16 +11,19 @@ namespace E3_BarrocIntens.Data.Classes
 
         public int Id { get; set; }
         public string Description { get; set; }
+        public DateTime ReceiptDate { get; set; }
         public ICollection<ReceiptMaterial> ReceiptMaterials { get; set; }
 
-        public WorkReceipt(int id, string description)
+        public WorkReceipt(int id, string description, DateTime receiptDate)
         {
             Id = id;
             Description = description;
+            ReceiptDate = receiptDate;
         }
 
-        public WorkReceipt(string description) {
+        public WorkReceipt(string description, DateTime receiptDate) {
             Description = description;
+            ReceiptDate = receiptDate;
         }
     }
 }

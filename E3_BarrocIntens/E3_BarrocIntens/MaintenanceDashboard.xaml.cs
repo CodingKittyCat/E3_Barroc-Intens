@@ -7,13 +7,9 @@ using E3_BarrocIntens.Data.Classes;
 using E3_BarrocIntens.Data;
 using Microsoft.UI;
 using Microsoft.EntityFrameworkCore;
-
-using E3_BarrocIntens.Data.Classes;
-using System.ComponentModel;
-using Windows.Storage;
-using System.Xml.Linq;
 using System.Collections.Generic;
 using Microsoft.UI.Xaml.Media;
+using E3_BarrocIntens.Modules;
 
 namespace E3_BarrocIntens
 {
@@ -28,6 +24,7 @@ namespace E3_BarrocIntens
                 using (var db = new AppDbContext())
                 {
                     plannedDates = db.maintenanceRequests
+                        .Where(mr => mr.PlannedDateTime != null)
                         .GroupBy(mr => mr.PlannedDateTime.Value.Date) // Group by date to handle duplicates
                         .ToDictionary(
                             group => group.Key,                          // Use the date as the key
@@ -88,6 +85,52 @@ namespace E3_BarrocIntens
         {
             string searchResult = searchBar.Text; // Get text from search bar.
             Debug.WriteLine(searchResult); // Log the search result (duplicate).
+        }
+
+        private async void setToClosed_Click(object sender, RoutedEventArgs e)
+        {
+            //return;
+            using (var db = new AppDbContext())
+            {
+                // Load maintenance workers to select from
+                var requests = db.maintenanceRequests
+                    .Where(mr => mr.IsClosed == false)
+                    .ToList();
+
+                AppointmentNameTextBox.ItemsSource = requests;
+                AppointmentNameTextBox.DisplayMemberPath = "Description"; // Display user name in ListBox
+                AppointmentNameTextBox.SelectedValuePath = "Id"; // Use user ID as selected value
+            }
+
+      
+
+                var result = await SetAppointmentToClosedDialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                // Get selected worker ID
+                int selectedRequestId = (int)AppointmentNameTextBox.SelectedValue;
+
+                using (var db = new AppDbContext())
+                {
+                    // Load the selected user
+                    var selectedRequest = db.maintenanceRequests.FirstOrDefault(mr => mr.Id == selectedRequestId);
+
+                    if (selectedRequest != null)
+                    {
+                        // Update the MaintenanceRequest with the selected user
+                        selectedRequest.IsClosed = true;
+
+                        db.maintenanceRequests.Attach(selectedRequest);
+                        db.Entry(selectedRequest).Property(mr => mr.IsClosed).IsModified = true;
+
+                        await db.SaveChangesAsync();
+                    }
+                }
+
+                // Refresh the list to display updated data
+                ShowOpenRequests();
+                ShowClosedRequests();
+            }
         }
 
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -211,8 +254,11 @@ namespace E3_BarrocIntens
             if (result == ContentDialogResult.Primary)
             {
                 // STEP 1: Create and save the WorkReceipt
-                WorkReceipt workReceipt = new WorkReceipt(DescriptionTextBox.Text);
-
+                WorkReceipt workReceipt = new WorkReceipt
+                (
+                    DescriptionTextBox.Text,
+                    DateTime.Now
+                );
                 using (var db = new AppDbContext())
                 {
                     db.WorkReceipts.Add(workReceipt);
@@ -244,11 +290,38 @@ namespace E3_BarrocIntens
                     db.Entry(selectedMaintenance).Property(m => m.WorkReceiptId).IsModified = true;
 
                     await db.SaveChangesAsync(); // Save all changes to the database
+
+                    // Email head of maintenance with the work receipt
+                    string email = db.Users.FirstOrDefault(u => u.Username == "headmaintenance").Email;
+                    if (email != null)
+                    {
+                        // Get the email subject
+                        string emailSubject = $"Maintenance Work Receipt #{workReceipt.Id}";
+
+                        // Create the email body
+                        string emailBody = $"The work receipt for the maintenance request #{selectedMaintenance.Id} has been created.\n\n";
+                        emailBody += $"Description: {workReceipt.Description}\n\n";
+                        emailBody += "Materials used:\n";
+
+                        // Get the materials used in the work receipt
+                        foreach (var receiptMaterial in db.ReceiptMaterials.Where(rm => rm.ReceiptId == workReceipt.Id).Include(rm => rm.Material))
+                        {
+                            emailBody += $"- {receiptMaterial.Material.Name}: {receiptMaterial.Quantity}x\n";
+                        }
+
+                        // send email to head of maintenance
+                        new QuoteGenerator().SendEmail(email, emailSubject, emailBody);
+                    }
                 }
 
                 // Refresh the list to display updated data
                 ShowClosedRequests();
             }
+        }
+
+        private void SendNotificationPurchasing()
+        {
+
         }
         
         private DateTime selectedDate;
