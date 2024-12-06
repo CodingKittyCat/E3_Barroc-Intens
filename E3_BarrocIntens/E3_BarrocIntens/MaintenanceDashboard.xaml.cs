@@ -7,11 +7,6 @@ using E3_BarrocIntens.Data.Classes;
 using E3_BarrocIntens.Data;
 using Microsoft.UI;
 using Microsoft.EntityFrameworkCore;
-
-using E3_BarrocIntens.Data.Classes;
-using System.ComponentModel;
-using Windows.Storage;
-using System.Xml.Linq;
 using System.Collections.Generic;
 using Microsoft.UI.Xaml.Media;
 using E3_BarrocIntens.Modules;
