@@ -87,7 +87,6 @@ namespace E3_BarrocIntens
             // Toggle buttons for adding new items
             AddButton.Visibility = Visibility.Visible;
             EditButton.Visibility = Visibility.Collapsed;
-            DeleteButton.Visibility = Visibility.Collapsed;
 
             // Clear fields
             productTitle.Text = string.Empty;
@@ -100,7 +99,6 @@ namespace E3_BarrocIntens
             // Toggle buttons for editing existing items
             AddButton.Visibility = Visibility.Collapsed;
             EditButton.Visibility = Visibility.Visible;
-            DeleteButton.Visibility = Visibility.Visible;
         }
 
         private bool ValidateFields()
@@ -123,6 +121,7 @@ namespace E3_BarrocIntens
                 ShowError("Enter a valid stock amount!");
                 return false;
             }
+            
             return true;
         }
 
@@ -130,7 +129,6 @@ namespace E3_BarrocIntens
         {
             if (!ValidateFields())
                 return;
-            }
 
             // create product
             Product product = new Product
@@ -145,25 +143,13 @@ namespace E3_BarrocIntens
                 ShowNotification("This order will have to be approved by an administrator\nfor having more than 5000 orders.");
                 product.Status = "Pending Approval";
             }
-            else
-            {
-                product.Status = productStatus.SelectionBoxItem.ToString();
-            }
 
             // save product
             using (var db = new AppDbContext())
             {
                 if (_selectedItem is Product)
                 {
-                    // Add a new product
-                    var product = new Product
-                    {
-                        Title = productTitle.Text,
-                        Description = productDescription.Text,
-                        Stock = int.Parse(productStock.Text),
-                        Status = "Pending"
-                    };
-                    db.Products.Add(product);
+
                 }
                 else if (_selectedItem is Material material)
                 {
@@ -187,23 +173,6 @@ namespace E3_BarrocIntens
         {
             if (!ValidateFields())
                 return;
-            }
-
-            // update product
-            _selectedProduct.Title = productTitle.Text;
-            _selectedProduct.Description = productDescription.Text;
-            _selectedProduct.Stock = int.Parse(productStock.Text);
-
-
-            if (_selectedProduct.Stock >= 5000)
-            {
-                ShowNotification("This order will have to be approved by an administrator\nfor having more than 5000 orders.");
-                _selectedProduct.Status = "Pending Approval";
-            }
-            else
-            {
-                _selectedProduct.Status = productStatus.SelectionBoxItem.ToString();
-            }
 
             using (var db = new AppDbContext())
             {
@@ -222,25 +191,6 @@ namespace E3_BarrocIntens
                     material.Description = productDescription.Text;
                     productStock.Text = material.TotalQuantity.ToString();
                     db.Materials.Update(material);
-                }
-
-                db.SaveChanges();
-            }
-
-            RedirectToPurchasingDashboard();
-        }
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            using (var db = new AppDbContext())
-            {
-                if (_selectedItem is Product product)
-                {
-                    db.Products.Remove(product);
-                }
-                else if (_selectedItem is Material material)
-                {
-                    db.Materials.Remove(material);
                 }
 
                 db.SaveChanges();
@@ -271,6 +221,11 @@ namespace E3_BarrocIntens
             };
 
             await errorDialog.ShowAsync();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            RedirectToPurchasingDashboard();
         }
     }
 }
