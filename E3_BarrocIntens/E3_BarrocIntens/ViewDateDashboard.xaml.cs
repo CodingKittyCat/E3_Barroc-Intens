@@ -46,7 +46,8 @@ namespace E3_BarrocIntens
             {
                 planningLv.ItemsSource = db.maintenanceRequests
                     .Include(mr => mr.Product)
-                    .Where(mr => mr.PlannedDateTime.Value.Date == selectedDate.Date && mr.UserId == Session.Instance.User.Id);
+                    .Include(mr => mr.User)
+                    .Where(mr => mr.PlannedDateTime.Value.Date == selectedDate.Date);
             }
         }
         private void editBtn_Click(object sender, RoutedEventArgs e)
@@ -60,8 +61,6 @@ namespace E3_BarrocIntens
             MaintenanceRequest maintenanceRequest = (sender as Button).CommandParameter as MaintenanceRequest;
             using (var db = new AppDbContext())
             {
-                maintenanceRequest.UserId = null;
-                maintenanceRequest.User = null;
                 maintenanceRequest.PlannedDateTime = null;
                 db.Update(maintenanceRequest);
                 db.SaveChanges();

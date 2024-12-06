@@ -130,7 +130,27 @@ namespace E3_BarrocIntens
         {
             if (!ValidateFields())
                 return;
+            }
 
+            // create product
+            Product product = new Product
+            {
+                Title = productTitle.Text,
+                Description = productDescription.Text,
+                Stock = int.Parse(productStock.Text),
+            };
+
+            if (product.Stock >= 5000)
+            {
+                ShowNotification("This order will have to be approved by an administrator\nfor having more than 5000 orders.");
+                product.Status = "Pending Approval";
+            }
+            else
+            {
+                product.Status = productStatus.SelectionBoxItem.ToString();
+            }
+
+            // save product
             using (var db = new AppDbContext())
             {
                 if (_selectedItem is Product)
@@ -167,6 +187,23 @@ namespace E3_BarrocIntens
         {
             if (!ValidateFields())
                 return;
+            }
+
+            // update product
+            _selectedProduct.Title = productTitle.Text;
+            _selectedProduct.Description = productDescription.Text;
+            _selectedProduct.Stock = int.Parse(productStock.Text);
+
+
+            if (_selectedProduct.Stock >= 5000)
+            {
+                ShowNotification("This order will have to be approved by an administrator\nfor having more than 5000 orders.");
+                _selectedProduct.Status = "Pending Approval";
+            }
+            else
+            {
+                _selectedProduct.Status = productStatus.SelectionBoxItem.ToString();
+            }
 
             using (var db = new AppDbContext())
             {
@@ -221,6 +258,19 @@ namespace E3_BarrocIntens
         private void RedirectToPurchasingDashboard()
         {
             Frame.Navigate(typeof(PurchasingDashboard), 3);
+        }
+
+        private async void ShowNotification(string message)
+        {
+            var errorDialog = new ContentDialog
+            {
+                Title = "Attention",
+                Content = message,
+                CloseButtonText = "Ok",
+                XamlRoot = this.XamlRoot
+            };
+
+            await errorDialog.ShowAsync();
         }
     }
 }
