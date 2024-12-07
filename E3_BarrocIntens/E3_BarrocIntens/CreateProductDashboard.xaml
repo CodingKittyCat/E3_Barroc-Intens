@@ -31,7 +31,7 @@
                         <TextBlock Text="Product Title:" Width="150" VerticalAlignment="Center"/>
                         <TextBox x:Name="productTitle" Width="250" PlaceholderText="Enter product title" />
                     </StackPanel>
-                    
+
                     <!-- Product Description -->
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock Text="Product Description:" Width="150" VerticalAlignment="Center"/>
@@ -44,7 +44,7 @@
                         <TextBox x:Name="productStock" Width="100"  PlaceholderText="Enter stock quantity" />
                     </StackPanel>
 
-        
+
 
                     <!-- Add Button -->
                     <Button x:Name="AddButton" 
@@ -88,6 +88,5 @@
                 </StackPanel>
             </Grid>
         </Border>
-
     </Grid>
 </Page>

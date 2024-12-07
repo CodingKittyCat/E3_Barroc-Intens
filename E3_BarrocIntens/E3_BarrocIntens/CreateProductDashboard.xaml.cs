@@ -141,7 +141,7 @@ namespace E3_BarrocIntens
                         Title = productTitle.Text,
                         Description = productDescription.Text,
                         Stock = int.Parse(productStock.Text),
-                        Status = "Pending"
+                        Status = ProductStatus.InStock
                     };
                     db.Products.Add(product);
                 }
