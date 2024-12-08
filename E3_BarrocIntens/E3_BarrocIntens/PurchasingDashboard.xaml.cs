@@ -119,5 +119,31 @@ namespace E3_BarrocIntens
             this.Frame.Navigate(typeof(CreateProductDashboard), new Tuple<int, string>(selectedItem?.Id ?? 0, "Material"));
         }
 
+
+        private void FilterBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string filter = FilterBox.Text;
+
+            FilterProducts(filter);
+        }
+
+        private void FilterProducts(string filter)
+        {
+            using (var db = new AppDbContext())
+            {
+                string lowerFilter = filter.ToLower();
+
+                var products = db.Products.ToList();
+
+                var filteredProducts = products
+                    .Where(product =>
+                      product.Title.ToLower().Contains(lowerFilter) ||
+                      product.Status.ToString().ToLower().Contains(lowerFilter))
+                    .OrderBy(product => product.Title)
+                    .ToList();
+
+                ProductListView.ItemsSource = filteredProducts;
+            }
+        }
     }
 }

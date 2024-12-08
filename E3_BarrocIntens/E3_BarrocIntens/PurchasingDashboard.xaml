@@ -65,8 +65,7 @@
 
                     <!-- Centered Search Bar -->
                     <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
-                        <TextBox x:Name="searchBar2" Width="200" Height="30" PlaceholderText="SEARCH" Background="White" 
-                         PlaceholderForeground="Black" Foreground="Black" HorizontalAlignment="Center"/>
+                        <TextBox x:Name="FilterBox" TextChanged="FilterBox_TextChanged" Width="200" Height="30" PlaceholderText="SEARCH" Background="White" PlaceholderForeground="Black" Foreground="Black" HorizontalAlignment="Center"/>
                         <Button x:Name="searchButton2" Click="searchButton2_Click" Height="35" Background="White" Margin="5,0,0,0">
                             <Image Source="Assets\1485477207-magnifier_78608.jpg"/>
                         </Button>
@@ -76,8 +75,8 @@
                     <!-- Products Title and Image -->
                     <TextBlock Grid.Column="1" Text="PRODUCTS" HorizontalAlignment="Center" Foreground="White" FontSize="16" Margin="10,0"/>
 
-                    <!-- Adjusted Add Products Button -->
-                    <Button x:Name="AddProductButton"
+                    <!-- Add Products Button -->
+                    <Button x:Name="OrderProductsButton"
                             Grid.Column="3"
                             Content="ADD PRODUCTS"
                             Background="White"
@@ -86,7 +85,7 @@
                             Width="200"
                             HorizontalAlignment="Right"
                             Padding="5,0"
-                            Click="AddProductButton_Click"/>
+                            Click="OrderProductButton_Click"/>
                 </Grid>
 
                 <!-- Placeholder for Product List -->
@@ -97,24 +96,25 @@
                         <!-- Product Item Template -->
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="localModel:Product">
-                                <Border BorderBrush="Black" BorderThickness="1" Padding="10" Margin="5">
-                                    <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Vertical">
+                                    <!-- ListView product template -->
+                                    <Grid  Margin="0,0,0,5">
 
-                                        <!-- ListView product template -->
-                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="0.2*"/>
+                                                <ColumnDefinition Width="0.4*"/>
+                                                <ColumnDefinition Width="0.4*"/>
+                                                <ColumnDefinition Width="0.4*"/>
+                                            </Grid.ColumnDefinitions>
+
                                             <!-- Product info -->
-                                            <TextBlock>
-                                                <Run Text="{Binding Title}" FontWeight="Bold" />
-                                                <Run Text="{Binding Description}" FontWeight="Bold" />
-                                                <Run Text="Stock: " FontWeight="Bold" />
-                                                <Run Text="{Binding Stock}" />
-                                                <Run Text=" | " FontWeight="Bold" />
-                                                <Run Text="{Binding Status}" FontWeight="Bold" />
-                                            </TextBlock>
-                                        </StackPanel>
-
-                                    </StackPanel>
-                                </Border>
+                                        <TextBlock Text="{Binding Title}" Grid.Column="0" FontWeight="Bold" />
+                                        <TextBlock Text="{Binding Description}" Grid.Column="1" FontWeight="Bold" />
+                                        <TextBlock Text="Stock: " Grid.Column="2" FontWeight="Bold" />
+                                        <TextBlock Text="{Binding Stock}" Margin="50,0,0,0" Grid.Column="2" />
+                                        <TextBlock  Text="{Binding Status}" Grid.Column="4" FontWeight="Bold" />
+                                    </Grid>
+                                </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

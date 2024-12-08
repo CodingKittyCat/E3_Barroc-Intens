@@ -40,6 +40,10 @@ namespace E3_BarrocIntens.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Product>()
+               .Property(p => p.Status)
+               .HasConversion<string>();
+
             WorkReceiptList workReceiptList = new WorkReceiptList();
             List<WorkReceipt> workReceipts = workReceiptList.GetWorkReceipts();
             modelBuilder.Entity<WorkReceipt>().HasData(workReceipts.ToArray());
@@ -192,7 +196,7 @@ namespace E3_BarrocIntens.Data
                     Title = "Product 1",
                     Description = "Description 1",
                     Stock = 10,
-                    Status = "Delivered"
+                    Status = ProductStatus.InStock
                 },
                 new Product
                 {
@@ -200,7 +204,7 @@ namespace E3_BarrocIntens.Data
                     Title = "Product 2",
                     Description = "Description 2",
                     Stock = 20,
-                    Status = "On The Way"
+                    Status = ProductStatus.OutOfStock
                 },
                 new Product
                 {
@@ -208,7 +212,7 @@ namespace E3_BarrocIntens.Data
                     Title = "Product 3",
                     Description = "Description 3",
                     Stock = 30,
-                    Status = "Pending"
+                    Status = ProductStatus.InStock
                 }
             );
 

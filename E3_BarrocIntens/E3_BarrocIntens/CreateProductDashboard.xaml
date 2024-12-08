@@ -54,7 +54,7 @@
                         <TextBlock x:Name="productStockLabel" Text="Stock:" Width="150" VerticalAlignment="Center"/>
                         <TextBox x:Name="productStock" Width="100"  PlaceholderText="Enter stock quantity" />
                     </StackPanel>
-
+                    
                     <!-- Add Button -->
                     <Button x:Name="AddButton" 
                             Content="Add Product" 
@@ -85,6 +85,5 @@
                 </StackPanel>
             </Grid>
         </Border>
-
     </Grid>
 </Page>
