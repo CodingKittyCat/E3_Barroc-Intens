@@ -1,31 +1,16 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using E3_BarrocIntens.Data;
 using E3_BarrocIntens.Data.Classes;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+using System.Linq;
 
 namespace E3_BarrocIntens
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class CreateProductDashboard : Page
     {
-        Product _selectedProduct;
+        private object _selectedItem;
 
         public CreateProductDashboard()
         {
@@ -36,71 +21,114 @@ namespace E3_BarrocIntens
         {
             base.OnNavigatedTo(e);
 
-            if (e.Parameter is int productId)
+            using (var db = new AppDbContext())
             {
-                using (var db = new AppDbContext())
+                if (e.Parameter is Tuple<int, string> param)
                 {
-                    _selectedProduct = db.Products.Find(productId);
-                }
+                    int itemId = param.Item1;
+                    string type = param.Item2;
 
-                if (_selectedProduct != null)
-                {
-                    // toggle buttons
-                    AddButton.Visibility = Visibility.Collapsed;
-                    EditButton.Visibility = Visibility.Visible;
-                    DeleteButton.Visibility = Visibility.Visible;
-
-                    // Fill fields
-                    productTitle.Text = _selectedProduct.Title;
-                    productDescription.Text = _selectedProduct.Description;
-                    productStock.Text = _selectedProduct.Stock.ToString();
-                    productStatus.SelectedValue = _selectedProduct.Status;
+                    if (type == "Product")
+                    {
+                        var product = db.Products.Find(itemId);
+                        if (product != null)
+                        {
+                            HandleProduct(product);
+                            _selectedItem = product;
+                        }
+                    }
+                    else if (type == "Material")
+                    {
+                        var material = db.Materials.Find(itemId);
+                        if (material != null)
+                        {
+                            HandleMaterial(material);
+                            _selectedItem = material;
+                        }
+                    }
+                    else
+                    {
+                        ShowAddMode();
+                    }
                 }
                 else
                 {
-                    // toggle buttons
-                    AddButton.Visibility = Visibility.Visible;
-                    EditButton.Visibility = Visibility.Collapsed;
-                    DeleteButton.Visibility = Visibility.Collapsed;
+                    ShowAddMode();
                 }
             }
+        }
+
+
+
+        private void HandleProduct(Product product)
+        {
+            ShowEditMode();
+
+            // Fill fields
+            productTitle.Text = product.Title;
+            productDescription.Text = product.Description;
+            productStock.Text = product.Stock.ToString();
+        }
+
+        private void HandleMaterial(Material material)
+        {
+            productStockLabel.Text = "Quantity:";
+            AddButton.Content = "Order Material";
+            ShowAddMode();
+
+            // Fill fields (adjust based on Material properties)
+            productTitle.Text = material.Name;
+            productDescription.Text = material.Description;
+            productStock.Text = material.TotalQuantity.ToString();
+        }
+
+        private void ShowAddMode()
+        {
+            // Toggle buttons for adding new items
+            AddButton.Visibility = Visibility.Visible;
+            EditButton.Visibility = Visibility.Collapsed;
+
+            // Clear fields
+            productTitle.Text = string.Empty;
+            productDescription.Text = string.Empty;
+            productStock.Text = string.Empty;
+        }
+
+        private void ShowEditMode()
+        {
+            // Toggle buttons for editing existing items
+            AddButton.Visibility = Visibility.Collapsed;
+            EditButton.Visibility = Visibility.Visible;
         }
 
         private bool ValidateFields()
         {
             int stockAmount;
 
-            // validate fields
+            // Validate fields
             if (string.IsNullOrWhiteSpace(productTitle.Text))
             {
-                Error("Product name is required!");
+                ShowError("Product name is required!");
                 return false;
             }
-            else if (string.IsNullOrWhiteSpace(productDescription.Text))
+            if (string.IsNullOrWhiteSpace(productDescription.Text))
             {
-                Error("Product description is required!");
+                ShowError("Product description is required!");
                 return false;
             }
-            else if (!int.TryParse(productStock.Text, out stockAmount))
+            if (!int.TryParse(productStock.Text, out stockAmount))
             {
-                Error("Enter a valid stock amount!");
+                ShowError("Enter a valid stock amount!");
                 return false;
             }
-            else if (productStatus.SelectedItem == null)
-            {
-                Error("Select a status!");
-                return false;
-            }
-
+            
             return true;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             if (!ValidateFields())
-            {
                 return;
-            }
 
             // create product
             Product product = new Product
@@ -115,15 +143,26 @@ namespace E3_BarrocIntens
                 ShowNotification("This order will have to be approved by an administrator\nfor having more than 5000 orders.");
                 product.Status = "Pending Approval";
             }
-            else
-            {
-                product.Status = productStatus.SelectionBoxItem.ToString();
-            }
 
             // save product
             using (var db = new AppDbContext())
             {
-                db.Products.Add(product);
+                if (_selectedItem is Product)
+                {
+
+                }
+                else if (_selectedItem is Material material)
+                {
+                    var newQuantity = int.Parse(productStock.Text);
+
+                    // Add the new quantity to the existing material's stock
+                    material.Stock += newQuantity;
+
+                    // Update the material in the database
+                    db.Materials.Update(material);
+                }
+
+                // Save changes to the database
                 db.SaveChanges();
             }
 
@@ -132,63 +171,43 @@ namespace E3_BarrocIntens
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!ValidateFields() || _selectedProduct == null)
-            {
+            if (!ValidateFields())
                 return;
-            }
 
-            // update product
-            _selectedProduct.Title = productTitle.Text;
-            _selectedProduct.Description = productDescription.Text;
-            _selectedProduct.Stock = int.Parse(productStock.Text);
-
-
-            if (_selectedProduct.Stock >= 5000)
-            {
-                ShowNotification("This order will have to be approved by an administrator\nfor having more than 5000 orders.");
-                _selectedProduct.Status = "Pending Approval";
-            }
-            else
-            {
-                _selectedProduct.Status = productStatus.SelectionBoxItem.ToString();
-            }
-
-            // save product
             using (var db = new AppDbContext())
             {
-                db.Products.Update(_selectedProduct);
+                if (_selectedItem is Product product)
+                {
+                    // Update product
+                    product.Title = productTitle.Text;
+                    product.Description = productDescription.Text;
+                    product.Stock = int.Parse(productStock.Text);
+                    db.Products.Update(product);
+                }
+                else if (_selectedItem is Material material)
+                {
+                    // Update material
+                    material.Name = productTitle.Text;
+                    material.Description = productDescription.Text;
+                    productStock.Text = material.TotalQuantity.ToString();
+                    db.Materials.Update(material);
+                }
+
                 db.SaveChanges();
             }
 
             RedirectToPurchasingDashboard();
         }
 
-        private void Error(string message)
+        private void ShowError(string message)
         {
             ErrorTextblock.Text = message;
             ErrorTextblock.Visibility = Visibility.Visible;
         }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_selectedProduct == null)
-            {
-                return;
-            }
-
-            // delete product
-            using (var db = new AppDbContext())
-            {
-                db.Products.Remove(_selectedProduct);
-                db.SaveChanges();
-            }
-
-            RedirectToPurchasingDashboard();
-        }
-
         private void RedirectToPurchasingDashboard()
         {
-            this.Frame.Navigate(typeof(PurchasingDashboard), 3); // Navigate to PurchasingDashboard.
+            Frame.Navigate(typeof(PurchasingDashboard), 3);
         }
 
         private async void ShowNotification(string message)
@@ -202,6 +221,11 @@ namespace E3_BarrocIntens
             };
 
             await errorDialog.ShowAsync();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            RedirectToPurchasingDashboard();
         }
     }
 }
