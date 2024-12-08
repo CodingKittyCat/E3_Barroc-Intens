@@ -34,7 +34,7 @@ namespace E3_BarrocIntens
         private void approveBtn_Click(object sender, RoutedEventArgs e)
         {
             Product product = (sender as Button).CommandParameter as Product;
-            product.Status = "On The Way";
+            product.Status = ProductStatus.PendingApproval;
             using (var db = new AppDbContext())
             {
                 db.Products.Update(product);
@@ -48,7 +48,7 @@ namespace E3_BarrocIntens
             using (var db = new AppDbContext())
             {
                 productsLv.ItemsSource = db.Products
-                    .Where(product => product.Status == "Pending Approval")
+                    .Where(product => product.Status == ProductStatus.PendingApproval)
                     .ToList();
             }
         }

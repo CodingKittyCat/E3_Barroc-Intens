@@ -141,7 +141,7 @@ namespace E3_BarrocIntens
             if (product.Stock >= 5000)
             {
                 ShowNotification("This order will have to be approved by an administrator\nfor having more than 5000 orders.");
-                product.Status = "Pending Approval";
+                product.Status = ProductStatus.PendingApproval;
             }
 
             // save product
@@ -150,14 +150,13 @@ namespace E3_BarrocIntens
                 if (_selectedItem is Product)
                 {
                     // Add a new product
-                    var product = new Product
+                    db.Products.Add(new Product()
                     {
                         Title = productTitle.Text,
                         Description = productDescription.Text,
                         Stock = int.Parse(productStock.Text),
                         Status = ProductStatus.InStock
-                    };
-                    db.Products.Add(product);
+                    });
                 }
                 else if (_selectedItem is Material material)
                 {
