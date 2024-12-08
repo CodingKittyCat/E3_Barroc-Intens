@@ -72,8 +72,6 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <!-- Row for Quotes and Customers -->
-                    <RowDefinition Height="*"/>
-                    <!-- Row for appointments -->
                 </Grid.RowDefinitions>
 
                 <!-- Inner grid for Quotes and Customers -->
@@ -266,37 +264,6 @@
                         </Grid>
                     </Border>
                 </Grid>
-
-                <!-- Appointments section -->
-                <Border Grid.ColumnSpan="2" Grid.Row="2" Margin="20,20,20,20">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <!-- Column for appointments title -->
-                            <ColumnDefinition Width="*"/>
-                            <!-- Column for ADD APPOINTMENT button -->
-                        </Grid.ColumnDefinitions>
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.12*"/>
-                            <!-- Header row for Appointments -->
-                            <RowDefinition Height="*"/>
-                            <!-- Content row for Appointments -->
-                        </Grid.RowDefinitions>
-
-                        <Grid HorizontalAlignment="Stretch" Background="Black" Grid.ColumnSpan="2">
-                            <TextBlock Grid.Column="1" Foreground="White" HorizontalAlignment="Center">APPOINTMENTS</TextBlock>
-                            <Button Background="White" BorderBrush="Black" BorderThickness="3" Width="200" Height="35" HorizontalAlignment="Right">ADD APPOINTMENT</Button>
-                        </Grid>
-
-                        <Border Margin="0,0,3,3" Grid.Row="2" Background="White" BorderBrush="Black" BorderThickness="2">
-                            <!-- Content for Appointments can be added here -->
-                        </Border>
-                        <Border Margin="0,0,0,3" Grid.Row="2" Grid.Column="2" Background="White" BorderBrush="Black" BorderThickness="2">
-                            <!-- Content for additional appointments can be added here -->
-                        </Border>
-                    </Grid>
-                </Border>
             </Grid>
         </Border>
 
