@@ -87,7 +87,6 @@ namespace E3_BarrocIntens
             // Toggle buttons for adding new items
             AddButton.Visibility = Visibility.Visible;
             EditButton.Visibility = Visibility.Collapsed;
-            DeleteButton.Visibility = Visibility.Collapsed;
 
             // Clear fields
             productTitle.Text = string.Empty;
@@ -100,7 +99,6 @@ namespace E3_BarrocIntens
             // Toggle buttons for editing existing items
             AddButton.Visibility = Visibility.Collapsed;
             EditButton.Visibility = Visibility.Visible;
-            DeleteButton.Visibility = Visibility.Visible;
         }
 
         private bool ValidateFields()
@@ -123,6 +121,7 @@ namespace E3_BarrocIntens
                 ShowError("Enter a valid stock amount!");
                 return false;
             }
+            
             return true;
         }
 
@@ -131,6 +130,21 @@ namespace E3_BarrocIntens
             if (!ValidateFields())
                 return;
 
+            // create product
+            Product product = new Product
+            {
+                Title = productTitle.Text,
+                Description = productDescription.Text,
+                Stock = int.Parse(productStock.Text),
+            };
+
+            if (product.Stock >= 5000)
+            {
+                ShowNotification("This order will have to be approved by an administrator\nfor having more than 5000 orders.");
+                product.Status = "Pending Approval";
+            }
+
+            // save product
             using (var db = new AppDbContext())
             {
                 if (_selectedItem is Product)
@@ -193,25 +207,6 @@ namespace E3_BarrocIntens
             RedirectToPurchasingDashboard();
         }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            using (var db = new AppDbContext())
-            {
-                if (_selectedItem is Product product)
-                {
-                    db.Products.Remove(product);
-                }
-                else if (_selectedItem is Material material)
-                {
-                    db.Materials.Remove(material);
-                }
-
-                db.SaveChanges();
-            }
-
-            RedirectToPurchasingDashboard();
-        }
-
         private void ShowError(string message)
         {
             ErrorTextblock.Text = message;
@@ -221,6 +216,24 @@ namespace E3_BarrocIntens
         private void RedirectToPurchasingDashboard()
         {
             Frame.Navigate(typeof(PurchasingDashboard), 3);
+        }
+
+        private async void ShowNotification(string message)
+        {
+            var errorDialog = new ContentDialog
+            {
+                Title = "Attention",
+                Content = message,
+                CloseButtonText = "Ok",
+                XamlRoot = this.XamlRoot
+            };
+
+            await errorDialog.ShowAsync();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            RedirectToPurchasingDashboard();
         }
     }
 }

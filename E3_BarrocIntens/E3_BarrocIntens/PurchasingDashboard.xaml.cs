@@ -27,9 +27,9 @@ namespace E3_BarrocIntens
 
             using (var db = new AppDbContext())
             {
-                ProductListView.ItemsSource = db.Products.ToList(); // Set the product list view items source to the product ids.
+                ProductListView.ItemsSource = db.Products
+                    .ToList(); // Set the product list view items source to the product ids.
             }
-            LoadWorkReceipts();
         }
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
@@ -103,28 +103,6 @@ namespace E3_BarrocIntens
         private void AddProductButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(CreateProductDashboard)); // Navigate to CreateProductDashboard.
-        }
-
-
-        private void LoadWorkReceipts()
-        {
-            using (var db = new AppDbContext())
-            {
-                var usedMaterials = db.Materials
-                .Include(m => m.ReceiptMaterials)
-                .ThenInclude(m => m.WorkReceipt)
-                .ToList();
-
-                DateTime fifteenDaysAgo = DateTime.Now.AddDays(-15);
-
-                var recentlyUsedMaterials = usedMaterials
-                .Where(m => m.TotalQuantity > 0 && m.Stock < 100)
-                .Where(m => m.ReceiptMaterials
-                .Any(rm => rm.WorkReceipt.ReceiptDate >= fifteenDaysAgo))
-                .ToList();
-
-                UsedProductsListView.ItemsSource = recentlyUsedMaterials;
-            }
         }
 
         private void searchButton4_Click(object sender, RoutedEventArgs e)

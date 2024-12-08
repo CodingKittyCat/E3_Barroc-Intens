@@ -16,6 +16,7 @@ using System.Diagnostics;
 using E3_BarrocIntens.Data;
 using E3_BarrocIntens.Data.Classes;
 using Microsoft.EntityFrameworkCore;
+using Windows.System;
 
 namespace E3_BarrocIntens
 {
@@ -27,6 +28,7 @@ namespace E3_BarrocIntens
             ShowInvoices();
             ShowOrders();
             ShowContracts();
+            ShowProducts();
         }
 
         public void ShowOrders()
@@ -55,12 +57,26 @@ namespace E3_BarrocIntens
         {
             using (var db = new AppDbContext())
             {
-                var contracts = db.LeaseContracts.Include(leaseContract => leaseContract.Product).ToList();
+                if(Session.Instance.User != null)
+                {
+                    var userId = Session.Instance.User.Id;
+                    var contracts = db.LeaseContracts.Include(leaseContract => leaseContract.Product).Where(leaseContract => leaseContract.UserId == userId).ToList();
 
-                leaseContractLv.ItemsSource = contracts;
+                    leaseContractLv.ItemsSource = contracts;
+                }
+              
             }
         }
 
+        public void ShowProducts()
+        {
+            using (var db = new AppDbContext())
+            {
+                var products = db.Products.ToList();
+                ProductListView.ItemsSource = products;
+            }
+
+        }
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox comboBox = sender as ComboBox; // Get the ComboBox that triggered the event.
