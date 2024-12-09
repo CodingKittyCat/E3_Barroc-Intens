@@ -8,10 +8,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
     
     <ScrollViewer>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -22,8 +25,25 @@
             <TextBlock Text="Plan a maintenance request" FontSize="30" Margin="10" Grid.Row="1"/>
             <TextBlock Text="Date: " FontSize="25" Margin="10" Grid.Row="2" x:Name="dateTbl"/>
             <ComboBox DisplayMemberPath="Description" FontSize="20" Margin="10" Grid.Row="3" x:Name="maintenanceCb" Width="500"/>
-            <Button Content="Plan for this date" FontSize="25" Margin="10" x:Name="planDateBtn" Click="planDateBtn_Click" Grid.Row="4"/>
+            <ToggleSwitch Header="Repeat?" FontSize="25" x:Name="repeatSwitch" Toggled="repeatSwitch_Toggled" Grid.Row="4" Margin="10" OnContent="Yes" OffContent="No"/>
+            <StackPanel Spacing="20" Grid.Row="5" Margin="10" BorderBrush="Black" BorderThickness="2" Padding="10" x:Name="repeatStp" Visibility="Collapsed">
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <TextBlock Text="Repeat every" FontSize="25"/>
+                    <ComboBox x:Name="repeatCb" FontSize="20" Width="100" IsEditable="True">
+                        <ComboBoxItem Content="1"/>
+                        <ComboBoxItem Content="7"/>
+                        <ComboBoxItem Content="14"/>
+                        <ComboBoxItem Content="30"/>
+                    </ComboBox>
+                    <TextBlock Text="days" FontSize="25"/>
+                </StackPanel>
+                <StackPanel Spacing="10" Orientation="Horizontal">
+                    <TextBlock Text="Repeat until" FontSize="25"/>
+                    <CalendarDatePicker x:Name="repeatUntilDp" FontSize="20"/>
+                </StackPanel>
+            </StackPanel>
+
+            <Button Content="Plan for this date" FontSize="25" Margin="10" x:Name="planDateBtn" Click="planDateBtn_Click" Grid.Row="6"/>
         </Grid>
     </ScrollViewer>
-
 </Page>

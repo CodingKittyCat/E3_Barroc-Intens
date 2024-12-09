@@ -24,11 +24,13 @@ namespace E3_BarrocIntens
                 using (var db = new AppDbContext())
                 {
                     plannedDates = db.maintenanceRequests
-                        .Where(mr => mr.PlannedDateTime != null)
-                        .GroupBy(mr => mr.PlannedDateTime.Value.Date) // Group by date to handle duplicates
+                        .ToList() // Fetch all MaintenanceRequests from the database to the client
+                        .Where(mr => mr.PlannedDateTimes != null) // Ensure PlannedDateTimes is not null
+                        .SelectMany(mr => mr.PlannedDateTimes, (mr, date) => date.Date) // Flatten the collection and select only the date
+                        .GroupBy(date => date) // Group by date (ignoring time)
                         .ToDictionary(
-                            group => group.Key,                          // Use the date as the key
-                            group => new SolidColorBrush(Colors.Yellow)  // Assign a color to the date
+                            group => group.Key,                         // Use the date as the key
+                            group => new SolidColorBrush(Colors.Yellow) // Assign a color to the date
                         );
                 }
             }

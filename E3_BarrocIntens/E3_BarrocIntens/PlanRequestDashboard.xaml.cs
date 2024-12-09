@@ -48,11 +48,37 @@ namespace E3_BarrocIntens
             if (maintenanceCb.SelectedItem != null)
             {
                 MaintenanceRequest maintenanceRequest = (MaintenanceRequest)maintenanceCb.SelectedItem;
-                using (var db = new AppDbContext())
+                maintenanceRequest.PlannedDateTimes.Clear();
+                if (!repeatSwitch.IsOn)
                 {
-                    db.maintenanceRequests.Attach(maintenanceRequest);
-                    maintenanceRequest.PlannedDateTime = requestDate;
-                    db.SaveChanges();
+                    using (var db = new AppDbContext())
+                    {
+                        db.maintenanceRequests.Attach(maintenanceRequest);
+                        maintenanceRequest.PlannedDateTimes.Add(requestDate);
+                        db.SaveChanges();
+                    }
+                }
+                else
+                {
+                    if (!int.TryParse(repeatCb.Text, out int repeatDays))
+                    {
+                        ShowError("Repeat count must be a number");
+                        return;
+                    }
+                    DateTime repeatUntilDate = repeatUntilDp.Date.Value.DateTime;
+                    DateTime startDate = requestDate;
+                    DateTime dateToAdd = startDate;
+                    using (var db = new AppDbContext())
+                    {
+                        while (dateToAdd <= repeatUntilDate)
+                        {
+                            maintenanceRequest.PlannedDateTimes.Add(dateToAdd);
+                            dateToAdd = dateToAdd.AddDays(repeatDays);
+                        }
+                        db.Update(maintenanceRequest);
+                        db.SaveChanges();
+                    }
+
                 }
                 this.Frame.Navigate(typeof(ViewDateDashboard), requestDate);
             }
@@ -61,6 +87,33 @@ namespace E3_BarrocIntens
         private void backBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(ViewDateDashboard), requestDate);
+        }
+
+
+        private void repeatSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            ToggleSwitch toggleSwitch = (ToggleSwitch)sender;
+            if (toggleSwitch.IsOn)
+            {
+                repeatStp.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                repeatStp.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private async void ShowError(string message)
+        {
+            var errorDialog = new ContentDialog
+            {
+                Title = "Attention",
+                Content = message,
+                CloseButtonText = "Ok",
+                XamlRoot = this.XamlRoot
+            };
+
+            await errorDialog.ShowAsync();
         }
     }
 }
