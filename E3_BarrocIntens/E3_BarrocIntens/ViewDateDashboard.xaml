@@ -45,6 +45,7 @@
                                 <StackPanel Orientation="Horizontal" Spacing="25">
                                     <Button Background="Blue" Content="Reschedule" x:Name="editBtn" Click="editBtn_Click" Foreground="White" CommandParameter="{Binding}"/>
                                     <Button Background="Red" Content="Cancel" x:Name="deleteBtn" Click="deleteBtn_Click" Foreground="White" CommandParameter="{Binding}"/>
+                                    <Button Background="DarkOrange" Content="Cancel All" x:Name="deleteAll" Click="deleteAll_Click" Foreground="White" CommandParameter="{Binding}"/>
                                 </StackPanel>
                             </StackPanel>
                         </DataTemplate>

@@ -36,12 +36,11 @@ namespace E3_BarrocIntens
         {
             base.OnNavigatedTo(e);
             maintenanceRequest = (MaintenanceRequest)e.Parameter;
-            previousDateTime = maintenanceRequest.PlannedDateTime.Value;
+            previousDateTime = maintenanceRequest.PlannedDateTimes.FirstOrDefault(); // Get the first planned date
 
             requestProduct.Text = maintenanceRequest.Product.Title;
             requestDescription.Text = maintenanceRequest.Description;
-            requestDate.Date = maintenanceRequest.PlannedDateTime.Value;
-
+            requestDate.Date = previousDateTime;
         }
 
         private void backBtn_Click(object sender, RoutedEventArgs e)
@@ -53,7 +52,10 @@ namespace E3_BarrocIntens
         {
             using (var db = new AppDbContext())
             {
-                maintenanceRequest.PlannedDateTime = requestDate.Date.DateTime;
+                // Clear existing planned dates and set the new one
+                maintenanceRequest.PlannedDateTimes.Clear();
+                maintenanceRequest.PlannedDateTimes.Add(requestDate.Date.DateTime);
+
                 db.maintenanceRequests.Update(maintenanceRequest);
                 db.SaveChanges();
             }
