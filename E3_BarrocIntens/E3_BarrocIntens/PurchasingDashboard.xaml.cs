@@ -30,12 +30,15 @@ namespace E3_BarrocIntens
                 ProductListView.ItemsSource = db.Products
                     .ToList(); // Set the product list view items source to the product ids.
             }
+            LoadWorkReceipts();
         }
+
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
             string searchResult = searchBar.Text; // Get text from the search bar.
             Debug.WriteLine(searchResult); // Log the search result.
         }
+
         private void searchButton2_Click(object sender, RoutedEventArgs e)
         {
             string searchResult = searchBar.Text; // Get text from the search bar.
@@ -143,6 +146,27 @@ namespace E3_BarrocIntens
                     .ToList();
 
                 ProductListView.ItemsSource = filteredProducts;
+            }
+        }
+
+        private void LoadWorkReceipts()
+        {
+            using (var db = new AppDbContext())
+            {
+                var usedMaterials = db.Materials
+                .Include(m => m.ReceiptMaterials)
+                .ThenInclude(m => m.WorkReceipt)
+                .ToList();
+
+                DateTime fifteenDaysAgo = DateTime.Now.AddDays(-15);
+
+                var recentlyUsedMaterials = usedMaterials
+                .Where(m => m.TotalQuantity > 0 && m.Stock < 100)
+                .Where(m => m.ReceiptMaterials
+                .Any(rm => rm.WorkReceipt.ReceiptDate >= fifteenDaysAgo))
+                .ToList();
+
+                WorkReceiptsListView.ItemsSource = recentlyUsedMaterials;
             }
         }
     }
