@@ -17,7 +17,6 @@ namespace E3_BarrocIntens.Data.Classes
         public List<DateTime> PlannedDateTimes { get; set; } = new List<DateTime>();
         public int? UserId { get; set; }
         public User? User { get; set; }
-
         public int? WorkReceiptId { get; set; }
         public WorkReceipt? WorkReceipt { get; set; }
         public bool IsClosed { get; set; }

@@ -10,6 +10,17 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Background="White">
+        <Button x:Name="BackButton" Content="⟵ Back"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="20"
+            Width="100"
+            Height="40"
+            Background="White"
+            BorderBrush="Black"
+            BorderThickness="2"
+            Click="BackButton_Click"/>
+        
         <Border Grid.Row="1" Margin="20" BorderBrush="Black" BorderThickness="2">
             <Grid>
                 <Grid.RowDefinitions>
@@ -29,30 +40,21 @@
                     <!-- Product Title -->
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock Text="Product Title:" Width="150" VerticalAlignment="Center"/>
-                        <TextBox x:Name="productTitle" Width="250" Height="30" PlaceholderText="Enter product title" />
+                        <TextBox x:Name="productTitle" Width="250" PlaceholderText="Enter product title" />
                     </StackPanel>
-                    
+
                     <!-- Product Description -->
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock Text="Product Description:" Width="150" VerticalAlignment="Center"/>
-                        <TextBox x:Name="productDescription" Width="250" Height="30" PlaceholderText="Enter product description" TextWrapping="Wrap"/>
+                        <TextBox x:Name="productDescription" Width="250"  PlaceholderText="Enter product description" TextWrapping="Wrap"/>
                     </StackPanel>
 
                     <!-- Stock -->
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                        <TextBlock Text="Stock:" Width="150" VerticalAlignment="Center"/>
-                        <TextBox x:Name="productStock" Width="100" Height="30" PlaceholderText="Enter stock quantity" />
+                        <TextBlock x:Name="productStockLabel" Text="Stock:" Width="150" VerticalAlignment="Center"/>
+                        <TextBox x:Name="productStock" Width="100"  PlaceholderText="Enter stock quantity" />
                     </StackPanel>
-
-                    <!-- Status -->
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                        <TextBlock Text="Status:" Width="150" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="productStatus" Width="150" Height="30">
-                            <ComboBoxItem Content="Delivered"/>
-                            <ComboBoxItem Content="On The Way"/>
-                        </ComboBox>
-                    </StackPanel>
-
+                    
                     <!-- Add Button -->
                     <Button x:Name="AddButton" 
                             Content="Add Product" 
@@ -76,18 +78,6 @@
                             Visibility="Collapsed"
                             Click="EditButton_Click"/>
 
-                    <!-- Delete Button -->
-                    <Button x:Name="DeleteButton" 
-                            Content="Delete Product" 
-                            Width="150" 
-                            HorizontalAlignment="Center" 
-                            Background="White" 
-                            BorderBrush="Black" 
-                            BorderThickness="2" 
-                            Margin="0,20,0,0"
-                            Visibility="Collapsed"
-                            Click="DeleteButton_Click"/>
-
                     <TextBlock x:Name="ErrorTextblock"
                                Foreground="Red"
                                HorizontalAlignment="Center"
@@ -95,6 +85,5 @@
                 </StackPanel>
             </Grid>
         </Border>
-
     </Grid>
 </Page>

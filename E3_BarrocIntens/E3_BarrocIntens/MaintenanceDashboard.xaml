@@ -112,7 +112,15 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Column="0" FontSize="20" Foreground="White">OPEN</TextBlock>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock FontSize="20" Foreground="White">OPEN</TextBlock>
+                        <Button x:Name="setToClosed"
+                                Click="setToClosed_Click" 
+                                Content="Set to Closed"
+                                CommandParameter="{Binding}"
+                                />
+                    </StackPanel>
+                    
                     <TextBlock Grid.Column="2" Text="APPOINTMENTS" HorizontalAlignment="Center" Foreground="White" FontSize="16"/>
 
                     <!-- Left Side Search Bar and Button -->
@@ -186,9 +194,9 @@
 
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="0.1*"/>
-                                                <ColumnDefinition Width="0.5*"/>
                                                 <ColumnDefinition Width="0.3*"/>
                                                 <ColumnDefinition Width="0.2*"/>
+                                                <ColumnDefinition Width="0.1*"/>
                                                 <ColumnDefinition Width="0.1*"/>
                                             </Grid.ColumnDefinitions>
 
@@ -197,6 +205,7 @@
                                             <TextBlock Grid.Column="2" Text="{x:Bind RequestedDateTime}" TextWrapping="Wrap"/>
                                             <TextBlock Grid.Column="3" Text="{x:Bind User.Name, FallbackValue='Unassigned'}" TextWrapping="Wrap"/>
                                             <Button Grid.Column="4" CommandParameter="{Binding}" x:Name="BindWorker" Click="BindWorker_Click" Content="Assign"/>
+
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -285,6 +294,13 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+            </StackPanel>
+        </ContentDialog>
+
+        <ContentDialog x:Name="SetAppointmentToClosedDialog" Title="Close Request" PrimaryButtonText="Save" SecondaryButtonText="Cancel">
+            <StackPanel>
+                <ListBox x:Name="AppointmentNameTextBox" Margin="0,0,0,10"
+                        />   
             </StackPanel>
         </ContentDialog>
     </Grid>

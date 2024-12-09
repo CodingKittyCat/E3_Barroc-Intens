@@ -40,6 +40,10 @@ namespace E3_BarrocIntens.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Product>()
+               .Property(p => p.Status)
+               .HasConversion<string>();
+
             WorkReceiptList workReceiptList = new WorkReceiptList();
             List<WorkReceipt> workReceipts = workReceiptList.GetWorkReceipts();
             modelBuilder.Entity<WorkReceipt>().HasData(workReceipts.ToArray());
@@ -78,7 +82,8 @@ namespace E3_BarrocIntens.Data
                 new Role { Id = 1, RoleName = "Maintenance" },
                 new Role { Id = 2, RoleName = "Finance" },
                 new Role { Id = 3, RoleName = "Sales" },
-                new Role { Id = 4, RoleName = "Customer"}
+                new Role { Id = 4, RoleName = "Customer"},
+                new Role { Id = 99, RoleName = "Admin" }
             );
 
             modelBuilder.Entity<User>().HasData(
@@ -161,6 +166,26 @@ namespace E3_BarrocIntens.Data
                     Password = BCrypt.Net.BCrypt.HashPassword("123"),
                     RoleId = 1,
                     IsFirstLogin = true
+                },
+                new User
+                {
+                    Id = 9,
+                    Name = "Dhr. Maintenance",
+                    Email = "d295372@edu.curio.nl", // martijn mail
+                    Username = "headmaintenance",
+                    Password = BCrypt.Net.BCrypt.HashPassword("123"),
+                    RoleId = 1,
+                    IsFirstLogin = true
+                },
+                new User
+                {
+                    Id = 10,
+                    Name = "Admin",
+                    Email = "admin@barrocintens.com",
+                    Username = "admin",
+                    Password = BCrypt.Net.BCrypt.HashPassword("123"),
+                    RoleId = 99,
+                    IsFirstLogin = false
                 }
             );
 
@@ -171,7 +196,7 @@ namespace E3_BarrocIntens.Data
                     Title = "Product 1",
                     Description = "Description 1",
                     Stock = 10,
-                    Status = "Delivered"
+                    Status = ProductStatus.InStock
                 },
                 new Product
                 {
@@ -179,7 +204,7 @@ namespace E3_BarrocIntens.Data
                     Title = "Product 2",
                     Description = "Description 2",
                     Stock = 20,
-                    Status = "On The Way"
+                    Status = ProductStatus.OutOfStock
                 },
                 new Product
                 {
@@ -187,7 +212,7 @@ namespace E3_BarrocIntens.Data
                     Title = "Product 3",
                     Description = "Description 3",
                     Stock = 30,
-                    Status = "Pending"
+                    Status = ProductStatus.InStock
                 }
             );
 

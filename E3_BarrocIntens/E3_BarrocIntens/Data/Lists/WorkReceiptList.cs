@@ -11,7 +11,7 @@ namespace E3_BarrocIntens.Data.Lists
     {
         List<WorkReceipt> workReceiptList = new List<WorkReceipt>()
         {
-            new WorkReceipt(1, "This is most definitely a work receipt")
+            new WorkReceipt(1, "This is most definitely a work receipt", DateTime.Now)
         };
         public List<WorkReceipt> GetWorkReceipts()
         {

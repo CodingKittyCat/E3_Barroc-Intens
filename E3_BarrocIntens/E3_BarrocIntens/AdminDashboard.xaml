@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="E3_BarrocIntens.AdminDashboard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:E3_BarrocIntens"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:localData="using:E3_BarrocIntens.Data.Classes"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Table Orders-->
+            <Grid BorderBrush="Black" BorderThickness="3" Grid.Row="1" Width="Auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--Header-->
+                <Grid Background="Black" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="120"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock FontSize="20" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Text="ID" Margin="34, 0, 0, 0"/>
+                    <TextBlock FontSize="20" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Name Product" Grid.Column="1" Margin="34, 0, 0, 0"/>
+                    <TextBlock FontSize="20" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Description" Grid.Column="2" Margin="30, 0, 0, 0"/>
+                    <TextBlock FontSize="20" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Ordered Stock" Grid.Column="3" Margin="20, 0, 0, 0"/>
+                    <TextBlock FontSize="20" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Approve" Grid.Column="4" Margin="34, 0, 0, 0"/>
+                </Grid>
+
+                <!--ListView for Products-->
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <ListView x:Name="productsLv">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="localData:Product">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="200"/>
+                                        <ColumnDefinition Width="300"/>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="120"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{x:Bind Id}" Margin="10" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{x:Bind Title}" Margin="10" Grid.Column="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{x:Bind Description}" Margin="10" Grid.Column="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{x:Bind Stock}" Margin="10" Grid.Column="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <Button Content="Approve" Margin="10" Grid.Column="4" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="approveBtn" Click="approveBtn_Click" CommandParameter="{Binding}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
