@@ -29,8 +29,19 @@ namespace E3_BarrocIntens
             ShowOrders();
             ShowContracts();
             ShowProducts();
+            ShowMaterials();
         }
 
+        public void ShowProducts()
+        {
+            using (var db = new AppDbContext())
+            {
+                var products = db.Products.ToList();
+                ProductListView.ItemsSource = products;
+            }
+        }
+
+        // Show orders in a listview
         public void ShowOrders()
         {
             using (var db = new AppDbContext())
@@ -38,11 +49,28 @@ namespace E3_BarrocIntens
                 // Query to filter orders by the specified status
                 var filteredOrders = db.Orders
                                        .Where(o => o.IsDelivered == false)
-                                       .ToList();
+                                       .ToList() ;
                 OrderListview.ItemsSource = filteredOrders;
             }
         }
 
+        // Show materials in a listview and put the visibility to visible if the logged in user is Maintenance.
+        public void ShowMaterials()
+        {
+            if (Session.Instance.User.Role.RoleName == "Maintenance")
+            {
+                using (var db = new AppDbContext())
+                {
+                    var materials = db.Materials.ToList();
+                    MaterialListView.ItemsSource = materials;
+                    MaterialBorder.Visibility = Visibility.Visible;
+                    MaterialHeader.Visibility = Visibility.Visible;
+                }
+            }
+
+        }
+
+        // Show invoices in a listview
         public void ShowInvoices()
         {
             using (var db = new AppDbContext())
@@ -53,30 +81,22 @@ namespace E3_BarrocIntens
             }
         }
 
+        // Show the contracts that a customer has
         public void ShowContracts()
         {
             using (var db = new AppDbContext())
             {
-                if(Session.Instance.User != null)
+                if (Session.Instance.User != null)
                 {
                     var userId = Session.Instance.User.Id;
                     var contracts = db.LeaseContracts.Include(leaseContract => leaseContract.Product).Where(leaseContract => leaseContract.UserId == userId).ToList();
 
                     leaseContractLv.ItemsSource = contracts;
                 }
-              
+
             }
         }
 
-        public void ShowProducts()
-        {
-            using (var db = new AppDbContext())
-            {
-                var products = db.Products.ToList();
-                ProductListView.ItemsSource = products;
-            }
-
-        }
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox comboBox = sender as ComboBox; // Get the ComboBox that triggered the event.
@@ -120,12 +140,12 @@ namespace E3_BarrocIntens
                 }
             }
         }
-        
+
         private void UserProfileButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(UserProfileDashboard)); // Navigate to UserProfileDashboard.
         }
-        
+
         private void createLeaseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(CreateLease)); // Navigate to the CreateLease page.
