@@ -9,7 +9,7 @@ namespace E3_BarrocIntens.Data.Classes
     internal class Invoice
     {
         public int Id { get; set; }
-        public string CustomerName { get; set; }
+        public int CustomerId { get; set; }
         public DateTime InvoiceDate { get; set; }
         public DateTime DueDate { get; set; }
         public float TotalAmount { get; set; }
@@ -18,11 +18,17 @@ namespace E3_BarrocIntens.Data.Classes
         public string InvoiceDateToString => InvoiceDate.ToString("dd/MM/yyyy");
         public string DueDateToString => DueDate.ToString("dd/MM/yyyy");
 
+        public virtual User Customer { get; set; }
+
+        public Invoice()
+        {
+        }
+
         // Constructor for seeding or creating an invoice
-        public Invoice(int id, string customerName, DateTime invoiceDate, DateTime dueDate, float totalAmount, bool isPayed)
+        public Invoice(int id, int customerId, DateTime invoiceDate, DateTime dueDate, float totalAmount, bool isPayed)
         {
             Id = id;
-            CustomerName = customerName;
+            CustomerId = customerId;
             InvoiceDate = invoiceDate;
             DueDate = dueDate;
             TotalAmount = totalAmount;
@@ -30,9 +36,9 @@ namespace E3_BarrocIntens.Data.Classes
         }
 
         // Constructor for creating new invoices without specifying Id
-        public Invoice(string customerName, DateTime invoiceDate, DateTime dueDate, float totalAmount, bool isPayed)
+        public Invoice(int customerId, DateTime invoiceDate, DateTime dueDate, float totalAmount, bool isPayed)
         {
-            CustomerName = customerName;
+            CustomerId = customerId;
             InvoiceDate = invoiceDate;
             DueDate = dueDate;
             TotalAmount = totalAmount;
