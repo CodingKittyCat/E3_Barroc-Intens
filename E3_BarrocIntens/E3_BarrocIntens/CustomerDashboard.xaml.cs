@@ -17,6 +17,7 @@ using E3_BarrocIntens.Data;
 using E3_BarrocIntens.Data.Classes;
 using Microsoft.EntityFrameworkCore;
 using Windows.System;
+using System.Xml.Linq;
 
 namespace E3_BarrocIntens
 {
@@ -30,6 +31,7 @@ namespace E3_BarrocIntens
             ShowContracts();
             ShowProducts();
             ShowMaterials();
+            ShowQuotes();
         }
 
         public void ShowProducts()
@@ -73,10 +75,15 @@ namespace E3_BarrocIntens
         // Show invoices in a listview
         public void ShowInvoices()
         {
+            if (Session.Instance.User == null)
+                return;
+
             using (var db = new AppDbContext())
             {
-                var invoices = db.Invoices.ToList();
+                // Get all invoices for the logged in user
+                var invoices = db.Invoices.Where(invoice => invoice.CustomerId == Session.Instance.User.Id).ToList();
 
+                // Set the invoices listview to the invoices
                 InvoiceListView.ItemsSource = invoices;
             }
         }
@@ -93,7 +100,22 @@ namespace E3_BarrocIntens
 
                     leaseContractLv.ItemsSource = contracts;
                 }
+            }
+        }
 
+        // Show the quotes that a customer has
+        public void ShowQuotes()
+        {
+            using (var db = new AppDbContext())
+            {
+                if (Session.Instance.User != null)
+                {
+                    // Get all quotes where the customer has not accepted the quote yet
+                    var userId = Session.Instance.User.Id;
+                    var contracts = db.Quotes.Where(quote => quote.CustomerId == userId && quote.CustomerAccepted == false).ToList();
+
+                    QuotesListView.ItemsSource = contracts;
+                }
             }
         }
 
@@ -155,6 +177,43 @@ namespace E3_BarrocIntens
         {
             LeaseContract leaseContract = (sender as Button).CommandParameter as LeaseContract;
             this.Frame.Navigate(typeof(ViewLease), leaseContract.Id);
+        }
+
+        private void QuoteAcceptButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Get the quote from command parameter
+            Quote quote = (sender as Button).CommandParameter as Quote;
+            if (quote == null)
+                return;
+
+            //  Update the quote to be accepted by the customer
+            using (var db = new AppDbContext())
+            {
+                // update the quote to be accepted by the customer
+                quote.CustomerAccepted = true;
+
+                // Update the quote in the database
+                db.Quotes.Update(quote);
+
+                // Create new invoice with quote details
+                Invoice invoice = new()
+                {
+                    CustomerId = quote.CustomerId,
+                    InvoiceDate = quote.QuoteDate,
+                    DueDate = quote.ExpirationDate,
+                    TotalAmount = float.Parse(quote.TotalAmount.ToString()),
+                    IsPayed = false
+                };
+                // Add the invoice to the database
+                db.Invoices.Add(invoice);
+
+                // Save the changes to the database
+                db.SaveChanges();
+            }
+
+            // Refresh the quotes & invoices listview
+            ShowQuotes();
+            ShowInvoices();
         }
     }
 }

@@ -73,7 +73,7 @@
                     <ColumnDefinition Width="*"/>
                     <!-- Orders -->
                     <ColumnDefinition Width="*"/>
-                    <!-- Contracts -->
+                    <!-- Contracts -->  
                 </Grid.ColumnDefinitions>
 
                 <!-- Row definitions -->
@@ -219,26 +219,48 @@
 
                 <!-- Invoices Content -->
                 <Border BorderBrush="Black" BorderThickness="2" Grid.Row="3" Grid.Column="0" Margin="5,0,5,0">
-                    <ListView x:Name="InvoiceListView">
-                        <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="localData:Invoice">
-                                <Grid ColumnSpacing="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.25*"/>
-                                        <ColumnDefinition Width="0.25*"/>
-                                        <ColumnDefinition Width="0.1*"/>
-                                        <ColumnDefinition Width="0.25*"/>
-                                        <ColumnDefinition Width="0.25*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock HorizontalAlignment="Left" Text="{x:Bind Id}"/>
-                                    <TextBlock TextAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Text="{x:Bind InvoiceDateToString}"/>
-                                    <TextBlock HorizontalAlignment="Right" Grid.Column="2" Text="{x:Bind DueDateToString}"/>
-                                    <TextBlock HorizontalAlignment="Center" Grid.Column="3" Text="{x:Bind TotalAmount}"/>
-                                    <TextBlock HorizontalAlignment="Center" Grid.Column="4" Text="{x:Bind IsPayed}"/>
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <!-- Header -->
+                            <RowDefinition Height="Auto"/>
+                            <!-- Content -->
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="ID" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                            <TextBlock Grid.Column="1" Text="CREATION DATE" FontSize="20" HorizontalAlignment="Center" TextAlignment="Center" FontWeight="Bold"/>
+                            <TextBlock Grid.Column="2" Text="EXPIRATION DATE" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                            <TextBlock Grid.Column="3" Text="TOTAL AMOUNT" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                            <TextBlock Grid.Column="4" Text="PAID" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                        </Grid>
+                        <ListView x:Name="InvoiceListView" Grid.Row="1">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="localData:Invoice">
+                                    <Grid ColumnSpacing="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.25*"/>
+                                            <ColumnDefinition Width="0.25*"/>
+                                            <ColumnDefinition Width="0.1*"/>
+                                            <ColumnDefinition Width="0.25*"/>
+                                            <ColumnDefinition Width="0.25*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock HorizontalAlignment="Center" Text="{x:Bind Id}"/>
+                                        <TextBlock TextAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Text="{x:Bind InvoiceDateToString}"/>
+                                        <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{x:Bind DueDateToString}"/>
+                                        <TextBlock HorizontalAlignment="Center" Grid.Column="3" Text="{x:Bind TotalAmount}"/>
+                                        <TextBlock HorizontalAlignment="Center" Grid.Column="4" Text="{x:Bind IsPayed}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
                 </Border>
 
                 <!-- Materials Header -->
@@ -269,6 +291,65 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                    </ScrollViewer>
+                </Border>
+
+                <!-- Quotes Header -->
+                <Grid x:Name="QuotesHeader" Background="Black" Margin="5,5,5,0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="1">
+                    <TextBlock HorizontalAlignment="Center" Foreground="White" FontSize="20" FontWeight="Bold">QUOTES</TextBlock>
+                </Grid>
+
+                <!-- Quotes Content -->
+                <Border x:Name="QuotesBorder" BorderBrush="Black" BorderThickness="2" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="1" Margin="5,0,5,0">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <!-- Header -->
+                                <RowDefinition Height="Auto"/>
+                                <!-- Content -->
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="ID" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="1" Text="CREATION DATE" FontSize="20" HorizontalAlignment="Center" TextAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="2" Text="EXPIRATION DATE" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="3" Text="TOTAL AMOUNT" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="4" Text="STATUS" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="5" Text="ACTIONS" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                            </Grid>
+                            <ListView x:Name="QuotesListView" Grid.Row="1">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="localData:Quote">
+                                        <Grid Margin="5" ColumnSpacing="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Quotes details -->
+                                            <TextBlock Grid.Column="0" Text="{x:Bind Id}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            <TextBlock Grid.Column="1" Text="{x:Bind QuoteDate}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                            <TextBlock Grid.Column="2" Text="{x:Bind ExpirationDate}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                            <TextBlock Grid.Column="3" Text="{x:Bind TotalAmount}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                            <TextBlock Grid.Column="4" Text="{x:Bind Status}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                            <Button x:Name="QuoteAcceptButton" Grid.Column="5" Content="Accept" Click="QuoteAcceptButton_Click" CommandParameter="{Binding}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
                     </ScrollViewer>
                 </Border>
             </Grid>

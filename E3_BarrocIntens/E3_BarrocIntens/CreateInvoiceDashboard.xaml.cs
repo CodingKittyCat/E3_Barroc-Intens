@@ -1,3 +1,4 @@
+using E3_BarrocIntens.Data;
 using E3_BarrocIntens.Data.Classes;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -44,13 +45,20 @@ namespace E3_BarrocIntens
                 bool isPayed = IsPayedCheckBox.IsChecked ?? false; // Use a CheckBox for simplicity
 
                 // Create the invoice
-                Invoice createdInvoice = new Invoice(
-                    customerName: CustomerNameTextBox.Text,
-                    invoiceDate: DateTime.Now,
-                    dueDate: DueDatePicker.Date.DateTime,
-                    totalAmount: totalAmount,
-                    isPayed: isPayed
-                );
+                using (var db = new AppDbContext())
+                {
+                    // Get customer by name
+                    User customer = db.Users.FirstOrDefault(u => u.Name.ToLower() == CustomerNameTextBox.Text.ToLower());
+
+                    // Check if customer exists
+                    Invoice createdInvoice = new(
+                        customer.Id, // Make use of Customer Id, instead of Name
+                        DateTime.Now,
+                        DueDatePicker.Date.DateTime,
+                        totalAmount,
+                        isPayed
+                    );
+                }
 
                 // Save the created invoice to the database (code for database save goes here)
 
