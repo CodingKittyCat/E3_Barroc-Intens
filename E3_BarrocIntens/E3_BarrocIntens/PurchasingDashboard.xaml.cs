@@ -29,8 +29,16 @@ namespace E3_BarrocIntens
             {
                 ProductListView.ItemsSource = db.Products
                     .ToList(); // Set the product list view items source to the product ids.
+
+                productStockLv.ItemsSource = db.Products
+                    .ToList(); // Set the product stock list view items source to the product ids.
+
+                materialsStockLv.ItemsSource = db.Materials
+                    .ToList(); // Set the materials stock list view items source to the material ids.
             }
             LoadWorkReceipts();
+
+            stockTypeCb.SelectedIndex = 0; // Set the default selected index to 0, doing this in backend because otherwise null object reference
         }
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
@@ -167,6 +175,31 @@ namespace E3_BarrocIntens
                 .ToList();
 
                 WorkReceiptsListView.ItemsSource = recentlyUsedMaterials;
+            }
+        }
+
+        // For sorting which stock to view
+        private void stockTypeCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (productStockLv == null || materialsStockLv == null) // Prevents null object references
+            {
+                return;
+            }
+
+            switch (stockTypeCb.SelectedIndex) 
+            {
+                case 0: // Set visibility of the list views based on the selected index
+                    productStockLv.Visibility = Visibility.Visible;
+                    materialsStockLv.Visibility = Visibility.Collapsed;
+                    break;
+                case 1:
+                    productStockLv.Visibility = Visibility.Collapsed;
+                    materialsStockLv.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    productStockLv.Visibility = Visibility.Visible;
+                    materialsStockLv.Visibility = Visibility.Collapsed;
+                    break;
             }
         }
     }
