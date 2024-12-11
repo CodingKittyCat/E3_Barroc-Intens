@@ -14,11 +14,11 @@
    
   <ItemGroup>
     <Content Remove="Assets\1485477207-magnifier_78608.ico" />
-    <Content Remove="Assets\Logo1_klein.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="AddWorkerPage.xaml" />
     <None Remove="AdminDashboard.xaml" />
+    <None Remove="Assets\Logo1_klein.jpg" />
     <None Remove="BlankWindow1.xaml" />
     <None Remove="CreateLease.xaml" />
     <None Remove="CustomerDashboard.xaml" />
