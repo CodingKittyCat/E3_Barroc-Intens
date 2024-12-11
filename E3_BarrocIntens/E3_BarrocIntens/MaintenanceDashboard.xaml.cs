@@ -274,17 +274,28 @@ namespace E3_BarrocIntens
                             .Children.OfType<TextBox>()
                             .FirstOrDefault(tb => tb.Name == "QuantityTextBox");
 
-
                         if (quantityTextBox != null && int.TryParse(quantityTextBox.Text, out int quantity) && quantity > 0)
                         {
-                            ReceiptMaterial receiptMaterial = new ReceiptMaterial
+                            // Check if there is enough stock
+                            var materialInDb = db.Materials.FirstOrDefault(m => m.Id == material.Id); // get the material for easy modifying
+                            if (materialInDb != null && materialInDb.Stock >= quantity)
                             {
-                                ReceiptId = workReceipt.Id, // Use the newly created WorkReceipt's ID
-                                MaterialId = material.Id,   // Use the Material's ID
-                                Quantity = quantity         // Save the entered quantity
-                            };
-                            db.ReceiptMaterials.Add(receiptMaterial);
-                        };
+                                // Deduct the quantity from the stock
+                                materialInDb.Stock -= quantity;
+
+                                ReceiptMaterial receiptMaterial = new ReceiptMaterial
+                                {
+                                    ReceiptId = workReceipt.Id, // Use the newly created WorkReceipt's ID
+                                    MaterialId = material.Id,   // Use the Material's ID
+                                    Quantity = quantity         // Save the entered quantity
+                                };
+                                db.ReceiptMaterials.Add(receiptMaterial);
+                            }
+                            else
+                            {
+                                return; // Exit early to prevent partial updates
+                            }
+                        }
                     }
 
                     // Update the MaintenanceRequest with the new WorkReceiptId
