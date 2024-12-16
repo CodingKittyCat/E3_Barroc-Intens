@@ -71,24 +71,6 @@ namespace E3_BarrocIntens
             }
         }
 
-        private void searchButton_Click(object sender, RoutedEventArgs e)
-        {
-            string searchResult = searchBar.Text; // Get text from search bar.
-            Debug.WriteLine(searchResult); // Log the search result.
-        }
-
-        private void searchButton_Click1(object sender, RoutedEventArgs e)
-        {
-            string searchResult = searchBar.Text; // Get text from search bar.
-            Debug.WriteLine(searchResult); // Log the search result (duplicate).
-        }
-
-        private void searchButton_Click2(object sender, RoutedEventArgs e)
-        {
-            string searchResult = searchBar.Text; // Get text from search bar.
-            Debug.WriteLine(searchResult); // Log the search result (duplicate).
-        }
-
         private async void setToClosed_Click(object sender, RoutedEventArgs e)
         {
             //return;
