@@ -32,6 +32,20 @@ namespace E3_BarrocIntens
             ShowProducts();
             ShowMaterials();
             ShowQuotes();
+            ShowRequests();
+        }
+
+        public void ShowRequests()
+        {
+            using (var db = new AppDbContext())
+            {
+                var requests = db.maintenanceRequests
+                    .Where(mr => mr.RequestUserId == Session.Instance.User.Id)
+                    .Include(mr => mr.Product)
+                    .ToList();
+
+                MaintenanceRequestListView.ItemsSource = requests;
+            }
         }
 
         public void ShowProducts()
@@ -214,6 +228,11 @@ namespace E3_BarrocIntens
             // Refresh the quotes & invoices listview
             ShowQuotes();
             ShowInvoices();
+        }
+
+        private void createRequest_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MaintenanceCreate)); // Navigate to MaintenanceCreate.
         }
     }
 }
