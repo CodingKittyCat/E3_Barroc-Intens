@@ -83,6 +83,12 @@
                         <StackPanel Spacing="20"
                                     Padding="20">
                             <StackPanel>
+                                <Button x:Name="BackButton"
+                                        Content="Back"
+                                        Click="BackButton_Click"
+                                        HorizontalAlignment="Left"
+                                        Margin="0,0,0,10" />
+                                
                                 <TextBlock Text="Select a Customer" />
                                 <ComboBox x:Name="QuoteCustomerComboBox" />
                             </StackPanel>
@@ -98,16 +104,22 @@
                             </StackPanel>
 
                             <StackPanel>
-                                <TextBlock Text="Select a Product" />
+                                <TextBlock Text="Total Amount" />
                                 <NumberBox x:Name="QuoteTotalAmountBox"
-                                           Header="Total Amount"
+
                                            PlaceholderText="Enter the total amount of the quote" />
                             </StackPanel>
 
                             <StackPanel>
                                 <TextBlock Text="Select a Payment Method" />
-                                <TextBox x:Name="QuoteStatusBox"
-                                         PlaceholderText="Enter the status of the quote" />
+                                <ComboBox x:Name="QuoteStatusBox"
+                                          PlaceholderText="Select the status of the quote"
+                                          SelectedValue="{x:Bind quote.Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          SelectedValuePath="Content">
+                                    <ComboBoxItem Content="Pending" />
+                                    <ComboBoxItem Content="Accepted" />
+                                </ComboBox>
+
                             </StackPanel>
 
                             <Button x:Name="QuoteSaveButton"
