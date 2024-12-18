@@ -48,7 +48,7 @@ namespace E3_BarrocIntens
                 using (var db = new AppDbContext())
                 {
                     // Get customer by name
-                    User customer = db.Users.FirstOrDefault(u => u.Name.ToLower() == CustomerNameTextBox.Text.ToLower());
+                    User customer = db.Users.FirstOrDefault(u => u.Username.ToLower() == CustomerNameTextBox.Text.ToLower());
 
                     // Check if customer exists
                     Invoice createdInvoice = new(
@@ -58,6 +58,12 @@ namespace E3_BarrocIntens
                         totalAmount,
                         isPayed
                     );
+
+                    db.Add(createdInvoice);
+                    db.SaveChanges();
+
+                    // Navigate back
+                    this.Frame.Navigate(typeof(FinanceDashboard));
                 }
 
                 // Save the created invoice to the database (code for database save goes here)

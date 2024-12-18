@@ -39,6 +39,7 @@ namespace E3_BarrocIntens
                     var contracts = db.LeaseContracts.Include(leaseContract => leaseContract.Product).ToList();
 
                     leaseContractLv.ItemsSource = contracts;
+                    InvoicesListView.ItemsSource = db.Invoices.Where(i => i.CustomerId == userId).Include(i => i.Customer).ToList();
                 }
                
             }
@@ -98,6 +99,11 @@ namespace E3_BarrocIntens
         {
             LeaseContract leaseContract = (sender as Button).CommandParameter as LeaseContract;
             this.Frame.Navigate(typeof(ViewLease), leaseContract.Id);
+        }
+
+        private void CreateInvoiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CreateInvoiceDashboard));
         }
     }
 }
