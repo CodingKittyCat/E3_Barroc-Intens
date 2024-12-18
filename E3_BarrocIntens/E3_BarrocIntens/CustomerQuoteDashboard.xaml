@@ -111,7 +111,7 @@
                             </StackPanel>
 
                             <StackPanel>
-                                <TextBlock Text="Select a Payment Method" />
+                                <TextBlock Text="Select a Status" />
                                 <ComboBox x:Name="QuoteStatusBox"
                                           PlaceholderText="Select the status of the quote"
                                           SelectedValue="{x:Bind quote.Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
