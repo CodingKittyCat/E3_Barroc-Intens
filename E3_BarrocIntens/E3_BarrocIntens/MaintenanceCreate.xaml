@@ -38,13 +38,13 @@
                       Margin="20,0,0,0" VerticalAlignment="Center" Background="White" Foreground="Black"
                       PlaceholderForeground="Black" PlaceholderText="Navigate" Grid.Column="0">
                 <ComboBoxItem>Cancel</ComboBoxItem>
-                <ComboBoxItem>Welcome</ComboBoxItem>
-                <ComboBoxItem>Sales</ComboBoxItem>
                 <ComboBoxItem>Finance</ComboBoxItem>
-                <ComboBoxItem>Purchasing</ComboBoxItem>
+                <ComboBoxItem>Sales</ComboBoxItem>
                 <ComboBoxItem>Customer</ComboBoxItem>
+                <ComboBoxItem>Purchasing</ComboBoxItem>
                 <ComboBoxItem>Maintenance</ComboBoxItem>
                 <ComboBoxItem>CreateRequest</ComboBoxItem>
+                <ComboBoxItem>Back</ComboBoxItem>
             </ComboBox>
 
             <Image Source="Assets\Logo1_klein.jpg" HorizontalAlignment="Center" Grid.Column="1" Margin="0,10,0,10"/>

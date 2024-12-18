@@ -31,12 +31,13 @@
 
             <ComboBox x:Name="optionsMenu" SelectionChanged="optionsMenu_SelectionChanged" DropDownClosed="optionsMenu_DropDownClosed" Margin="20,0,0,0" VerticalAlignment="Center" Background="White" Foreground="Black" PlaceholderForeground="Black" PlaceholderText="Open this select menu" Grid.Column="0">
                 <ComboBoxItem>Cancel</ComboBoxItem>
-                <ComboBoxItem>Welcome</ComboBoxItem>
-                <ComboBoxItem>Sales</ComboBoxItem>
                 <ComboBoxItem>Finance</ComboBoxItem>
+                <ComboBoxItem>Sales</ComboBoxItem>
                 <ComboBoxItem>Customer</ComboBoxItem>
+                <ComboBoxItem>Purchasing</ComboBoxItem>
                 <ComboBoxItem>Maintenance</ComboBoxItem>
                 <ComboBoxItem>CreateRequest</ComboBoxItem>
+                <ComboBoxItem>Back</ComboBoxItem>
             </ComboBox>
 
             <Image Margin="0,7,0,7" HorizontalAlignment="Center" Source="Assets\Logo1_klein.jpg" Grid.Column="1"/>

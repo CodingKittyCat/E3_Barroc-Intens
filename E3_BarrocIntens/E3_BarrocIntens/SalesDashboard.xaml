@@ -39,12 +39,13 @@
             <!-- ComboBox for options menu -->
             <ComboBox x:Name="optionsMenu" SelectionChanged="optionsMenu_SelectionChanged" DropDownClosed="optionsMenu_DropDownClosed" Margin="20,0,0,0" VerticalAlignment="Center" Background="White" Foreground="Black" PlaceholderForeground="Black" PlaceholderText="Open this select menu" Grid.Column="0">
                 <ComboBoxItem>Cancel</ComboBoxItem>
-                <ComboBoxItem>Welcome</ComboBoxItem>
                 <ComboBoxItem>Finance</ComboBoxItem>
-                <ComboBoxItem>Purchasing</ComboBoxItem>
+                <ComboBoxItem>Sales</ComboBoxItem>
                 <ComboBoxItem>Customer</ComboBoxItem>
+                <ComboBoxItem>Purchasing</ComboBoxItem>
                 <ComboBoxItem>Maintenance</ComboBoxItem>
                 <ComboBoxItem>CreateRequest</ComboBoxItem>
+                <ComboBoxItem>Back</ComboBoxItem>
             </ComboBox>
 
             <!-- Logo image -->
