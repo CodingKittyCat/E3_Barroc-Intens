@@ -146,6 +146,8 @@ namespace E3_BarrocIntens
             using (var db = new AppDbContext())
             {
                 db.LeaseContracts.Add(leaseContract);
+                product.Stock -= 1; // Remove 1 from the product stock, as everything else has been done.
+                db.Update(product);
                 db.SaveChanges();
             }
 
@@ -163,6 +165,25 @@ namespace E3_BarrocIntens
             };
 
             await errorDialog.ShowAsync();
+        }
+
+        private async void backBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDialog dialog = new()
+            {
+                Title = "Are you sure?",
+                Content = "Unsaved changes will be lost.",
+                PrimaryButtonText = "OK",
+                CloseButtonText = "Cancel",
+                XamlRoot = this.XamlRoot
+            };
+
+            ContentDialogResult result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                // Navigate to user profile dashboard.
+                this.Frame.Navigate(typeof(CustomerDashboard));
+            }
         }
     }
 }

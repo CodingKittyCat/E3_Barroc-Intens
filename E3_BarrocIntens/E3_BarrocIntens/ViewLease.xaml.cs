@@ -73,6 +73,8 @@ namespace E3_BarrocIntens
         {
             using (AppDbContext dataContext = new AppDbContext())
             {
+                leaseContract.Product.Stock += 1; // Add 1 to product stock because its not being used anymore
+                dataContext.Products.Update(leaseContract.Product);
                 dataContext.LeaseContracts.Remove(leaseContract);
                 dataContext.SaveChanges();
             }

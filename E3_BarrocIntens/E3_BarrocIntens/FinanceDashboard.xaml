@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:E3_BarrocIntens"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:localData="using:E3_BarrocIntens.Data.Classes"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -56,17 +56,6 @@
             <Image Margin="0,7,0,7" HorizontalAlignment="Center" 
                    Source="Assets\Logo1_klein.jpg" Grid.Column="1"/>
 
-            <!-- Search bar and button on the right side -->
-            <StackPanel HorizontalAlignment="Right" Margin="0,0,20,0" Orientation="Horizontal" Grid.Column="2">
-                <TextBox x:Name="searchBar" Width="200" Height="30" Margin="0" 
-                         PlaceholderText="SEARCH" Background="White" 
-                         PlaceholderForeground="Black" Foreground="Black"/>
-                <Button x:Name="searchButton" Click="searchButton_Click" Height="35" Width="40" 
-                        Background="White" Margin="0" 
-                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-                    <Image Source="Assets\1485477207-magnifier_78608.jpg"/>
-                </Button>
-            </StackPanel>
         </Grid>
 
         <!-- Invoices and Contracts section -->
@@ -82,7 +71,6 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <!-- Title row -->
-                    <RowDefinition Height="*"/>
                     <!-- Content area row -->
                 </Grid.RowDefinitions>
 
@@ -105,63 +93,78 @@
                     <!-- Invoices title and button -->
                     <Grid Background="Black" Margin="5,5,5,0">
                         <TextBlock HorizontalAlignment="Center" Foreground="White">INVOICES</TextBlock>
-                        <Button Content="ADD INVOICE" Background="White" BorderBrush="Black" 
+                        <Button Content="ADD INVOICE" Click="createLeaseButton_Click" Background="White" BorderBrush="Black" 
                                 BorderThickness="2" Width="200" HorizontalAlignment="Right" 
                                 Padding="5" HorizontalContentAlignment="Center" 
                                 VerticalContentAlignment="Center"/>
                     </Grid>
 
                     <!-- Placeholder for Invoices content -->
-                    <Border BorderBrush="Black" BorderThickness="2" Grid.Row="2" Margin="5,0,5,0"/>
+                    <Border BorderBrush="Black" BorderThickness="2" Grid.Row="2" Margin="5,0,5,0">
+
+
+                    </Border>
 
                     <!-- Contracts title and button -->
                     <Grid Background="Black" Grid.Column="1" Margin="5,5,5,0">
                         <TextBlock HorizontalAlignment="Center" Foreground="White">CONTRACTS</TextBlock>
-                        <Button Content="ADD CONTRACT" Background="White" BorderBrush="Black" 
+                        <Button Content="ADD CONTRACT" Click="createLeaseButton_Click" Background="White" BorderBrush="Black" 
                                 BorderThickness="2" Width="200" HorizontalAlignment="Right" 
                                 Padding="5" HorizontalContentAlignment="Center" 
                                 VerticalContentAlignment="Center"/>
                     </Grid>
 
                     <!-- Placeholder for Contracts content -->
-                    <Border BorderBrush="Black" BorderThickness="2" Grid.Row="2" Grid.Column="2" Margin="5,0,5,0"/>
+                    <Border BorderBrush="Black" BorderThickness="2" Grid.Row="2" Grid.Column="2" Margin="5,0,5,0">
+                        <ScrollViewer>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="ID" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                    <TextBlock Grid.Column="1" Text="PRODUCT" FontSize="20" HorizontalAlignment="Center" TextAlignment="Center" FontWeight="Bold"/>
+                                    <TextBlock Grid.Column="2" Text="START DATE" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                    <TextBlock Grid.Column="3" Text="END DATE" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                    <TextBlock Grid.Column="4" Text="ACTIONS" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                </Grid>
+                                <ListView x:Name="leaseContractLv" Grid.Row="1">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate x:DataType="localData:LeaseContract">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <TextBlock Grid.Column="0" Text="{x:Bind Id}" FontSize="20" HorizontalAlignment="Center" TextAlignment="Center" Margin="0, 0, 25, 0"/>
+                                                <TextBlock Grid.Column="1" Text="{x:Bind Product.Title}" FontSize="20" HorizontalAlignment="Center" TextAlignment="Center" Margin="0, 0, 15, 0"/>
+                                                <TextBlock Grid.Column="2" Text="{x:Bind Date_Created}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                <TextBlock Grid.Column="3" Text="{x:Bind End_Date}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                <Button Grid.Column="4" Content="SHOW" FontSize="20" HorizontalAlignment="Center" Margin="20, 0, 0, 0"  CommandParameter="{Binding}" x:Name="showLeaseBtn" Click="showLeaseBtn_Click"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Grid>
+                        </ScrollViewer>
+
+                    </Border>
                 </Grid>
-
-                <!-- Additional section for financial summary -->
-                <Border Grid.ColumnSpan="2" Grid.Row="2" Margin="20,20,20,20">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <!-- Yearly balance column -->
-                            <!-- Balance column -->
-                            <ColumnDefinition Width="*"/>
-                            <!-- Monthly balance column -->
-                        </Grid.ColumnDefinitions>
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.1*"/>
-                            <!-- Title row -->
-                            <RowDefinition Height="*"/>
-                            <!-- Content area row -->
-                        </Grid.RowDefinitions>
-
-                        <!-- Financial summary titles -->
-                        <Grid HorizontalAlignment="Stretch" Background="Black" Grid.ColumnSpan="3">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Margin="5,0,0,0" Grid.Column="0" Grid.ColumnSpan="3" Foreground="White">YEARLY</TextBlock>
-                            <TextBlock Grid.Column="1" Foreground="White" HorizontalAlignment="Center">BALANCE</TextBlock>
-                            <TextBlock Margin="0,0,5,0" Grid.Column="2" Grid.ColumnSpan="1" Foreground="White">MONTHLY</TextBlock>
-                        </Grid>
-
-                        <!-- Borders for financial summary areas -->
-                        <Border Margin="0,0,3,3" Grid.Row="2" Background="White" BorderBrush="Black" BorderThickness="2"/>
-                        <Border Margin="0,0,0,3" Grid.Row="2" Grid.Column="2" Background="White" BorderBrush="Black" BorderThickness="2"/>
-                    </Grid>
-                </Border>
             </Grid>
         </Border>
     </Grid>

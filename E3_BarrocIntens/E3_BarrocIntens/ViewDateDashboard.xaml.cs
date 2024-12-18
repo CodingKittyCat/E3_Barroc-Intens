@@ -46,9 +46,15 @@ namespace E3_BarrocIntens
             {
                 planningLv.ItemsSource = db.maintenanceRequests
                     .Include(mr => mr.Product)
-                    .Where(mr => mr.PlannedDateTime.Value.Date == selectedDate.Date && mr.UserId == Session.Instance.User.Id);
+                    .Include(mr => mr.User)
+                    .Where(mr => mr.PlannedDateTimes != null) // Ensure PlannedDateTimes is not null
+                    .AsEnumerable() // Switch to client-side evaluation
+                    .Where(mr => mr.PlannedDateTimes.Any(date => date.Date == selectedDate.Date)) // Filter in-memory
+                    .ToList();
             }
+
         }
+
         private void editBtn_Click(object sender, RoutedEventArgs e)
         {
             MaintenanceRequest maintenanceRequest = (sender as Button).CommandParameter as MaintenanceRequest;
@@ -58,11 +64,12 @@ namespace E3_BarrocIntens
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
             MaintenanceRequest maintenanceRequest = (sender as Button).CommandParameter as MaintenanceRequest;
+
             using (var db = new AppDbContext())
             {
-                maintenanceRequest.UserId = null;
-                maintenanceRequest.User = null;
-                maintenanceRequest.PlannedDateTime = null;
+                // Remove the selected date from the list of planned dates
+                maintenanceRequest.PlannedDateTimes.Remove(selectedDate);
+
                 db.Update(maintenanceRequest);
                 db.SaveChanges();
             }
@@ -77,6 +84,19 @@ namespace E3_BarrocIntens
         private void backBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MaintenanceDashboard));
+        }
+
+        private void deleteAll_Click(object sender, RoutedEventArgs e)
+        {
+            MaintenanceRequest maintenanceRequest = (sender as Button).CommandParameter as MaintenanceRequest;
+
+            using (var db = new AppDbContext())
+            {
+                maintenanceRequest.PlannedDateTimes.Clear();
+                db.Update(maintenanceRequest);
+                db.SaveChanges();
+            }
+            refreshItems();
         }
     }
 }

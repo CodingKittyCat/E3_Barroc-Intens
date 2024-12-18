@@ -13,6 +13,10 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Diagnostics;
+using E3_BarrocIntens.Data.Classes;
+using E3_BarrocIntens.Data;
+using Microsoft.EntityFrameworkCore;
+using Windows.Security.ExchangeActiveSyncProvisioning;
 
 namespace E3_BarrocIntens
 {
@@ -21,13 +25,25 @@ namespace E3_BarrocIntens
         public FinanceDashboard()
         {
             this.InitializeComponent(); // Initialize the page components.
+            ShowContracts();
         }
 
-        private void searchButton_Click(object sender, RoutedEventArgs e)
+        public void ShowContracts()
         {
-            string searchResult = searchBar.Text; // Get text from search bar.
-            Debug.WriteLine(searchResult); // Log the search result.
+            using (var db = new AppDbContext())
+            {
+                if (Session.Instance.User != null)
+                {
+                    var userId = Session.Instance.User.Id;
+
+                    var contracts = db.LeaseContracts.Include(leaseContract => leaseContract.Product).ToList();
+
+                    leaseContractLv.ItemsSource = contracts;
+                }
+               
+            }
         }
+
 
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -71,6 +87,17 @@ namespace E3_BarrocIntens
                         break;
                 }
             }
+        }
+
+        private void createLeaseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CreateLease)); // Navigate to the CreateLease page.
+        }
+
+        private void showLeaseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            LeaseContract leaseContract = (sender as Button).CommandParameter as LeaseContract;
+            this.Frame.Navigate(typeof(ViewLease), leaseContract.Id);
         }
     }
 }

@@ -1,5 +1,6 @@
 using E3_BarrocIntens.Data;
 using E3_BarrocIntens.Data.Classes;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -26,14 +27,26 @@ namespace E3_BarrocIntens
 
             using (var db = new AppDbContext())
             {
-                ProductListView.ItemsSource = db.Products.ToList(); // Set the product list view items source to the product ids.
+                ProductListView.ItemsSource = db.Products
+                    .ToList(); // Set the product list view items source to the product ids.
+
+                productStockLv.ItemsSource = db.Products
+                    .ToList(); // Set the product stock list view items source to the product ids.
+
+                materialsStockLv.ItemsSource = db.Materials
+                    .ToList(); // Set the materials stock list view items source to the material ids.
             }
+            LoadWorkReceipts();
+
+            stockTypeCb.SelectedIndex = 0; // Set the default selected index to 0, doing this in backend because otherwise null object reference
         }
+
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
             string searchResult = searchBar.Text; // Get text from the search bar.
             Debug.WriteLine(searchResult); // Log the search result.
         }
+
         private void searchButton2_Click(object sender, RoutedEventArgs e)
         {
             string searchResult = searchBar.Text; // Get text from the search bar.
@@ -101,6 +114,93 @@ namespace E3_BarrocIntens
         private void AddProductButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(CreateProductDashboard)); // Navigate to CreateProductDashboard.
+        }
+
+        private void searchButton4_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OrderProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            var selectedItem = clickedButton?.Tag as Material;
+
+            // Pass both the Material Id and the type (either "Product" or "Material")
+            this.Frame.Navigate(typeof(CreateProductDashboard), new Tuple<int, string>(selectedItem?.Id ?? 0, "Material"));
+        }
+
+
+        private void FilterBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string filter = FilterBox.Text;
+
+            FilterProducts(filter);
+        }
+
+        private void FilterProducts(string filter)
+        {
+            using (var db = new AppDbContext())
+            {
+                string lowerFilter = filter.ToLower();
+
+                var products = db.Products.ToList();
+
+                var filteredProducts = products
+                    .Where(product =>
+                      product.Title.ToLower().Contains(lowerFilter) ||
+                      product.Status.ToString().ToLower().Contains(lowerFilter))
+                    .OrderBy(product => product.Title)
+                    .ToList();
+
+                ProductListView.ItemsSource = filteredProducts;
+            }
+        }
+
+        private void LoadWorkReceipts()
+        {
+            using (var db = new AppDbContext())
+            {
+                var usedMaterials = db.Materials
+                .Include(m => m.ReceiptMaterials)
+                .ThenInclude(m => m.WorkReceipt)
+                .ToList();
+
+                DateTime fifteenDaysAgo = DateTime.Now.AddDays(-15);
+
+                var recentlyUsedMaterials = usedMaterials
+                .Where(m => m.TotalQuantity > 0 && m.Stock < 100)
+                .Where(m => m.ReceiptMaterials
+                .Any(rm => rm.WorkReceipt.ReceiptDate >= fifteenDaysAgo))
+                .ToList();
+
+                WorkReceiptsListView.ItemsSource = recentlyUsedMaterials;
+            }
+        }
+
+        // For sorting which stock to view
+        private void stockTypeCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (productStockLv == null || materialsStockLv == null) // Prevents null object references
+            {
+                return;
+            }
+
+            switch (stockTypeCb.SelectedIndex) 
+            {
+                case 0: // Set visibility of the list views based on the selected index
+                    productStockLv.Visibility = Visibility.Visible;
+                    materialsStockLv.Visibility = Visibility.Collapsed;
+                    break;
+                case 1:
+                    productStockLv.Visibility = Visibility.Collapsed;
+                    materialsStockLv.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    productStockLv.Visibility = Visibility.Visible;
+                    materialsStockLv.Visibility = Visibility.Collapsed;
+                    break;
+            }
         }
     }
 }

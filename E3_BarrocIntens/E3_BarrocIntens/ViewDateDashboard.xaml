@@ -41,9 +41,11 @@
                             <StackPanel Spacing="10" Margin="10">
                                 <TextBlock Text="{x:Bind Product.Title}" FontSize="20"/>
                                 <TextBlock Text="{x:Bind Description}" FontSize="15"/>
+                                <TextBlock Text="{x:Bind User.Name}" FontSize="15" FontWeight="Bold"/>
                                 <StackPanel Orientation="Horizontal" Spacing="25">
                                     <Button Background="Blue" Content="Reschedule" x:Name="editBtn" Click="editBtn_Click" Foreground="White" CommandParameter="{Binding}"/>
                                     <Button Background="Red" Content="Cancel" x:Name="deleteBtn" Click="deleteBtn_Click" Foreground="White" CommandParameter="{Binding}"/>
+                                    <Button Background="DarkOrange" Content="Cancel All" x:Name="deleteAll" Click="deleteAll_Click" Foreground="White" CommandParameter="{Binding}"/>
                                 </StackPanel>
                             </StackPanel>
                         </DataTemplate>

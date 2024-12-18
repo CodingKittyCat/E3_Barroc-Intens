@@ -52,7 +52,7 @@ namespace E3_BarrocIntens
             // input validation
             if (string.IsNullOrEmpty(CustomerNameBox.Text))
             {
-                Error("Please enter a name for the customer.");
+                Notice("Please enter a name for the customer.");
                 return;
             }
 
@@ -61,24 +61,24 @@ namespace E3_BarrocIntens
             {
                 if (db.Users.Any(u => u.Username.ToLower() == CustomerUsernameBox.Text.ToLower()))
                 {
-                    Error("Username already exists.");
+                    Notice("Username already exists.");
                     return;
                 }
             }
 
             if (string.IsNullOrEmpty(CustomerUsernameBox.Text))
             {
-                Error("Please enter a username for the customer.");
+                Notice("Please enter a username for the customer.");
                 return;
             }
             if (string.IsNullOrEmpty(CustomerEmailBox.Text))
             {
-                Error("Please enter a password for the customer.");
+                Notice("Please enter a password for the customer.");
                 return;
             }
             if (UserRoleComboBox.SelectedItem == null)
             {
-                Error("Please select a role for the customer.");
+                Notice("Please select a role for the customer.");
                 return;
             }
 
@@ -108,14 +108,17 @@ namespace E3_BarrocIntens
                 "Welcome to Barroc Intens",
                 $"Welcome to Barroc Intens, {user.Name}!\n\nYour login credentials are:\nUsername: {user.Username}\nPassword: {password}"
             );
+
+            // notify user
+            Notice("Customer created successfully and emailed credentials.");
         }
 
-        private async void Error(string message)
+        private async void Notice(string message)
         {
-            // show error pop up to user
+            // show notice pop up to user
             ContentDialog dialog = new()
             {
-                Title = "Error",
+                Title = "Notice",
                 Content = message,
                 CloseButtonText = "OK",
                 XamlRoot = this.Content.XamlRoot

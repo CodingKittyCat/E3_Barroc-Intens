@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
@@ -14,12 +14,12 @@
    
   <ItemGroup>
     <Content Remove="Assets\1485477207-magnifier_78608.ico" />
-    <Content Remove="Assets\Logo1_klein.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="AddWorkerPage.xaml" />
+    <None Remove="AdminDashboard.xaml" />
+    <None Remove="Assets\Logo1_klein.jpg" />
     <None Remove="BlankWindow1.xaml" />
-    <None Remove="CreateCustomerDashboard.xaml" />
     <None Remove="CreateLease.xaml" />
     <None Remove="CustomerDashboard.xaml" />
     <None Remove="CustomerQuoteDashboard.xaml" />
@@ -74,6 +74,12 @@
 
   <ItemGroup>
     <Page Update="CreateCustomerDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="AdminDashboard.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
