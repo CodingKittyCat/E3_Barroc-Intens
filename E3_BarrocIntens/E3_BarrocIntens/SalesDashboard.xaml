@@ -278,16 +278,19 @@
                 </StackPanel>
 
                 <StackPanel>
-                    <TextBlock Text="Select a Product" />
+                    <TextBlock Text="Total Amount" />
                     <NumberBox x:Name="QuoteTotalAmountBox"
-                                Header="Total Amount"
                                 PlaceholderText="Enter the total amount of the quote" />
                 </StackPanel>
 
                 <StackPanel>
-                    <TextBlock Text="Select a Payment Method" />
-                    <TextBox x:Name="QuoteStatusBox"
-                        PlaceholderText="Enter the status of the quote" />
+                    <TextBlock Text="Select Status" />
+                    <ComboBox x:Name="QuoteStatusBox"
+                              PlaceholderText="Select the status of the quote"
+                              SelectedValuePath="Content">
+                        <ComboBoxItem Content="Pending" />
+                        <ComboBoxItem Content="Accepted" />
+                    </ComboBox>
                 </StackPanel>
             </StackPanel>
 

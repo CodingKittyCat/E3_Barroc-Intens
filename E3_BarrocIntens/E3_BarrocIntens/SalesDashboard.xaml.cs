@@ -47,6 +47,7 @@ namespace E3_BarrocIntens
                 CustomerListbox.ItemsSource = users;
                 CustomerListbox.DisplayMemberPath = "Name"; // Display user name in ListBox
                 CustomerListbox.SelectedValuePath = "Id"; // Use user ID as selected value
+                QuoteStatusBox.SelectedIndex = 0; // Default to "Pending"
             }
 
             var result = await AddQuoteDialog.ShowAsync();
@@ -62,7 +63,7 @@ namespace E3_BarrocIntens
                     quote.QuoteDate = QuoteDatePicker.Date.Date;
                     quote.ExpirationDate = QuoteExpirationDatePicker.Date.Date;
                     quote.TotalAmount = decimal.Parse(QuoteTotalAmountBox.Text);
-                    quote.Status = QuoteStatusBox.Text;
+                    quote.Status = QuoteStatusBox.SelectedValue?.ToString();
 
                     db.Add(quote);
                     await db.SaveChangesAsync();
@@ -225,5 +226,6 @@ namespace E3_BarrocIntens
                 quotesLv.ItemsSource = db.Quotes.ToList();
             }
         }
+
     }
 }
