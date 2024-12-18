@@ -44,16 +44,16 @@ namespace E3_BarrocIntens
         {
             base.OnNavigatedTo(e);
 
-            // parse the parameter to a Quote object
+            // Parse the parameter to a Quote object
             quote = (Quote)e.Parameter;
 
-            // fill fields with quote data
+            // Fill fields with quote data
             QuoteCustomerComboBox.SelectedItem = quote.Customer.Name;
             QuoteDatePicker.Date = quote.QuoteDate;
             QuoteExpirationDatePicker.Date = quote.ExpirationDate;
             QuoteTotalAmountBox.Text = quote.TotalAmount.ToString();
-            QuoteStatusBox.Text = quote.Status;
         }
+
 
         private void optionsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -112,7 +112,8 @@ namespace E3_BarrocIntens
                 quote.QuoteDate = QuoteDatePicker.Date.Date;
                 quote.ExpirationDate = QuoteExpirationDatePicker.Date.Date;
                 quote.TotalAmount = decimal.Parse(QuoteTotalAmountBox.Text);
-                quote.Status = QuoteStatusBox.Text;
+                quote.Status = QuoteStatusBox.SelectedValue?.ToString();
+
 
                 quote.Customer = db.Users.Where(user => user.Id == quote.CustomerId).FirstOrDefault();
 
@@ -157,6 +158,26 @@ namespace E3_BarrocIntens
                 XamlRoot = this.XamlRoot
             };
             await dialog.ShowAsync();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.Frame.CanGoBack)
+            {
+                this.Frame.GoBack();
+            }
+            else
+            {
+                // Optionally handle if no previous page exists
+                ContentDialog dialog = new()
+                {
+                    Title = "No Previous Page",
+                    Content = "There is no page to navigate back to.",
+                    CloseButtonText = "OK",
+                    XamlRoot = this.XamlRoot
+                };
+                _ = dialog.ShowAsync();
+            }
         }
     }
 }
