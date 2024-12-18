@@ -352,6 +352,65 @@
                         </Grid>
                     </ScrollViewer>
                 </Border>
+
+                <Grid x:Name="maintenanceRequestHeader" Background="Black" Margin="5,5,5,0" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Center" Foreground="White" FontSize="20" FontWeight="Bold" Grid.Column="1">MAINTENANCE REQUESTS</TextBlock>
+                    <Button Content="CREATE" FontSize="15" Background="Gray" Grid.Column="2" HorizontalAlignment="Right" x:Name="createRequest" Click="createRequest_Click"/>
+
+                </Grid>
+
+                <Border x:Name="maintenanceRequestBorder" BorderBrush="Black" BorderThickness="2" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="1" Margin="5,0,5,0">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <!-- Header -->
+                                <RowDefinition Height="Auto"/>
+                                <!-- Content -->
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="ID" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="1" Text="PRODUCT" FontSize="20" HorizontalAlignment="Center" TextAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="2" Text="DESCRIPTION" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                            </Grid>
+                            <ListView x:Name="MaintenanceRequestListView" Grid.Row="1">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="localData:MaintenanceRequest">
+                                        <Grid Margin="5" ColumnSpacing="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Quotes details -->
+                                            <!--<TextBlock Grid.Column="0" Text="{x:Bind Id}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            <TextBlock Grid.Column="1" Text="{x:Bind QuoteDate}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                            <TextBlock Grid.Column="2" Text="{x:Bind ExpirationDate}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                            <TextBlock Grid.Column="3" Text="{x:Bind TotalAmount}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                            <TextBlock Grid.Column="4" Text="{x:Bind Status}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                            <Button x:Name="QuoteAcceptButton" Grid.Column="5" Content="Accept" Click="QuoteAcceptButton_Click" CommandParameter="{Binding}" />-->
+
+                                            <TextBlock Grid.Column="0" Text="{x:Bind Id}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            <TextBlock Grid.Column="1" Text="{x:Bind Product.Title}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            <TextBlock Grid.Column="2" Text="{x:Bind Description}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </ScrollViewer>
+                </Border>
             </Grid>
         </Border>
     </Grid>

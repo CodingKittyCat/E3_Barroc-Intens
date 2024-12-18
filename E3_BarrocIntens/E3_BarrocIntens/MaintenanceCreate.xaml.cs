@@ -133,6 +133,7 @@ namespace E3_BarrocIntens
                     ProductId = selectedProduct.Id,
                     Description = DescriptionBox.Text,
                     RequestedDateTime = DateTime.Now,
+                    RequestUserId = Session.Instance.User.Id
                 };
 
                 _context.Add(NewRequest);
@@ -150,6 +151,8 @@ namespace E3_BarrocIntens
                 contentDialog.XamlRoot = this.XamlRoot;
 
                 await contentDialog.ShowAsync();
+
+                this.Frame.Navigate(typeof(CustomerDashboard));
             }
 
 

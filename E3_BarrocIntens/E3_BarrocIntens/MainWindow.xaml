@@ -20,7 +20,6 @@
             <ComboBoxItem>Purchasing</ComboBoxItem>
             <ComboBoxItem>Maintenance</ComboBoxItem>
             <ComboBoxItem>Register</ComboBoxItem>
-            <ComboBoxItem>CreateRequest</ComboBoxItem>
         </ComboBox>
     </Grid>
 
